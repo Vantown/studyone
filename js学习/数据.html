@@ -1,0 +1,252 @@
+<!DOCTYPE>
+<html>
+<head>
+
+
+
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style type="text/css">
+        .hover_red:hover {
+            color: #a02b30 !important;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .hover_shou:hover {
+            cursor: pointer;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        .font_weight_N {
+            font-weight: normal;
+        }
+
+        img {
+            display: block;
+            border: 0;
+        }
+
+        .hover_blue:hover {
+            color: #1aa6fe !important;
+        }
+
+        .hover_BGblue:hover {
+            background-color: #0291ed !important;
+        }
+
+        ::-webkit-input-placeholder { /* WebKit browsers */
+            color: #000;
+        }
+
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #000;
+        }
+
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #000;
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: #000;
+        }
+
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+            color: #000;
+        }
+
+        input:-moz-placeholder, textarea:-moz-placeholder {
+            color: #000;
+        }
+
+        .shadowB:hover {
+            box-shadow: 0 0 10px #000;
+        }
+
+        .shadowB {
+            box-shadow: 0 0 10px #fff;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function checkTel() {
+            var reg = /^(1\d{10})$/;
+            var tel = document.getElementById("atc_my_741").value;
+            if (!(reg.test(tel))) {
+                alert("请输入正确的手机号");
+                document.getElementById("atc_my_741").value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .iw_poi_title {
+            color: #CC5522;
+            font-size: 14px;
+            font-weight: bold;
+            overflow: hidden;
+            padding-right: 13px;
+            white-space: nowrap
+        }
+
+        .iw_poi_content {
+            font: 12px arial, sans-serif;
+            overflow: visible;
+            padding-top: 4px;
+            white-space: -moz-pre-wrap;
+            word-wrap: break-word
+        }
+    </style>
+
+
+    <title>中域教育</title>
+
+</head>
+
+<body style="margin: 0;">
+<script>
+    JSON.stringify();
+    语法：
+    JSON.stringify(value [, replacer] [, space])
+    value：是必须要的字段。就是你输入的对象，比如数组啊，类啊等等。
+    replacer：这个是可选的。它又分为2种方式，一种是方法，第二种是数组。
+    情况一：我们先说数据，通过我们后面的实验可以知道，它是和第一个有关系的。一般来说，我们系列化后的结果是通过键值对来进行表示的。
+    比如说：
+    name:"lan",age:25
+    这种形式。
+    所以，如果这种形式的话，如果第二个的值在第一个存在，那么的话就以第二个的值做key，第一个值为value进行表示，如果不存在，sorry，忽略。【是不是有点抽象，我也这么觉得，不过你等一下看实验 就OK了。。呼呼。】
+    情况二：如果是方法，那很简单，就是说把系列化后的每一个对象（记住 是每一个）传进方法里面进行处理。
+    space：很好理解，用什么来做分隔符的。
+    1.如果省略的话，那么显示出来的值 就没有分隔符。直接输出来
+    2.如果是一个数字的话，那么它就定义缩进几个字符，当然 如果大于10 ，则最大值为10.
+    3.如果是一些转义字符，比如“\t”，表示回车，那么它每行一个回车。
+    4.如果仅仅是字符串，OK，就在每行输出值的时候把这些字符串附加上去就OK。当然，最大长度也是10个字符。
+    开始用实例说明；
+    1.只有一个参数的情况下：
+    var obj={
+        webName:"脚本之家",
+        url:"jb51.net",
+        age:"2"
+    }
+    var str=JSON.stringify(obj)
+    console.log(str);
+    上面的代码实现了转换功能，这里采用的是JSON.stringify()，这是ECMAScript5新增的方法。
+    存在一定的浏览器兼容性问题，具体如下:
+            （1）.IE8和IE8以上浏览器支持此方法。
+    （2）.谷歌浏览器支持此方法。
+    （3）.火狐浏览器支持此方法。
+    （4）.opera浏览器支持此方法。
+    （5）.Safria浏览器支持此方法。
+    或
+    var student = new Object();
+    student.name = "Lanny";
+    student.age = "25";
+    student.location = "China";
+    var json = JSON.stringify(student);
+    alert(student);     //{"name":"Lanny","age":"25","location":"China"}
+    有些人可能会怀疑JSON.stringify的作用，OK。那假如，我们不要这个函数。代码下面的样子：
+    var student = new Object();
+    student.name = "Lanny";
+    student.age = "25";
+    student.location = "China";
+
+    // var json = JSON.stringify(student);
+    alert(student);     //[object object]
+    2.第二个参数存在，并且第二个参数还是function的时候
+    var students = new Array() ;
+    students[0] = "Lanny";
+    students[1] = "dong";
+    students[2] = "I love you";
+    var json = JSON.stringify(students,switchUpper);
+    function switchUpper(key, value) {
+        return value.toString().toUpperCase();
+    }
+    alert(json);    //"LANNY,DONG,I LOVE YOU"
+    //var json = JSON.stringify(students, function (key,value) {
+    //return value.toString().toUpperCase();
+    //});
+    上面的方法也可以换成下面的，2个都是一样，只是写法有那么一点点的不一样而已。
+    得到结果如下：LANNY,DONG,I LOVE YOU"
+
+    3.第二个参数存在，并且第二个参数不是function，而是数组的时候。
+    3.1 【误区】如果第一个参数是数组，第二个参数也是数组的话，只显示第一个参数的值。
+    比如：
+    var students = new Array() ;
+    students[0] = "Lanny";
+    students[1] = "dong";
+    students[2] = "I love you";
+    var stu = new Array();
+    stu[0] = "1";
+    stu[1] = "2";
+    var json = JSON.stringify(students,stu);
+    alert(json);        //["Lanny","dong","I love you"]
+    第二个被忽略了，只是第一个被系列化了。
+    3.2 如果第一个是对象（这里说的对象就像在C#里面可以进行new的），第二个是数组的。
+
+    那么如果第二个的value在第一个存在，那么的话就以第二个的值做key，第一个值为value进行表示
+
+    var student = new Object();
+    student.qq = "5485891512";
+    student.name = "Lanny";
+    student.age = 25;
+
+    var stu = new Array();
+    stu[0] = "qq";
+    stu[1] = "age";
+    stu[2] = "Hi";//这个student对象里不存在。
+
+    var json = JSON.stringify(student,stu);
+    alert(json);        //["qq":"5485891512","age":25]
+    因为stu[2] = "Hi";这个Hi 在第一个找不到，所以就不进行显示了。
+
+    4.第三个参数
+
+    4.1.如果省略的话，那么显示出来的值 就没有分隔符。直接输出来
+
+    比如：
+    var student = new Object();
+    student.qq = "5485891512";
+    student.name = "Lanny";
+    student.age = 25;
+
+    var stu = new Array();
+    stu[0] = "qq";
+    stu[1] = "age";
+    stu[2] = "Hi";
+
+    var json = JSON.stringify(student,stu);
+    alert(json);        //["qq":"5485891512","age":25]
+    4.2.如果是一个数字的话，那么它就定义缩进几个字符，当然 如果大于10 ，则最大值为10.
+
+    var student = new Object();
+    student.qq = "5485891512";
+    student.name = "Lanny";
+    student.age = 25;
+
+    var stu = new Array();
+    stu[0] = "qq";
+    stu[1] = "age";
+    stu[2] = "Hi";
+
+    var json = JSON.stringify(student,stu,100);//注意这里的100
+    alert(json);        //{"qq":"5485891512","age":25}，空开来了10个字符。
+    4.3.如果是一些转义字符，比如“\t”，表示回车，那么它每行一个回车。
+    也是一样。
+    4.4.如果仅仅是字符串，OK，就在每行输出值的时候把这些字符串附加上去就OK。当然，最大长度也是10个字符。
+    如果是var json = JSON.stringify(student,stu,“HaiKou”);     //{HaiKou"qq":"5485891512",HaiKou"age":25}
+    原文链接：http://www.cnblogs.com/damonlan/
+</script>
+</body>
+</html>

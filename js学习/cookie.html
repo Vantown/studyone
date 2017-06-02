@@ -1,0 +1,77 @@
+<!DOCTYPE>
+<html>
+<head>
+
+
+    <meta charset="gb2312">
+
+    <script>
+        document.cookie = "username=John Doe";
+        (function () {
+            getCookie("username")
+        })();
+        alert(document.cookie);
+        function displayCookies() {
+            var fname = getCookie("username");
+            if (fname == null) {
+                fname = "";
+            }
+            if (fname != "") {
+                fname = "username=" + fname;
+            }
+            alert(fname + lname);
+        }
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+    </script>
+    <script>
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i].trim();
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+        function checkCookie() {
+            var user = getCookie("username");
+            if (user != "") {
+                alert("Welcome again " + user);
+            }
+            else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                }
+            }
+        }
+
+    </script>
+
+    <title>????</title>
+
+</head>
+
+<body style="margin: 0;" onload="checkCookie()">
+<center>
+cookie必须配置服务器环境，至少chrome是这样
+</center>
+
+
+</body>
+</html>

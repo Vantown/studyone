@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+<head>
+<link rel="shortcut icon" type="image/ico" href="http://jz.zhongyuedu.com/images/green/favicon.ico">
+
+
+
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <STYLE type=text/css>.STYLE1 {
+	FONT-SIZE: 12px
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1522" name=GENERATOR></HEAD>
+<BODY>
+
+
+<TABLE width=750 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE width=750 align=center border=0>
+  <TBODY>
+  <TR><TD style="height:30px" id="showtxt">正在下载测速图片，请稍后...</TD></TR>
+  <TR><TD style="height:30px">单位换算：宽带512kbps=64k/s 1M=128k/s 2M=256k/s</TD></TR>
+
+  <TR>
+    <TD>
+<SCRIPT language="JavaScript">
+  var st = new Date();
+</SCRIPT>
+
+<IMG height=300 alt="测试图片" src="http://hongkong2.bandwidthplace.com/static/4096.jpg?id=53" width=400 onload=showspeed();>
+     
+<SCRIPT language="JavaScript">
+function showspeed()
+{
+  var fs = 3.24*1024;  //img.jpg文件大小(KB)
+  var l = 2;    //小数点的位数
+  var et = new Date();
+  alltime = fs*1000/(et - st)
+  Lnum = Math.pow(10,l)
+  calcspeed = Math.round(alltime*Lnum)/Lnum
+  showtxt.innerHTML = ("您的下载速度为："+calcspeed+" (KB/秒)")
+
+}
+</SCRIPT>
+       </TD>
+    <TD>
+
+      </TD></TR>
+  
+
+</TBODY></TABLE>
+
+</BODY>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.box{width:80px; height:876px; background-color:#0F0; position:relative; float:left;}
+.box img{position:absolute; left:0; top:0px; width:100%; height:100%}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">
+<img src="模特-(30).png">
+<img src="模特-(30).png">
+<img src="模特-(30).png">
+<img src="模特-(30).png">
+</div>
+
+<script>
+
+$(".box").mouseenter(
+		function(){
+			$(this).children().animate({width:590});
+		}
+).mouseleave(
+		function(){
+			$(".box").children().animate({width:80});
+		}
+
+)
+
+
+</script>
+</body>
+</html>

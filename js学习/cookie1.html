@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+<head>
+
+
+    <meta charset="gb2312">
+
+    <script>
+        var CookieUtil = {
+
+            get: function (name) {
+                var cookieName = encodeURIComponent(name) + "=",
+                        cookieStart = document.cookie.indexOf(cookieName),
+                        cookieValue = null,
+                        cookieEnd;
+
+                if (cookieStart > -1) {
+                    cookieEnd = document.cookie.indexOf(";", cookieStart);
+                    if (cookieEnd == -1) {
+                        cookieEnd = document.cookie.length;
+                    }
+                    cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length, cookieEnd));
+                }
+
+                return cookieValue;
+            },
+
+            set: function (name, value, expires, path, domain, secure) {
+                var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+                if (expires instanceof Date) {
+                    cookieText += "; expires=" + expires.toGMTString();
+                }
+
+                if (path) {
+                    cookieText += "; path=" + path;
+                }
+
+                if (domain) {
+                    cookieText += "; domain=" + domain;
+                }
+
+                if (secure) {
+                    cookieText += "; secure";
+                }
+
+                document.cookie = cookieText;
+            },
+
+            unset: function (name, path, domain, secure) {
+                this.set(name, "", new Date(0), path, domain, secure);
+            }
+
+        };
+
+        CookieUtil.set("name", "jack sparrow");
+        CookieUtil.set("book", "professional javascript");
+        alert(CookieUtil.get("name"));
+    </script>
+
+    <title></title>
+
+</head>
+
+<body style="margin: 0;" onload="checkCookie()">
+<center>
+    cookie必须配置服务器环境，至少chrome是这样
+</center>
+
+
+</body>
+</html>

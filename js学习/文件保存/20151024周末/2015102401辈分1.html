@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+/*预设*/
+body,h1,p{margin:0}
+a{text-decoration:none}
+input{margin:0; padding:0; border:none; outline:none}
+img{display:block}
+/*常用类*/
+.overflowH{overflow:hidden}
+.huikuang{border:solid #dcdcdc 1px;}
+.tophuikuang{ border-top:solid #dcdcdc 1px;}
+.bottomhuikuang{border-bottom:solid #dcdcdc 1px;}
+.touying{box-shadow:#dcdcdc 1px 1px 1px;}
+.bottomtouying{box-shadow:#dcdcdc 0px 1px 1px;}
+/*开始*/
+.navbox{}
+.navtbox{ width:1842px; background-color:#f5f5f5;}
+.navtys{ width:990px; margin-left:auto; margin-right:auto;}
+.navtl{ float:left; margin-left:2px;}
+.navtlshouji{ float: left;font-size:12px; color:#bfbfbf; line-height:27px;}
+.navtlshouji img{float:left; margin-top:6px;}
+.navtlshouji a{float:left; font-size:12px; color:#666666; margin-left:4px; line-height:27px; margin-right:10px;}
+.navtlzhanghu{ float:left;}
+.navtlzhanghu a{ float:left;font-size:12px; color:#0b72a4; line-height:27px; margin-left:9px; }
+.navtlzhanghu img{ float:left; margin-top:7px;margin-left:5px; }
+.navtlzhanghu .jiantoujiaohu{ margin-top:12px;margin-left:-2px; }
+.heibj{ color:#000; opacity:0.7}
+.jiantoujiaohuxia a{ display:block; clear:both; background-color:rgba(0,51,255,0.3); padding-left:5px; margin-left:0px;padding-right:5px;}
+.jiantoujiaohuxia{ position:absolute; top:28px;}
+
+.navtr{ float:left; margin-left:210px;}
+.navtr img,.navtr a{font-size:12px; color:#666666; float:left; line-height:27px;}
+.navtr img{ margin-right:5px;}
+.navtrxiala{clear:both}
+.ntrxl1{ float:left; margin-right:15px;}
+.ntrxl2{ float:left; margin-right:25px;}
+.ntrxl1 h1,.ntrxl2 h1{display:block; background-color:rgba(153,153,153,0.6); font-size:12px; line-height:16px; font-weight:normal;}
+
+
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="navbox">
+	<div class="navtbox bottomhuikuang overflowH">
+    	<div class="navtys">
+        	<div class="navtl">
+            	<div class="navtlshouji">
+                	<img src="shouji.png">
+                    <a href="">手机版</a>丨
+                </div>
+                <div class="navtlzhanghu">
+                	<a href="">夏天飘飘</a>
+                	<img src="v3.png">
+                    <a href=""><img class="jiantoujiaohu" src="xialajiantou.png"></a>
+                    <div class="jiantoujiaohuxia">
+                    	<a href="">&nbsp;个人中心&nbsp;</a>
+                        <a href="">&nbsp;账户管理&nbsp;</a>
+                        <a href="">&nbsp;积分管理&nbsp;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navtr">
+            	<a href="">淘宝网首页 丨
+                    <div class="ntrxl1">
+                            <h1>我要买衣服</h1>
+                            <h1>我要买保险</h1>
+                            <h1>我要买理财</h1>
+                            <h1>我要买电器</h1>
+                        </div>
+                </a>
+                <a href="">我要买﹀<!--<img src="xialajiantou.png"> -->丨 
+                	<div class="ntrxl2">
+                    	<h1>买衣服</h1>
+                        <h1>买保险</h1>
+                        <h1>买理财</h1>
+                        <h1>买电器</h1>
+                    </div>
+                </a>
+                <a href="">我的淘宝﹀<!--<img src="xialajiantou.png">-->丨 
+                	<div class="ntrxl2">
+                    	<h1>买的东西</h1>
+                        <h1>买的保险</h1>
+                        <h1>买的理财</h1>
+                        <h1>买的电器</h1>
+                    </div>
+                </a>
+                <a href="">卖家中心﹀<!--<img src="xialajiantou.png">-->丨 
+                	<div class="ntrxl2">
+                    	<h1>卖的衣服</h1>
+                        <h1>卖的保险</h1>
+                        <h1>卖的理财</h1>
+                        <h1>卖的电器</h1>
+                    </div>
+                </a>
+                <a href="">联系客服 丨 
+                	<div class="ntrxl1">
+                    	<h1>要买衣服</h1>
+                        <h1>要买保险</h1>
+                        <h1>要买理财</h1>
+                        <h1>要买电器</h1>
+                    </div>
+                </a>
+                <a href=""><img style=" margin-top:6px;" src="gouwuche.png">购物车0件﹀<!--<img src="xialajiantou.png">-->丨 
+                	<div style="margin-left:15px;" class="ntrxl2">
+                    	<h1>我的购物车</h1>
+                        <h1>我的购物车</h1>
+                        <h1>我的购物车</h1>
+                        <h1>我的购物车</h1>
+                    </div>	
+                </a>
+                <a href="">收藏夹﹀<!--<img src="xialajiantou.png">-->丨 
+                	<div class="ntrxl2">
+                    	<h1>京东网</h1>
+                        <h1>国美网</h1>
+                        <h1>苏宁网</h1>
+                        <h1>一号店</h1>
+                    </div>
+                </a>
+                <a href="">网站导航﹀<!--<img src="xialajiantou.png">-->
+                	<div class="ntrxl2">
+                    	<h1>去京东网</h1>
+                        <h1>去国美网</h1>
+                        <h1>去苏宁网</h1>
+                        <h1>去一号店</h1>
+                    </div>
+                </a>
+                <div class="navtrxiala overflowH">
+                	
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navmbox">
+    </div>
+    <div class="navbbox">
+    </div>
+</div>
+
+<script>
+$(".jiantoujiaohuxia").hide()
+$(".jiantoujiaohu").mouseenter(
+		function(){
+			$(".jiantoujiaohuxia").show().css({opacity:0.7})
+		}
+).mouseleave(
+		function(){
+			$(".jiantoujiaohuxia").hide()
+		}
+)
+
+$(".navtr a").mouseenter(
+		function(){
+			$(this).addClass("heibj").siblings().removeClass("heibj")
+			$(".navtr a").children().show()
+		}
+).mouseleave(
+		function(){
+			$(".navtr a").children().hide()
+		}
+)
+</script>
+</body>
+</html>

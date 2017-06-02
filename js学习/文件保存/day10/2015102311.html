@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.box{ width:590px; height:876px; position:relative}
+img{ display:block}
+.ctrl{ position:absolute; right:20px;top:10px;}
+.ctrl span{ float:left; border:solid 2px #0F0; height:80px; margin-left:5px; margin-right:5px;}
+.ctrl img{ margin-top:35px}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">
+	<a href=""><img src="tu8.png"></a>
+    <a href=""><img src="tu9.png"></a>
+    <a href=""><img src="tu10.png"></a>
+    
+	<div class="ctrl">
+	<span><img src="xiaotu1.png"></span>
+    <span><img src="xiaotu1.png"></span>
+    <span><img src="xiaotu1.png"></span>
+    
+    	
+    </div>
+</div>
+
+<script>
+$(".box >img").hide().first().show()
+$(".ctrl span").mouseenter(
+		function(){
+			$(".ctrl img").stop(true,true).css({marginTop:20})
+			$(this).children().animate({marginTop:0})
+			$(".box a").hide().eq($(this).index()).show()
+		}
+)
+</script>
+</body>
+</html>

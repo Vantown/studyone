@@ -1,0 +1,970 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico">
+
+
+    <script src='js/jquery-2.1.4.js'></script>
+
+
+    <meta http-equiv='Page-Enter' content='revealTrans(duration=1000,?transition=10)'>
+    <meta http-equiv='Page-Exit' content='revealTrans(duration=x,?transition=y)'>
+    <meta http-equiv='Content-Type' content='text/html; charset=gb2312'/>
+
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+    <meta name='keywords' content='执业医师培训，执业医师考试培训，执业医师培训机构，执业医师培训班，执业医师资格培训，执业医师考试辅导'>
+    <meta name='description'
+          content='中域医考执业医师考试培训，中国最专业的执业医师考试培训机构，中域医考执业医师面授培训班，医考权威名师云集，2016年执业医师最新培训课程立志打造医考培训行业超高通过率'>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0"><!--设置禁用缓存-->
+    <!-- package com.servlet;
+HTML的HTTP协议头信息中控制着页面在几个地方的缓存信息，包括浏览器端，中间缓存服务器端(如：squid等)，Web服务器端。本文讨论头信息 中带缓存控制信息的HTML页面(JSP/Servlet生成好出来的也是HTML页面)在中间缓存服务器中的缓存情况。
+      HTTP协议中关于缓存的信息头关键字包括Cache-Control(HTTP1.1)，Pragma(HTTP1.0)，last-Modified，Expires等。
+      HTTP1.0中通过Pragma 控制页面缓存，可以设置：Pragma或no-cache。网上有非常多的文章说明如何控制不让浏览器或中间缓存服务器缓存页面，通常设置的值为no- cache，不过这个值不这么保险，通常还加上Expires置为0来达到目的。但是如我们刻意需要浏览器或缓存服务器缓存住我们的页面这个值则要设置为 Pragma。
+      HTTP1.1中启用Cache-Control 来控制页面的缓存与否，这里介绍几个常用的参数：
+no-cache，浏览器和缓存服务器都不应该缓存页面信息；
+public，浏览器和缓存服务器都可以缓存页面信息；
+no-store，请求和响应的信息都不应该被存储在对方的磁盘系统中；
+must-revalidate，对于客户机的每次请求，代理服务器必须想服务器验证缓存是否过时；
+       Last-Modified只页面的最后生成时间，GMT格式；
+       Expires过时期限值，GMT格式，指浏览器或缓存服务器在该时间点后必须从真正的服务器中获取新的页面信息；
+       上面两个值在JSP中设置值为字符型的GMT格式，无法生效，设置long类型才生效；
+
+下面是一个测试例子：
+ import java.io.IOException;
+ import java.io.PrintWriter;
+
+ import javax.servlet.ServletException;
+ import javax.servlet.http.HttpServlet;
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;
+
+public class ServletA extends HttpServlet {
+    @Override
+  public void service(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       response.setContentType("text/html");
+       //servlet页面默认是不缓存的
+       //本页面允许在浏览器端或缓存服务器中缓存，时限为20秒。
+       //20秒之内重新进入该页面的话不会进入该servlet的
+         java.util.Date date = new java.util.Date();
+        response.setDateHeader("Last-Modified",date.getTime()); //Last-Modified:页面的最后生成时间
+         response.setDateHeader("Expires",date.getTime()+20000); //Expires:过时期限值
+        response.setHeader("Cache-Control", "public"); //Cache-Control来控制页面的缓存与否,public:浏览器和缓存服务器都可以缓存页面信息；
+        response.setHeader("Pragma", "Pragma"); //Pragma:设置页面是否缓存，为Pragma则缓存，no-cache则不缓存
+
+         //不允许浏览器端或缓存服务器缓存当前页面信息。
+        /*response.setHeader( "Pragma", "no-cache" );
+        response.setDateHeader("Expires", 0);
+        response.addHeader( "Cache-Control", "no-cache" );//浏览器和缓存服务器都不应该缓存页面信息
+         response.addHeader( "Cache-Control", "no-store" );//请求和响应的信息都不应该被存储在对方的磁盘系统中；
+         response.addHeader( "Cache-Control", "must-revalidate" );*///于客户机的每次请求，代理服务器必须想服务器验证缓存是否过时；
+
+        System.out.println("进入了servlet");
+         response.getWriter().write("欢迎光临我的主页");
+     }
+
+
+ }
+
+　　如果需要在html页面上设置不缓存，这在<head>标签中加入如下语句：
+1 <meta http-equiv="pragma" content="no-cache">
+2 <meta http-equiv="cache-control" content="no-cache">
+3 <meta http-equiv="expires" content="0">
+
+附：html页面中meta的作用
+　　meta是用来在HTML文档中模拟HTTP协议的响应头报文。meta 标签用于网页的<head>与</head>中，meta 标签的用处很多。meta 的属性有两种：name和http-equiv。name属性主要用于描述网页，对应于content（网页内容），以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）。这其中最重要的是description（站点在搜索引擎上的描述）和keywords（分类关键词），所以应该给每页加一个meta值。比较常用的有以下几个：
+　　name 属性
+　　1、<meta name="Generator" contect="">用以说明生成工具（如Microsoft FrontPage 4.0）等；
+　　2、<meta name="KEYWords" contect="">向搜索引擎说明你的网页的关键词；
+　　3、<meta name="DEscription" contect="">告诉搜索引擎你的站点的主要内容；
+　　4、<meta name="Author" contect="你的姓名">告诉搜索引擎你的站点的制作的作者；
+　　5、<meta name="Robots" contect= "all|none|index|noindex|follow|nofollow">
+　　其中的属性说明如下：
+　　设定为all：文件将被检索，且页面上的链接可以被查询；
+　　设定为none：文件将不被检索，且页面上的链接不可以被查询；
+　　设定为index：文件将被检索；
+　　设定为follow：页面上的链接可以被查询；
+　　设定为noindex：文件将不被检索，但页面上的链接可以被查询；
+　　设定为nofollow：文件将不被检索，页面上的链接可以被查询。
+　　http-equiv属性
+　　1、<meta http-equiv="Content-Type" contect="text/html";charset=gb_2312-80">
+和 <meta http-equiv="Content-Language" contect="zh-CN">用以说明主页制作所使用的文字以及语言；
+　　又如英文是ISO-8859-1字符集，还有BIG5、utf-8、shift-Jis、Euc、Koi8-2等字符集；
+　　2、<meta http-equiv="Refresh" contect="n;url=http://yourlink">定时让网页在指定的时间n内，跳转到页面http://yourlink；
+　　3、<meta http-equiv="Expires" contect="Mon,12 May 2001 00:20:00 GMT">可以用于设定网页的到期时间，一旦过期则必须到服务器上重新调用。需要注意的是必须使用GMT时间格式；
+　　4、<meta http-equiv="Pragma" contect="no-cache">是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出；
+　　5、<meta http-equiv="set-cookie" contect="Mon,12 May 2001 00:20:00 GMT">cookie设定，如果网页过期，存盘的cookie将被删除。需要注意的也是必须使用GMT时间格式；
+　　6、<meta http-equiv="Pics-label" contect="">网页等级评定，在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的；
+　　7、<meta http-equiv="windows-Target" contect="_top">强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用；
+　　8、<meta http-equiv="Page-Enter" contect="revealTrans(duration=10,transtion= 50)">和<meta http-equiv="Page-Exit" contect="revealTrans(duration=20，transtion=6)">设定进入和离开页面时的特殊效果，这个功能即FrontPage中的“格式/网页过渡”，不过所加的页面不能够是一个frame页面。
+-->
+
+    <title>
+        JavaScript学习JavaScript学习JavaScript学习JavaScript学习JavaScript学习JavaScript学习JavaScript学习</title>
+
+
+    <style>
+        @import "css/zhongyu_project_v0.1_0122.css"; /*引入css（导入式），这样会网页加载完之后再加载css*/
+        /*@charset "utf-8"; 这个表示css的编码格式，在css文件和style里都可以*/
+        ::-webkit-input-placeholder { /* WebKit browsers */
+            color: #999;
+        }
+
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #999;
+        }
+
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #999;
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: #999;
+        }
+
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+            color: #636363;
+        }
+
+        input:-moz-placeholder, textarea:-moz-placeholder {
+            color: #636363;
+        }
+
+        .btn {
+            font-size: .9rem;
+            line-height: 25px;
+            margin-top: 10px;
+            border: solid 1px #b9e093;
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#efffea), to(#e8ffd1));
+            height: 25px;
+            width: 90%;
+            display: block;
+            text-align: center;
+            color: #7cb345;
+            border-radius: 5px /*渐变色*/
+        }
+
+        @font-face {
+            font-family: 方正兰亭细黑;
+            src: url('css/方正兰亭细黑GBK.ttf'),
+        }
+
+        .fzltxh {
+            font-family: 方正兰亭细黑;
+        }
+
+        #form_pc input {
+            color: #7cb6f6;
+            border: solid 1px #7cb6f6;
+            background-color: #fff;
+        }
+
+        #form_pc input.cc {
+            color: #fff;
+            background-color: #7cb6f6;
+        }
+    </style>
+</head>
+
+<body onload="myFunction1666()">1
+<script>
+    function myFunction1666() {
+        var i = 10;
+        if (i > 1) {
+        }
+    }
+</script>
+
+<script>
+    /*5.3 Date类型
+     * ECMAScript中的Date类型是在早期Java中的java.util.Date类基础上构建的，为此，Date类型使用自UTC（Coordinated Universal Time，国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存日期。在使用这种数据存储格式的条件下，Date类型保存的日期能够精确到1970年1月1日之前或之后的285616年
+     * 要创建一个日期对象，使用new操作符和Date构造函数即可，如下所示*/
+    var now = new Date();
+    /*在使用Date构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间，如果想根据特定的日期和时间创建日期对象，比如传入表示该日期的毫秒数（即从UTC时间1970年1月1日午夜起至该日期止经过的毫秒数）。为了简化这一计算过程，ECMAScript提供了两个方法：Date.parse（）和Date.UTC（）。
+     * 其中Date.parse（）方法接收一个表示日期的字符串参数，然后尝试根据这个字符串返回相应日期的毫秒数，ECMA-262没有定义Date.parse（）应该支持哪种日期格式，因此这个方法的行为因实现而异，而且通常是因地区而异。将地区设置为美国的浏览器通常都接受下列日期格式：
+     * “月/日/年”，如6/13/2004；
+     * “英文月明日，年”，例如January 12,2004；
+     * “英文星期几 英文月明 日 年 时：分：秒 时区”，如Tue May 2004 00：00:00 GMT-0700。
+     * ISO 8601 扩展格式 YYYY-MM-DDTHH:mm:ss:sssZ （例如2004-05-25T00:00:00）。只有兼容ECMAScript5的实现支持这种格式。
+     * 例如，要为2004年5月25日创建一个日期对象，可以使用下面的代码：*/
+    var someDate = new Date(Date.parse("May 25,2004"));
+    /*如果传入Date.parse（）方法的字符串不能表示日期，name它会返回NaN，实际上，如果直接将表示日期的字符串传给Date构造函数，也会在后台调用Date.parse（），换句话说，下面的代码与前面的例子是等价的：*/
+    var someDate = new Date("May 25,2004");
+    /*这行代码将会得到与前面相同的日期对象
+     * 日期对象及其在不同浏览器中的实现有许多奇怪的行为，其中有一种倾向是将超出范围的值替换成当前的值，以便生成输出。例如，在解析“January 32,2007”时，有的有的浏览器会将其解释为“February 1,2007”。而Opera则倾向于茶语当前月份的当前日期，返回“January 当前日期，2007”。也就是说，如果在2007年9月21日运行前面的代码，将会得到“January 21,2007”（都是21日）。
+     * Date.UTC（）方法同样也返回表示日期的毫秒数，但它与Date.parse（）在构建值时使用不同的信息，Date.UTC（）的参数分别是年份、基于0的月份（一月是0，二月是1，以此类推）、月中的哪一天（1到31）、小时数（0到23）、分钟、秒以及毫秒数，在这些参数中，只有前两个参数（年和月）是必须的，如果没有提供月中的天数，则假设天数为1：如果省略其他参数，则统统假设为0，下面是两个使用Date.UTC（）方法的例子
+     * GMT时间2000年1月1日午夜零时*/
+    var d20000101 = new Date(Date.UTC(2000, 0));
+    //GMT时间2005年5月5日下午5:55:55
+    var d2005050555555 = new Date(Date.UTC(2005, 4, 5, 17, 55, 55));
+    /*这个例子创建了两个日期对象，第一个对象表示GMT时间2000年1月1日午夜零时，传入的值一个是表示年份的2000，一个是表示月份的0（即一月份）。因为其他参数是自动填充的（即月中的天数为1，其他所有参数均为0），所以结果就是该月第一天的午夜零时，第二个对象表示GMT时间2005年5月5日下午5:55:55，即使日期和时间中只包含5，也需要传入不一样的参数，月份必须是4（因为月份是基于0的）、小时必须设置为17（因为小时以0到23表示），剩下的参数就很直观了。
+     * 如同模仿Date.parse（）一样，Date构造函数也会模仿Date.UTC（），但有一点明显不同，日期和时间都基于本地时区而非GMT来创建，不过，Date构造函数接收的参数仍然与Date.UTC()相同，因此，如果第一个参数是数值，Date构造函数就会假设该值是日期中的年份，而第二个参数是月份，据此，可以将前面的例子重写如下
+     * 本地时间2000年1月1日午夜零时*/
+    var d20000101_ = new Date(2000, 0);
+    //本地时间2005年5月5日下午5:55:55
+    var d2005050555555_ = new Date(2005, 4, 5, 17, 55, 55);
+    /*以上代码创建了与前面例子中相同的两个日期对象，只不过这次的日期都是基于系统设置的本地时区创建的，
+     * ECMAScript5添加了Date.now（），返回表示调用这个方法的日期和时间的毫秒数，这个方法简化了使用Date对象分析代码的工作。例如*/
+    //取得开始时间
+    var start = Date.now();
+    //调用函数
+    function doSomething() {
+        console.log('1');
+    }
+    doSomething();
+    //取得停止时间
+    var stop = Date.now(),
+            result = stop - start;
+    //支持Date.now()方法的浏览器包括IE9+、Firefox3+、Safari3+、Opera10.5和Chrome
+</script>
+
+<script>
+    /*5.3.1 继承的方法
+     * 与其他引用类型一样，Date也重写了toLocaleString()、toString（）和valueOf（）方法，但这些方法返回的值与其他类型中的方法不同，Date类型的toLocaleString（）方法会按照与浏览器设置的地区相适应的格式返回日期和时间，这大致意味着时间格式中会包含AM或PM，但不会包含时区信息（当然，具体的格式会因浏览器而异）。而toString（）方法则通常返回带有时区信息的日期和时间，其中时间一般以军用时间（即小时的范围是0到23）表示，下面给出了在不同浏览器中调用toLocaleString（）和toString（）方法，输出PST（Pacific Standard Time，太平洋标准时间）时间2007年2月1日午夜零时的结果。
+     * Internet explorer 8
+     * toLocaleString（）--Thursday， february 01， 2007 12:00:00 AM
+     * toString（）--Thu Feb 1 00:00:00 PST 2007
+     * Firefox 3.5
+     * toLocaleString（）--Thursday， february 01， 2007 12:00:00 AM
+     * toString（）--Thu Feb 01 2007 00:00:00 GMT-0800（Pacific Standard Time）
+     * Safari 4
+     * toLocaleString（）--Thurday， february 01， 2007 12:00:00
+     * toString（）--Thu Feb 01 2007 00:00:00 GMT-0800（Pacific Standard Time）
+     * Chrome 4
+     * toLocaleString（）--TThu Feb 01 2007 00:00:00 GMT-0800（Pacific Standard Time）
+     * toString（）--Thu Feb 01 2007 00:00:00 GMT-0800（Pacific Standard Time）
+     * Opera 10
+     * toLocaleString（）--2/1/2007 12:00:00 AM
+     * toString（）--Thu Feb 01 2007 00:00:00 GMT-0800
+     * 显然，这两个方法在不同的浏览器中返回的日期和时间格式可谓大相径庭，事实上，toLocaleString（）和toString（）的这一差别仅在调试代码时比较有用，而在显示日期和时间时没有什么价值。
+     * 至于Date类型的valueOf（）方法，则根本不返回字符串，而是返回日期的毫秒表示，因此，可以方便使用比较操作符（小于或大于）来比较日期值，看下面的例子*/
+    var date1 = new Date(2007, 0, 1);       //"January 1, 2007"
+    var date2 = new Date(2007, 1, 1);       //"February 1, 2007"
+    //alert(date1 < date2);       //true
+    //alert(date1 > date2);       //false
+    //从逻辑上讲，2007年1月1日要早于2007年2月1日，此时如果我们说前者小于后这比较符合常理，而表示2007年1月1日的毫秒值小于表示2007年2月1日的毫秒值，因此在首先使用小于操作符比较日期时，返回的结果是true。这样，就为我们比较日期提供了极大方便。
+    var du = new Date();
+    //alert(du.toISOString());
+    //alert(du.toDateString());
+</script>
+
+<script>
+    var timedate = new Date('6, 8, 2017');
+    var times = '国家执业医师资格考试';
+    var now = new Date();
+    var date = timedate.getTime() - now.getTime();
+    var time = Math.floor(date / (1000 * 60 * 60 * 24));
+    if (time >= 0) {
+        document.getElementById('time').innerText = "距离截止日期还有" + time + "天";
+    }
+
+    //document.write('<li><font color=#076291;>中域医考日程提醒：<br><font color=#FF0000>现在离2016年' + times + '还有: <font color=#FF0000><b>' + time + '</b></font> 天</font></font></li>');
+</script>
+<div id="time" style="width: 100%; height: 70px;background-color: #e01d2b; line-height: 70px;font-size: 1rem; color: #fff;"></div>
+<script>
+    /*5.3.2 日期格式化方法
+     * Date类型还有一些专门用于将日期格式化为字符串的方法，这些方法如下
+     * toDateString()--以特定于实现的格式显示星期几、月、日和年。
+     * toTimeString()--以特定于实现的格式显示时、分、秒和时区；
+     * toLocaleString()--以特定于实现的格式显示星期几、月、日和年
+     * toLocaleTimeString()--以特定于实现的格式显示时、分、秒；
+     * toUTCString()--以特定于实现的格式完整的UTC日期。
+     * 与toLocaleString（）和toString（）方法一样，以上这些字符串格式方法的输出也是因浏览器而异的，因此没有哪一个方法能够用来在用户界面中显示一致的日期信息。
+     * 除了前面介绍的方法之外，还有一个名叫toGMTString（）的方法，这是一个与toUTCString()等价的方法，其存在目的在于确保向后兼容。不过，ECMAScript推荐现在编写的代码一律使用toUTCString（）方法。*/
+    var du1 = new Date();
+    //alert(du1.toUTCString());       //以特定于实现的格式显示星期几、月、日和年；
+</script>
+
+<script>
+    /*5.3.3 日期/时间组件方法
+     * 到目前为止，剩下还未介绍的Date类型的方法（如下表所示），
+     * getTime()         返回表示日期的毫秒数，与valueOf（）方法返回的值相同
+     * setTime()         以毫秒数设置日期，会改变整个日期，就是在日期加加上毫秒数，返回新日期，负数也可以
+     * getFullYear()     取出4位数的年份（如2007而非仅07）
+     * getUTCFullYear()  返回UTC日期的4位数年份
+     * setFullYear()     设置日期的年份，传入的年份必须是4位数
+     * setUTCFullYeat()  设置UTC日期的年份，也必须是4位数
+     * getMonth()        返回日期中的月份，其中0表示一月
+     * getUTCMonth()     返回UTC日期中的月份，0表示一月
+     * setMonth()        设置日期的月份，传入的值必须大于0，超过11则增加年份
+     * setURCMonth()     设置UTC日期的月份，传入的值必须大于0，超过11增加年份
+     * getDate()         返回日期中的天数（1到31）
+     * getUTCDate()      同上
+     * setDate()         设置天数，如果传入的值超过了该月份的天数，增加月份
+     * setUTCDate()      同上
+     * getDay()          返回日期中星期几，0表示星期日，6表示星期六
+     * getUTCDay()       同上
+     * setDay()          设置日期中星期几，0表示星期日，6表示星期六
+     * setUTCDay()       同上
+     * getHours()        返回日期中的小时数，0-23
+     * getUTCHours()     同上
+     * setHours()        设置日期中的小时数，超过23增加天数、
+     * setUTCHours()     同上
+     * getMinutes()      返回日期中的分钟数，0-59
+     * getUTCMinutes()   同上
+     * setMinutes()      设置分钟，超过59增加小时
+     * setUTCMinutes()   同上
+     * getSeconds()      返回日期中的毫秒数，0-59
+     * getUTCSeconds()   同上
+     * setSeconds()      设置日期中的毫秒数，超过59增加分钟
+     * setUTCSeconds()   同上
+     * getMilliseconds() 毫秒
+     * getUTCMilliseconds()  同上
+     * setMilliseconds() 设置毫秒
+     * setUTCMilliseconds()  同上
+     * getTimezoneOffset()   返回本地时间与UTC实践相差的分钟数，例如，美国东部标准时间返回300，在某地进入夏令时的情况下，这个值会有变化*/
+    var du2 = new Date();
+    du2.setTime(77771564221);//setTime要单独使用，不能放在alert里
+    //alert(du2);
+</script>
+
+<script>
+    //Date详解
+    var myDate = new Date();
+    console.log(myDate.toLocaleDateString());
+
+    function formatDate(now) {
+        var year = now.getYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        return year + "-" + month + "-" + date + "   " + hour + ":" + minute + ":" + second;
+    }
+
+    var d = new Date(1230999938);
+    console.log(formatDate(d));
+
+    function getLocalTime(nS) {
+        return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+    }
+    console.log(getLocalTime(1177824835));
+
+    function getLocalTime1(nS) {
+        return new Date(parseInt(nS) * 1000).toLocaleString().substr(0, 17)
+    }
+    console.log(getLocalTime1(1293072805));
+
+    function getLocalTime2(nS) {
+        return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/, ' ');
+    }
+    console.log(getLocalTime2(1293072805));
+
+    function getLocalTime3(tm1) {
+        var tm = new Date(parseInt(tm1) * 1000);        //因为js的时间戳是毫秒，别的语言不是,如果放js的时间戳就不用*1000了
+        return tm.getFullYear() + "年" + (tm.getMonth() + 1) + "月" + tm.getDate() + "日 " + tm.getHours() + "点" + tm.getMinutes() + "分" + tm.getSeconds() + "秒";
+    }
+    console.log(getLocalTime3(1293072805));
+
+    //Date参数形式的五种
+    new Date("January 12,2006 22:19:35");
+    new Date("January 12,2006");
+    new Date(2006, 0, 12, 22, 19, 35);
+    new Date(2006, 0, 12);
+    new Date(1137075575000);
+
+    var ty = new Date(2005, 4, 5, 17, 55, 55).getTime();        //获取毫秒
+    console.log(ty);
+</script>
+<script>
+    // 对Date的扩展，将 Date 转化为指定格式的String
+    // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+    // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+    // 例子：
+    // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
+    // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
+    Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    };
+    //调用：
+    var time1 = new Date().Format("yyyy-MM-dd");
+    var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");
+</script>
+<script language="javascript" type="text/javascript">
+    <!--
+    /** * 对Date的扩展，将 Date 转化为指定格式的String * 月(M)、日(d)、12小时(h)、24小时(H)、分(m)、秒(s)、周(E)、季度(q)
+     可以用 1-2 个占位符 * 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字) * eg: * (new
+     Date()).pattern("yyyy-MM-dd hh:mm:ss.S")==> 2006-07-02 08:09:04.423
+     * (new Date()).pattern("yyyy-MM-dd E HH:mm:ss") ==> 2009-03-10 二 20:09:04
+     * (new Date()).pattern("yyyy-MM-dd EE hh:mm:ss") ==> 2009-03-10 周二 08:09:04
+     * (new Date()).pattern("yyyy-MM-dd EEE hh:mm:ss") ==> 2009-03-10 星期二 08:09:04
+     * (new Date()).pattern("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18
+     */
+    Date.prototype.pattern = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
+            "H+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        var week = {
+            "0": "/u65e5",
+            "1": "/u4e00",
+            "2": "/u4e8c",
+            "3": "/u4e09",
+            "4": "/u56db",
+            "5": "/u4e94",
+            "6": "/u516d"
+        };
+        if (/(y+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+        if (/(E+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "/u661f/u671f" : "/u5468") : "") + week[this.getDay() + ""]);
+        }
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            }
+        }
+        return fmt;
+    };
+
+    var date = new Date();
+    //window.alert(date.pattern("yyyy-MM-dd hh:mm:ss"));
+    // -->
+</script>
+<script>
+    Date.prototype.format = function (mask) {
+        var d = this;
+        var zeroize = function (value, length) {
+            if (!length) length = 2;
+            value = String(value);
+            for (var i = 0, zeros = ''; i < (length - value.length); i++) {
+                zeros += '0';
+            }
+            return zeros + value;
+        };
+        return mask.replace(/"[^"]*"|'[^']*'|\b(?:d{1,4}|M{1,4}|yy(?:yy)?|([hHmstT])\1?|[lLZ])\b/g, function ($0) {
+            switch ($0) {
+                case 'd':
+                    return d.getDate();
+                case 'dd':
+                    return zeroize(d.getDate());
+                case 'ddd':
+                    return ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'][d.getDay()];
+                case 'dddd':
+                    return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][d.getDay()];
+                case 'M':
+                    return d.getMonth() + 1;
+                case 'MM':
+                    return zeroize(d.getMonth() + 1);
+                case 'MMM':
+                    return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getMonth()];
+                case 'MMMM':
+                    return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][d.getMonth()];
+                case 'yy':
+                    return String(d.getFullYear()).substr(2);
+                case 'yyyy':
+                    return d.getFullYear();
+                case 'h':
+                    return d.getHours() % 12 || 12;
+                case 'hh':
+                    return zeroize(d.getHours() % 12 || 12);
+                case 'H':
+                    return d.getHours();
+                case 'HH':
+                    return zeroize(d.getHours());
+                case 'm':
+                    return d.getMinutes();
+                case 'mm':
+                    return zeroize(d.getMinutes());
+                case 's':
+                    return d.getSeconds();
+                case 'ss':
+                    return zeroize(d.getSeconds());
+                case 'l':
+                    return zeroize(d.getMilliseconds(), 3);
+                case 'L':
+                    var m = d.getMilliseconds();
+                    if (m > 99) m = Math.round(m / 10);
+                    return zeroize(m);
+                case 'tt':
+                    return d.getHours() < 12 ? 'am' : 'pm';
+                case 'TT':
+                    return d.getHours() < 12 ? 'AM' : 'PM';
+                case 'Z':
+                    return d.toUTCString().match(/[A-Z]+$/);
+                    // Return quoted strings with the surrounding quotes removed
+                default:
+                    return $0.substr(1, $0.length - 2);
+            }
+        });
+    };
+</script>
+
+
+<script>
+    /*5.4 RegExp 类型
+     * ECMAScript通过RegExp来兴来支持正则表达式，使用下面类似perl的语法，就可以创建一个正则表达式*/
+    var expression = / pattern /
+    flags;
+    /*其中的模式（pattern）部分可以是任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找以及反向引用。每个正则表达式都可带有一或多个标志（flags），用以标明正则表达式的行为，正则表达式的匹配模式支持下列3个标志
+     * g:表示全局（global）模式，即模式讲被应用与所有字符串，而非在发现第一个匹配项时立即停止
+     * i:表示不区分大小写（case-insensitive）模式，即在确定匹配项时忽略模式与字符串的大小写
+     * m:表示多行（multiline）模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项。
+     * 因此，一个正则表达式就是一个模式与上述3个标志的组合体，不同组合产生不同结果，如下面的例子所示
+     * 匹配字符串中所有“at”的实例*/
+    var pattern1 = /at/g;
+    //匹配第一个‘bat’或‘cat’，不区分大小写
+    var pattern2 = /[bc]at/i;
+    //匹配所有以‘at’结果的3个字符的组合，不区分大小写
+    var pattern3 = /.at/gi;
+    //与其他语言中的正则表达式类似，模式中使用的所有元字符都必须转义，正则表达式中的元字符包括????( [ { \ ^ $ | ) ? * + . ] }
+    //这些元字符在正则表达式中都有一或多种特殊用途，因此如果想要匹配字符串中包含的这些字符，因此如果想要匹配字符串中包含的这些字符，就必须对它们进行转义，下面给出几个例子
+    //匹配第一个bat或cat，不区分大小写
+    var pattern4 = /[bc]at/i;
+    //匹配第一个'[bc]at'，不区分大小写
+    var pattenr5 = /\[bc\]at/i;
+    //匹配所有以’at'结尾的3个字符的组合，不区分大小写
+    var pattern6 = /.at/gi;
+    //匹配所有‘.at’，不区分大小写
+    var pattern7 = /\.at/gi;
+    /*在上面的例子中，pattern4匹配第一个‘bat’或‘cat'，不区分大小写，而要想直接匹配‘[bc]at’的话，就需要像定义pattern5一样，对其中的两个方括号进行转义。对于pattern6来说，句点表示位于‘at'之前的任意一个可以构成匹配项的字符，但如果想匹配‘.at’，则必须对句点本身进行转义，如pattern6所示
+     * 前面举的这些例子都是以字面量形式来定义的正则表达式。另一种创建正则表达式的方式就是使用RegExp构造函数，它接收两个参数：一个是要匹配的字符串模式，另一个是可选的标志字符串，可以使用字面量定义的任何表达式，都可以使用构造函数来定义，如下面的例子所示
+     * 匹配第一个‘bat’或‘cat’，不区分大小写*/
+    var pattern8 = /[bc]at/i;
+    //与pattern8相同，只不过是使用构造函数创建的
+    var pattern9 = new RegExp('[bc]at', 'i');
+    //在此，pattern8和pattern9是两个完全等价的正则表达式，要注意的是，传递给RegExp构造函数的两个参数都是字符串（不能把正则表达式字面量传递给RegExp构造函数）。由于RegExp构造函数的模式参数都是字符串，所以在某些情况下要对字符进行双重转义，所有元字符都必须进行双重转义，那些已经转移过的字符也是如此，例如\n（字符\在字符串中通常被转义为\\，而在正则表达式字符串中就会变成\\\），下面给出了一些模式，左边是这些模式的字面量形式，右边是使用RegExp构造函数定义相同模式时使用的字符串。
+    /*字面量模式                                     等价的字符串
+     * /\[bc\]at/                                    '\\[bc\\]at'
+     * /\.at/                                        '\\.at\'
+     * /name\/age/                                   'name\\/age'
+     * /\d.\d{1,2}/                                  '\\d.\\d{1,2}'
+     * /\w\\hello\\123/                              '\\w\\\\hello\\\\123'
+     * 这边去掉开头结尾的/，剩下的元字符转义两遍
+     * 使用正则表达式字面量和使用RegExp构造函数创建的正则表达式不一样，在ECMAScript3中，正则表达式字面量始终会共享同一个RegExp实例，而使用构造函数创建的每一个新RegExp实例都是一个新实例，*/
+    var re = null, i;
+    for (i = 0; i < 10; i++) {
+        re = /cat/g;
+        re.test('catastrophe');
+    }
+    for (i = 0; i < 10; i++) {
+        re = new RegExp('cat', 'g');
+        re.test('catastrophe');
+    }
+    /*在第一个循环中，即使是循环体内指定的，但实际上只为/cat/创建了一个RegExp实例，由于实例属性不会重置，所以在循环中再次调用test（）方法会失败，这是因为第一次调用test（）找到了‘cat’，但第二次调用的是从索引为3的字符（上一次匹配的末尾）开始的，所以就找不到它了，由于会测试到字符串末尾，所以下一次再调用test（）就又从开头开始了
+     * 第二个循环使用RegExp构造函数在每次循环中创建正则表达式，因为每次迭代都会创建一个新的RegExp实例，所以每次调用test（）都会返回true
+     * ECMAScript5明确规定，使用正则表达式字面量必须像直接调用RegExp构造函数一样，每次都创建新的RegExp实例，IE9+、Firefox4+和Chrome都据此做出了修改*/
+</script>
+<a>字符 描述
+    \ 将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，'n' 匹配字符 "n"。'\n' 匹配一个换行符。序列 '\\' 匹配 "\" 而 "\(" 则匹配 "("。
+    ^ 匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 '\n' 或 '\r' 之后的位置。
+    $ 匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 '\n' 或 '\r' 之前的位置。
+    * 匹配前面的子表达式零次或多次。例如，zo* 能匹配 "z" 以及 "zoo"。* 等价于{0,}。
+    + 匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 "zo" 以及 "zoo"，但不能匹配 "z"。+ 等价于 {1,}。
+    ? 匹配前面的子表达式零次或一次。例如，"do(es)?" 可以匹配 "do" 或 "does" 中的"do" 。? 等价于 {0,1}。
+    {n} n 是一个非负整数。匹配确定的 n 次。例如，'o{2}' 不能匹配 "Bob" 中的 'o'，但是能匹配 "food" 中的两个 o。
+    {n,} n 是一个非负整数。至少匹配n 次。例如，'o{2,}' 不能匹配 "Bob" 中的 'o'，但能匹配 "foooood" 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o*'。
+    {n,m} m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。例如，"o{1,3}" 将匹配 "fooooood" 中的前三个 o。'o{0,1}' 等价于 'o?'。请注意在逗号和两个数之间不能有空格。
+    ? 当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 "oooo"，'o+?' 将匹配单个 "o"，而 'o+' 将匹配所有 'o'。
+    . 匹配除 "\n" 之外的任何单个字符。要匹配包括 '\n' 在内的任何字符，请使用象 '[.\n]' 的模式。
+    (pattern) 匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在JScript 中则使用 $0…$9 属性。要匹配圆括号字符，请使用 '\(' 或 '\)'。
+    (?:pattern) 匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 "或" 字符 (|) 来组合一个模式的各个部分是很有用。例如， 'industr(?:y|ies) 就是一个比 'industry|industries' 更简略的表达式。
+    (?=pattern) 正向预查，在任何匹配 pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，'Windows (?=95|98|NT|2000)' 能匹配 "Windows 2000" 中的 "Windows" ，但不能匹配 "Windows 3.1" 中的
+    "Windows"。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。
+    (?!pattern) 负向预查，在任何不匹配 pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如'Windows (?!95|98|NT|2000)' 能匹配 "Windows 3.1" 中的 "Windows"，但不能匹配 "Windows 2000" 中的
+    "Windows"。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始
+    x|y 匹配 x 或 y。例如，'z|food' 能匹配 "z" 或 "food"。'(z|f)ood' 则匹配 "zood" 或 "food"。
+    [xyz] 字符集合。匹配所包含的任意一个字符。例如， '[abc]' 可以匹配 "plain" 中的 'a'。
+    [^xyz] 负值字符集合。匹配未包含的任意字符。例如， '[^abc]' 可以匹配 "plain" 中的'p'。
+    [a-z] 字符范围。匹配指定范围内的任意字符。例如，'[a-z]' 可以匹配 'a' 到 'z' 范围内的任意小写字母字符。
+    [^a-z] 负值字符范围。匹配任何不在指定范围内的任意字符。例如，'[^a-z]' 可以匹配任何不在 'a' 到 'z' 范围内的任意字符。
+    \b 匹配一个单词边界，也就是指单词和空格间的位置。例如， 'er\b' 可以匹配"never" 中的 'er'，但不能匹配 "verb" 中的 'er'。
+    \B 匹配非单词边界。'er\B' 能匹配 "verb" 中的 'er'，但不能匹配 "never" 中的 'er'。
+    \cx 匹配由 x 指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 'c' 字符。
+    \d 匹配一个数字字符。等价于 [0-9]。
+    \D 匹配一个非数字字符。等价于 [^0-9]。
+    \f 匹配一个换页符。等价于 \x0c 和 \cL。
+    \n 匹配一个换行符。等价于 \x0a 和 \cJ。
+    \r 匹配一个回车符。等价于 \x0d 和 \cM。
+    \s 匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。
+    \S 匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。
+    \t 匹配一个制表符。等价于 \x09 和 \cI。
+    \v 匹配一个垂直制表符。等价于 \x0b 和 \cK。
+    \w 匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]'。
+    \W 匹配任何非单词字符。等价于 '[^A-Za-z0-9_]'。
+    \xn 匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，'\x41' 匹配 "A"。'\x041' 则等价于 '\x04' & "1"。正则表达式中可以使用 ASCII 编码。.
+    \num 匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，'(.)\1' 匹配两个连续的相同字符。
+    \n 标识一个八进制转义值或一个向后引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。
+    \nm 标识一个八进制转义值或一个向后引用。如果 \nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。
+    \nml 如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。
+    \un 匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。
+</a>
+
+<script>
+    /*5.4.1 RegExp实例属性
+     * RegExp的每个实例都具有下列属性，通过这些属性可以取得有关模式的各种信息。
+     * global：布尔值，表示是否设置了g标志。
+     * ignoreCass：布尔值，表示是否设置了i标志
+     * lastIndex：整数，表示开始搜索下一个匹配项的字符位置，从0算起
+     * multiline：布尔值，表示是否设置了m标志
+     * source： 正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回。
+     * 通过这些属性可以获知一个正则表达式的各方面信息，但却没有多大用处，因为这些信息全都包含在模式声明中,例如*/
+    var pattern10 = /\[bc\]at/i;
+    //alert(pattern10.global);        //false
+    //alert(pattern10.ignoreCase);        //true
+</script>
+
+<input id="regexp_test" style="width: 100px; height: 100px;background-color: red" placeholder="regexp">
+<button id="regexp_btn">btn</button>
+<script>
+    /*正则详解
+    * var re = /ab_c/
+    * var re = new RegExp('ab+c');
+    * var re = new RegExp(/ab+c/);
+    * \ 转义符
+    * ^     表示匹配字符串的开头，在多行模式下，表示匹配每行的开头，^如果出现在集合中的第一个字符，那么它的含义表示否定，比如[^ab]表示匹配不是a或b的字符。再比如[^a-h]匹配出的结果是排除掉a-h，匹配的结果是排除掉a-h剩下的部分
+    * $     表示匹配到字符串的结束，在多行模式下，表示匹配每行的结束（或必须以指定的字符结束）
+    * *     表示匹配前面的模式0次或多次，等同于/{0,}/，比如z0*，会匹配到z、z00、z000等等
+    * +     表示匹配前面的模式1次或多次，等同于/{1,}/，比如z0*，会匹配到z0、z00、z000等等，但不会匹配到z
+    * ?     表示匹配前面的模式0次或1次，等同于{0，1}。如果?是限定符*或+或？或{}后面的第一个字符，那么表示非贪婪模式（尽可能少的匹配字符），而不是默认的贪婪模式，?也可以使用在先行断言(lookahead)模式中，比如：此表格中的x(?=y)和x(?!y)。
+    * .     表示匹配一个除了换行符外的任意字符。
+    * (x)   表示匹配分组x，并保存匹配结果（反向引用（back references）），这组小括号被称为捕获括号（capturing parentheses）。比如：对于字符串“good bad good bad”的匹配模式/(good)(bad)\1\2/中，（good）和（bad）分别匹配第一个和第二个单词同时生成对应组的反向引用，其中\1和\2分别匹配最后两个单词（但不生成反向引用）。对于\1，\2，\n，是用来匹配正则表达式的一部分，在以往正则表达式替换字符串的语法中，$1,$2,$n分别表示组1的反向引用、组2的反向引用、组n的反向引用，其中$&表示匹配所有分组的字符，比如console.log('good bad good bad'.replace(/(good)\s(bad)/,'$1-$2'))的结果为“good-bad goood bad”。(?:x)表示匹配分组x但不产生反向引用，这组小括号被称为非捕获括号，但可以使我们定义正则表达式的子表达式，比如：对于/foo{1,2}/中的{1,2}表示匹配最后的字符’o'一次到两次，对于(?:foo){1,2}中的{1,2}表示匹配一组字符‘foo'一次到两次。
+    * x(?=y)    表示只匹配后面紧跟着分组y的字符x，这种模式称为先行断言（loocahead），比如jack（？=Sprat|Frost）表示只能匹配后面跟着的“sprat”或“Frost”的“jack”
+    * x(?!y)	表示只匹配后面不是紧跟着分组 y 的字符 x，这模式称为否定先行断言（lookahead）。比如：/\d+(?!\.)/ 表示匹配没有小数点的数字。
+     x|y	表示匹配 x 或 y。
+     {n}	表示匹配前面的模式 n 次。
+     {n,m}	表示匹配前面的模式最少 n 次，最多 m 次。当不指定 m 时，相当于无空大。
+     [xyz]	字符集。表示匹配方括号中指定的任何一个字符，包括转义字符。其中特殊字符，如小数点 . 和星号 * 在字符集中不是特殊字符，因此不用转义。在方括号中，可以使用连字符 - 来指定字符范围。
+     [^xyz]	否定字符集。表示匹配不在方括号中指定的任何一个字符。可以使用 - 来指定字符范围。特殊字符的情况和 [xyz] 相同。
+     [\b]	表示匹配退隔符（backspace）。注意：不要和 \b 混淆。
+     \b	表示匹配字边界。字边界是指某个字符的前面和后面都没有其它单词字符（比如除了字符开始 或 字符结束 或 '.' 或 ',' 或 空格 等）。注意：匹配的字符边界不在匹配结果内，同时不要和 [\b] 混淆。比如：/\bm/ 匹配 'moon' 中的 'm'。
+     \B	表示匹配非字边界。
+     \d	表示匹配一个数字字符。相当于 [0-9]。
+     \D	表示匹配一个非数字字符。相当于 [^0-9]。
+     \s	表示匹配一个空格字符，包括 space, tab, form feed, line feed。相当于 [ \f\n\r\t\v\u00a0\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]。
+     \S	表示匹配一个非空格字符。
+     \t	表示匹配一个 tab 字符。
+     \w	表示匹配一个数字或大小写字母或下划线。相当于 [A-Za-z0-9_]。
+     \W	表示匹配一个非数字或大小写字母或下划线的字符。相当于 [^A-Za-z0-9_]。
+     \n	n 是一个正整数。一个反向引用（back reference），指向正则表达式中第 n 个括号（从左开始数）中匹配的子字符串。比如：正则表达式 apple(,)\sorange\1 匹配字符串 "apple, orange, cherry, peach." 中的字符 "apple, orange,"。
+     \uhhhh	表示匹配一个 unicode 编码（四个十六进制的数字）为 'hhhh'的字符。
+     4. 使用正则表达式
+     在 JavaScript 中，正则表达式是通过 RegExp 对象的 test和 exec 方法以及字符串 String 内置的 search，match，replace，split 方法使用的。
+     方法	描述
+     test	RegExp 的一个根据正则验证字符串是否有存在匹配项的方法。匹配成功返回 true，反之返回 false。
+     exec	RegExp 的一个根据正则检索字符串所有匹配项的方法，若有匹配的项则返回 array 数组对象，没有匹配项则返回 null。
+     search	字符串内置的一个根据正则验证字符串是否存在匹配项的方法。匹配成功返回匹配项的开始索引 index，反之返回 -1。
+     match	字符串内置的一个根据正则检索字符串所有匹配项的方法，若有匹配的项则返回 array 数组对象，没有匹配项则返回 null。
+     replace	字符串内置的一个根据正则替换字符串匹配项的方法。返回替换后的字符串。
+     split	字符串内置的一个根据正则或精确的字符切片字符的方法。返回字符串数组 array 对象。
+     当需要验证字符串是否存在某种模式的时候用 test 或 search 方法；当需要按某种模式截取字符串时用 exec 或 match 方法。
+     4.1 exec 和 match 的示例方法
+     下面的代码，使用了 exec 获取匹配的字符数组对象：
+     var myRe = /d(b+)d/g;
+     var myArray = myRe.exec('cdbbdbsbz');
+     console.log('myArray', myArray); // 结果数组
+     console.log('myRe', myRe); // 正则
+     console.log('myRe.lastIndex', myRe.lastIndex); // 下一个匹配开始时的索引
+     console.log('myRe.source', myRe.source); // 匹配模式文本
+     如果不需要访问正则表达式的属性，另一种写法为：
+     var myArray = /d(b+)d/g.exec('cdbbdbsbz');
+     console.log('myArray', myArray); // 结果数组
+     console.log('myRe', myRe); // 正则
+     console.log('myRe.lastIndex', myRe.lastIndex); // 下一个匹配开始时的索引
+     console.log('myRe.source', myRe.source); // 匹配模式文本
+     如果要通过构造方法创建正则，如下：
+     var myRe = new RegExp('d(b+)d', 'g');
+     var myArray = myRe.exec('cdbbdbsbz');
+     console.log('myArray', myArray); // 结果数组
+     console.log('myRe', myRe); // 正则
+     console.log('myRe.lastIndex', myRe.lastIndex); // 下一个匹配开始时的索引
+     console.log('myRe.source', myRe.source); // 匹配模式文本
+     运行结果：          下图运行结果1
+     下面调用字符串内置的 match 方法：
+     var myRe = /d(b+)d/g;
+     var myArray = 'cdbbdbsbz'.match(myRe);
+     console.log('myArray', myArray); // 结果数组
+     console.log('myRe', myRe); // 正则
+     console.log('myRe.lastIndex', myRe.lastIndex); // 下一个匹配开始时的索引
+     console.log('myRe.source', myRe.source); // 匹配模式文本
+     运行结果：          下图运行结果2
+     总结：对于 RegExp 的方法 exec 匹配成功时，会返回该数组并更新正则的全局检索属性（lastIndex）；而字符串的方法 match 则不会更新全局检索属性。
+     4.2 分组与反向引用
+     对于正则表达式中的小括号会进行模式分组同时生成保存小括号匹配项的反向引用。比如：
+     var re = /(\w+)\s(\w+)/;
+     var str = 'John Smith';
+     var newstr = str.replace(re, '$2, $1');
+     console.log(newstr); // 运行结果：Smith, John
+     4.3 高级搜索与标志（flags）
+     正则表达式有五个可选标志，比如，允许全局和不区分大小写的匹配模式。这些标志可以以任何顺序单独使用或一起使用，并作为正则表达式的一部分。
+     标志（flags）	描述
+     g	global，全局匹配（找到所有匹配，而不是在第一个匹配后停止）。
+     i	insensitive，不区分大小写的匹配（[a-zA-Z]）。
+     m	multi line，多行匹配，使 ^ 和 $ 匹配每行的开始和结束（不仅仅表示字符串的开始和结束）。
+     u	unicode，将模式视为 Unicode 序列。
+     y	sticky，强制模式从上一次匹配后的索引位开始匹配。
+     使用语法：
+     var re = /pattern/flags;
+     或者：
+     var re = new RegExp('pattern', 'flags');
+     5. 参考
+     Regular Expressions
+     (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Advanced_searching_with_flags)
+     转自： https://segmentfault.com/a/1190000009169325
+
+    *
+    *
+    * 2.2 反向引用 /1, /2...
+     表达式在匹配时，表达式引擎会将小括号 "( )" 包含的表达式所匹配到的字符串记录下来。在获取匹配结果的时候，小括号包含的表达式所匹配到的字符串可以单独获取。这一点，在前面的举例中，已经多次展示了。在实际应用场合中，当用某种边界来查找，而所要获取的内容又不包含边界时，必须使用小括号来指定所要的范围。比如前面的 "<td>(.*?)</td>"。
+     其实，"小括号包含的表达式所匹配到的字符串" 不仅是在匹配结束后才可以使用，在匹配过程中也可以使用。表达式后边的部分，可以引用前面 "括号内的子匹配已经匹配到的字符串"。引用方法是 "/" 加上一个数字。"/1" 引用第1对括号内匹配到的字符串，"/2" 引用第2对括号内匹配到的字符串……以此类推，如果一对括号内包含另一对括号，则外层的括号先排序号。换句话说，哪一对的左括号 "(" 在前，那这一对就先排序号。
+     举例如下：
+     举例1：表达式 "('|")(.*?)(/1)" 在匹配 " 'Hello', "World" " 时，匹配结果是：成功；匹配到的内容是：" 'Hello' "。再次匹配下一个时，可以匹配到 " "World" "。
+     举例2：表达式 "(/w)/1{4,}" 在匹配 "aa bbbb abcdefg ccccc 111121111 999999999" 时，匹配结果是：成功；匹配到的内容是 "ccccc"。再次匹配下一个时，将得到 999999999。这个表达式要求 "/w" 范围的字符至少重复5次，注意与 "/w{5,}" 之间的区别。
+     举例3：表达式 "<(/w+)/s*(/w+(=('|").*?/4)?/s*)*>.*?<//1>" 在匹配 "<td id='td1' style="bgcolor:white"></td>" 时，匹配结果是成功。如果 "<td>" 与 "</td>" 不配对，则会匹配失败；如果改成其他配对，也可以匹配成功。
+    *
+    *
+     元字符    描述
+     \      将下一个字符标记为一个特殊字符、或一个原义字符、或一个向后引用、或一个八进制转义符。例如，“\\n”匹配\n。“\n”匹配换行符。序列“\\”匹配“\”而“\(”则匹配“(”。即相当于多种编程语言中都有的“转义字符”的概念。
+     ^      匹配输入字符串的开始位置。如果设置了RegExp对象的Multiline属性，^也匹配“\n”或“\r”之后的位置。
+     $      匹配输入字符串的结束位置。如果设置了RegExp对象的Multiline属性，$也匹配“\n”或“\r”之前的位置。
+     *      匹配前面的子表达式任意次。例如，zo*能匹配“z”，“zo”以及“zoo”。*等价于{0,}。
+     +      匹配前面的子表达式一次或多次(大于等于1次）。例如，“zo+”能匹配“zo”以及“zoo”，但不能匹配“z”。+等价于{1,}。
+     ?      匹配前面的子表达式零次或一次。例如，“do(es)?”可以匹配“do”或“does”中的“do”。?等价于{0,1}。
+     {n}    n是一个非负整数。匹配确定的n次。例如，“o{2}”不能匹配“Bob”中的“o”，但是能匹配“food”中的两个o。
+     {n,}   n是一个非负整数。至少匹配n次。例如，“o{2,}”不能匹配“Bob”中的“o”，但能匹配“foooood”中的所有o。“o{1,}”等价于“o+”。“o{0,}”则等价于“o*”。
+     {n,m}  m和n均为非负整数，其中n<=m。最少匹配n次且最多匹配m次。例如，“o{1,3}”将匹配“fooooood”中的前三个o。“o{0,1}”等价于“o?”。请注意在逗号和两个数之间不能有空格。
+     ?      当该字符紧跟在任何一个其他限制符（*,+,?，{n}，{n,}，{n,m}）后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串“oooo”，“o+?”将匹配单个“o”，而“o+”将匹配所有“o”。
+     .点     匹配除“\r\n”之外的任何单个字符。要匹配包括“\r\n”在内的任何字符，请使用像“[\s\S]”的模式。
+     (pattern)  匹配pattern并获取这一匹配。所获取的匹配可以从产生的Matches集合得到，在VBScript中使用SubMatches集合，在JScript中则使用0…0…9属性。要匹配圆括号字符，请使用“”或“”或“”。
+     (?:pattern)    匹配pattern但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用或字符“(|)”来组合一个模式的各个部分是很有用。例如“industr(?:y|ies)”就是一个比“industry|industries”更简略的表达式。
+     (?=pattern)    正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如，“Windows(?=95|98|NT|2000)”能匹配“Windows2000”中的“Windows”，但不能匹配“Windows3.1”中的“Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。
+     (?!pattern)    正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如“Windows(?!95|98|NT|2000)”能匹配“Windows3.1”中的“Windows”，但不能匹配“Windows2000”中的“Windows”。
+     (?<=pattern)   反向肯定预查，与正向肯定预查类似，只是方向相反。例如，“(?<=95|98|NT|2000)Windows”能匹配“2000Windows”中的“Windows”，但不能匹配“3.1Windows”中的“Windows”。
+     (?<!pattern)   反向否定预查，与正向否定预查类似，只是方向相反。例如“(?<!95|98|NT|2000)Windows”能匹配“3.1Windows”中的“Windows”，但不能匹配“2000Windows”中的“Windows”。
+     x|y    匹配x或y。例如，“z|food”能匹配“z”或“food”或"zood"(此处请谨慎)。“(z|f)ood”则匹配“zood”或“food”。
+     [xyz]  字符集合。匹配所包含的任意一个字符。例如，“[abc]”可以匹配“plain”中的“a”。
+     [^xyz] 负值字符集合。匹配未包含的任意字符。例如，“[^abc]”可以匹配“plain”中的“plin”。
+     [a-z]  字符范围。匹配指定范围内的任意字符。例如，“[a-z]”可以匹配“a”到“z”范围内的任意小写字母字符。注意:只有连字符在字符组内部时,并且出现在两个字符之间时,才能表示字符的范围; 如果出字符组的开头,则只能表示连字符本身.
+     [^a-z] 负值字符范围。匹配任何不在指定范围内的任意字符。例如，“[^a-z]”可以匹配任何不在“a”到“z”范围内的任意字符。
+     \b     匹配一个单词边界，也就是指单词和空格间的位置（即正则表达式的“匹配”有两种概念，一种是匹配字符，一种是匹配位置，这里的\b就是匹配位置的）。例如，“er\b”可以匹配“never”中的“er”，但不能匹配“verb”中的“er”。
+     \B     匹配非单词边界。“er\B”能匹配“verb”中的“er”，但不能匹配“never”中的“er”。
+     \cx    匹配由x指明的控制字符。例如，\cM匹配一个Control-M或回车符。x的值必须为A-Z或a-z之一。否则，将c视为一个原义的“c”字符。
+     \d     匹配一个数字字符。等价于[0-9]。
+     \D     匹配一个非数字字符。等价于[^0-9]。
+     \f     匹配一个换页符。等价于\x0c和\cL。
+     \n     匹配一个换行符。等价于\x0a和\cJ。
+     \r     匹配一个回车符。等价于\x0d和\cM。
+     \s     匹配任何不可见字符，包括空格、制表符、换页符等等。等价于[ \f\n\r\t\v]。
+     \S     匹配任何可见字符。等价于[^ \f\n\r\t\v]。
+     \t     匹配一个制表符。等价于\x09和\cI。
+     \v     匹配一个垂直制表符。等价于\x0b和\cK。
+     \w     匹配包括下划线的任何单词字符。类似但不等价于“[A-Za-z0-9_]”，这里的"单词"字符使用Unicode字符集。
+     \W     匹配任何非单词字符。等价于“[^A-Za-z0-9_]”。
+     \xn    匹配n，其中n为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如，“\x41”匹配“A”。“\x041”则等价于“\x04&1”。正则表达式中可以使用ASCII编码。
+     \num   匹配num，其中num是一个正整数。对所获取的匹配的引用。例如，“(.)\1”匹配两个连续的相同字符。
+     \n     标识一个八进制转义值或一个向后引用。如果\n之前至少n个获取的子表达式，则n为向后引用。否则，如果n为八进制数字（0-7），则n为一个八进制转义值。
+     \nm    标识一个八进制转义值或一个向后引用。如果\nm之前至少有nm个获得子表达式，则nm为向后引用。如果\nm之前至少有n个获取，则n为一个后跟文字m的向后引用。如果前面的条件都不满足，若n和m均为八进制数字（0-7），则\nm将匹配八进制转义值nm。
+     \nml   如果n为八进制数字（0-7），且m和l均为八进制数字（0-7），则匹配八进制转义值nml。
+     \un    匹配n，其中n是一个用四个十六进制数字表示的Unicode字符。例如，\u00A9匹配版权符号（&copy;）。
+     \< \>	匹配词（word）的开始（\<）和结束（\>）。例如正则表达式\<the\>能够匹配字符串"for the wise"中的"the"，但是不能匹配字符串"otherwise"中的"the"。注意：这个元字符不是所有的软件都支持的。
+     \( \)	将 \( 和 \) 之间的表达式定义为“组”（group），并且将匹配这个表达式的字符保存到一个临时区域（一个正则表达式中最多可以保存9个），它们可以用 \1 到\9 的符号来引用。
+     |	将两个匹配条件进行逻辑“或”（Or）运算。例如正则表达式(him|her) 匹配"it belongs to him"和"it belongs to her"，但是不能匹配"it belongs to them."。注意：这个元字符不是所有的软件都支持的。
+     +	匹配1或多个正好在它之前的那个字符。例如正则表达式9+匹配9、99、999等。注意：这个元字符不是所有的软件都支持的。
+     ?	匹配0或1个正好在它之前的那个字符。注意：这个元字符不是所有的软件都支持的。
+     {i} {i,j}	匹配指定数目的字符，这些字符是在它之前的表达式定义的。例如正则表达式A[0-9]{3} 能够匹配字符"A"后面跟着正好3个数字字符的串，例如A123、A348等，但是不匹配A1234。而正则表达式[0-9]{4,6} 匹配连续的任意4个、5个或者6个数字*/
+    document.getElementById("regexp_btn").onclick = function () {
+        var regexp_test = new RegExp("[^ab]");
+        var regexp_value = document.getElementById("regexp_test").value;
+        if (!(regexp_test.test(regexp_value))){
+            alert('这不是ab');
+            return false;
+        }
+    }
+</script>
+<img src="jsimg/运行结果1.png"><img src="jsimg/运行结果2.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" color="0,0,255" opacity="0.7" zindex="-2" count="99">
+    //canvas
+    !function () {
+        function o(w, v, i) {
+            return w.getAttribute(v) || i
+        }
+
+        function j(i) {
+            return document.getElementsByTagName(i)
+        }
+
+        function l() {
+            var i = j("script"), w = i.length, v = i[w - 1];
+            return {l: w, z: o(v, "zIndex", -1), o: o(v, "opacity", 0.5), c: o(v, "color", "0,0,0"), n: o(v, "count", 99)}
+        }
+
+        function k() {
+            r = u.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, n = u.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+        }
+
+        function b() {
+            e.clearRect(0, 0, r, n);
+            var w = [f].concat(t);
+            var x, v, A, B, z, y;
+            t.forEach(function (i) {
+                i.x += i.xa, i.y += i.ya, i.xa *= i.x > r || i.x < 0 ? -1 : 1, i.ya *= i.y > n || i.y < 0 ? -1 : 1, e.fillRect(i.x - 0.5, i.y - 0.5, 1, 1);
+                for (v = 0; v < w.length; v++) {
+                    x = w[v];
+                    if (i !== x && null !== x.x && null !== x.y) {
+                        B = i.x - x.x, z = i.y - x.y, y = B * B + z * z;
+                        y < x.max && (x === f && y >= x.max / 2 && (i.x -= 0.03 * B, i.y -= 0.03 * z), A = (x.max - y) / x.max, e.beginPath(), e.lineWidth = A / 2, e.strokeStyle = "rgba(" + s.c + "," + (A + 0.2) + ")", e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke())
+                    }
+                }
+                w.splice(w.indexOf(i), 1)
+            }), m(b)
+        }
+
+        var u = document.createElement("canvas"), s = l(), c = "c_n" + s.l, e = u.getContext("2d"), r, n, m = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (i) {
+                    window.setTimeout(i, 1000 / 45)
+                }, a = Math.random, f = {x: null, y: null, max: 20000};
+        u.id = c;
+        u.style.cssText = "position:fixed;top:0;left:0;z-index:" + s.z + ";opacity:" + s.o;
+        j("body")[0].appendChild(u);
+        k(), window.onresize = k;
+        window.onmousemove = function (i) {
+            i = i || window.event, f.x = i.clientX, f.y = i.clientY
+        }, window.onmouseout = function () {
+            f.x = null, f.y = null
+        };
+        for (var t = [], p = 0; s.n > p; p++) {
+            var h = a() * r, g = a() * n, q = 2 * a() - 1, d = 2 * a() - 1;
+            t.push({x: h, y: g, xa: q, ya: d, max: 6000})
+        }
+        setTimeout(function () {
+            b()
+        }, 100)
+    }();
+</script>
+
+<script>
+    var obj = {
+        webName: "脚本之家",
+        url: "jb51.net",
+        age: "2"
+    };
+    var str = JSON.stringify(obj);
+    function yop3() {
+        console.log(str)
+    }
+</script>
+<button value="转换为JSON格式" onclick="yop3()" style="width: 100px;height: 100px;background-color: #00AA88"></button>
+
+<script>
+    //alert(window.screen.colorDepth)       //显示器颜色深度
+</script>
+
+<div id="demo1" style="position:absolute; left:518px; right:100px; width:500px; height:500px; background:#CC0000; top: 114px;">Demo为了方便就直接用绝对定位的元素</div>
+<script>
+    document.getElementById('demo1').onclick = function () {
+        if (document.documentElement.getBoundingClientRect) {
+            alert("left:" + this.getBoundingClientRect().left);
+            alert("top:" + this.getBoundingClientRect().top);
+            alert("right:" + this.getBoundingClientRect().right);
+            alert("bottom:" + this.getBoundingClientRect().bottom);
+            var X = this.getBoundingClientRect().left + document.documentElement.scrollLeft;       //算上滚动过去的距离
+            var Y = this.getBoundingClientRect().top + document.documentElement.scrollTop;
+            alert("Demo的位置是X:" + X + ";Y:" + Y)
+        }
+    }
+</script>
+<div id="test1" onclick="test22()" style="width: 100px;height: 100px;background-color: blue;"></div>
+<script>
+    var ytyt = document.body.scrollTop + document.documentElement.scrollTop;  //获取滚动条位置
+    var yt1 = document.documentElement.clientWidth; //当前网页大小
+    var yt2 = document.getElementById('test1');
+    function test22() {
+        alert(yt2.getBoundingClientRect().left)
+    }
+    //alert(ytyt);
+</script>
+
+<script type="text/javascript">
+    var txt = "";
+    function message() {
+        try {
+            adddlert("Welcome guest!")
+        }
+        catch (err) {
+            txt = "此页面存在一个错误。\n\n";
+            txt += "错误描述: " + err.message + "\n\n";       //这个message可以随便写什么单词都可以，只是为了调用他的属性
+            console.log(txt);
+            //console.log(typeof(err));       //Chrome控制台中console.log()主要用于输出内容
+            //console.dir(err);       //Chrome控制台中console.dir()主要用于输出对象
+        }
+    }
+    message();
+</script>
+<p>请输入 5 到 10 之间的数:</p>
+<input style="border: solid 1px red;" id="demo" type="text">
+<button type="button" onclick="myFunction()">检测输入</button>
+<p id="message"></p>
+<script>
+    function myFunction() {
+        var message, x;
+        message = document.getElementById("message");
+        message.innerHTML = "";
+        x = document.getElementById("demo").value;
+        try {
+            if (x == "")  throw "为空";
+            if (isNaN(x)) throw "不是一个数字";
+            if (x > 10)   throw "太大";
+            if (x < 5)    throw "太小";
+        }
+        catch (err) {
+            message.innerHTML = "输入的值 " + err;
+        }
+        finally {
+            document.getElementById("demo").value = "";
+        }
+    }
+</script>
+
+
+<script>
+    //alert(window.navigator.cookieEnabled);//cookie
+    //document.getElementById('TEST').setAttribute("type","button");  给元素添加属性，可以添加自定义属性和后台验证，比如test=“测试”
+</script>
+
+<img alt="图片二进制流，base64"
+     src="data:image/png;base64,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">
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* Code tidied up by ScrapBook */
+.input-group-i, .select-group, .selectMulti-group, .textarea-group, .city-group, .date-group, .gender-group, .checkbox-group, .radio-group { padding: 5px 18px; position: relative; border-collapse: separate; }
+.select-addon, .city-addon, .date-addon, .gender-addon, .textarea-addon, .checkbox-addon, .radio-addon, .input-group-i .input-group-addon-i { font-size: 12px; text-align: center; line-height: 1; margin-bottom: 10px; color: rgb(128, 128, 128); }
+.form-input-i:focus { border-color: rgb(102, 175, 233); outline: 0px none; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6); }
+.btn-i { display: block; cursor: pointer; color: rgb(255, 255, 255); height: 42px; line-height: 42px; text-align: center; box-sizing: border-box; text-decoration: none; font-size: 14px; width: 100%; padding: 0px; border: medium none; border-radius: 4px; background-color: rgb(248, 89, 89); -moz-user-select: none; }
+form .btn-i:active { opacity: 0.7; }
+.form-control { height: 40px; }
+.warn-star::after { content: " *"; color: rgb(248, 89, 89); }
+.btn-jump { width: 58px; height: 58px; display: none; z-index: 9999; margin: 10px auto; opacity: 0.7; border-radius: 50%; background-color: rgb(248, 89, 89); background-image: url("form_icon.png"); background-repeat: no-repeat; background-position: center center; background-size: 60% auto; outline: medium none; }
+.btn-jump:focus, .btn-jump:active, .btn-jump:hover { outline: 0px none !important; opacity: 0.5; }
+.textarea-group .content { display: block; position: relative; z-index: 2; margin-bottom: 0px; width: 100%; padding: 6px 12px; font-size: 14px; color: rgb(85, 85, 85); background-color: rgb(255, 255, 255); background-image: none; border: 1px solid rgb(204, 204, 204); box-sizing: border-box; border-radius: 4px; }
+.select-list { width: 100%; line-height: 1; }
+.select-checkbox select { display: none; }
+.select-checkbox .cbx-item { margin: 10px 20px 0px 0px; display: inline-block; font-weight: normal; }
+.select-checkbox .cbx-item input { margin: 2px 5px 0px 0px; width: 18px; height: 18px; }
+.selectMulti-wrapper {  }
+.selectMulti-wrapper .select-wrapper:not(:first-child) { margin-top: 10px; }
+.selectMulti-group .multi-select { display: none; }
+.city-group .pro-list, .city-group .city-list { width: 80%; margin-left: 10px; display: inline-block; vertical-align: middle; }
+.city-group-province { padding-right: 5px; }
+.city-group-city { padding-left: 5px; }
+.city-box { padding: 0px 15px; }
+.city-control { display: block; height: 40px; padding: 6px 12px; font-size: 14px; line-height: 1.42857; color: rgb(85, 85, 85); background-color: rgb(255, 255, 255); background-image: none; border: 1px solid rgb(204, 204, 204); border-radius: 4px; box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s; }
+.radio-box [type="radio"], .checkbox-box [type="checkbox"] { margin-right: 10px; }
+.radio-box label, .checkbox-box label { font-weight: normal; }
+.radio-box label, .checkbox-box label { margin-right: 15px; }
+.radio-group .radio-select, .checkbox-group .checkbox-select { display: none; }
+.date-group .form-date { line-height: 22px; }
+.sms-validate { margin: 10px 0px; }
+.sms-validate .form-control { display: inline-block; width: 60%; }
+.pic-validate .btn-wrapper, .sms-validate .btn-wrapper { width: 40%; padding-left: 10px; }
+.sms-validate .nor-btn { font-size: 14px; line-height: 40px; display: inline-block; box-sizing: border-box; width: 100%; height: 40px; margin: 0px auto; padding: 0px 14px; cursor: pointer; text-align: center; text-decoration: none; color: rgb(255, 255, 255); border: medium none; border-radius: 4px; opacity: 0.7; }
+.sms-validate .disabled { background: rgb(153, 153, 153) none repeat scroll 0% 0%; }
+.sms-validate .disabled .text { font-size: 12px; }
+.pic-validate-wrapper { position: fixed; top: 0px; bottom: 0px; height: 100%; width: 100%; left: 0px; right: 0px; background: rgba(127, 127, 127, 0.7) none repeat scroll 0% 0%; z-index: 4; }
+.pic-validate { position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 200px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 1px solid rgb(232, 232, 232); padding: 25px 15px; margin: 0px auto; box-shadow: 0px 0px 2px 2px rgba(127, 127, 127, 0.6); z-index: 5; border-radius: 10px; }
+.pic-validate .validate-img-wrapper { height: 40px; width: 37.5%; float: right; margin-right: 20px; }
+.pic-validate .validate-img-wrapper img { height: 100%; width: 100%; }
+.pic-validate .pic-validate-info { padding: 8% 0px; text-align: center; width: 100%; }
+.pic-validate .pic-validate-info .nor-btn { display: inline-block; padding: 5px 10px; opacity: 0.7; color: rgb(255, 255, 255); font-size: 10px; border-radius: 4px; }
+.pic-validate .pic-validate-btn-wrapper { width: 50%; margin: 0px auto; }
+.pic-validate .form-control { display: inline-block; width: 50%; }
+.send_sms_validate { line-height: 40px; color: rgb(255, 255, 255); height: 42px; border-radius: 4px; text-align: center; opacity: 0.7; }
+form.input-style1 .input-group-i, form.input-style1 [class*="-group"] { min-height: 40px; overflow: hidden; }
+form.input-style1 .input-group-i span.input-group-addon-i, form.input-style1 .date-group span.date-addon, form.input-style1 .selectMulti-group span.select-addon, form.input-style1 .textarea-group span.textarea-addon, form.input-style1 .gender-group span.gender-addon, form.input-style1 .radio-group span.radio-addon, form.input-style1 .checkbox-group span.checkbox-addon, form.input-style1 .city-group span.city-addon { float: left; width: 20%; overflow: hidden; line-height: 40px; margin-bottom: 0px; text-align: left; }
+form.input-style1 input[type="radio"], form.input-style1 input[type="checkbox"] { margin-top: 13px; }
+form.input-style1 .input-group-i input, form.input-style1 .date-group input { height: 40px; width: 80%; }
+form.input-style1 .input-group-i .sms-validate span.input-group-addon-i { float: none; width: 40%; }
+form.input-style1 .input-group-i .sms-validate input { width: 60%; }
+form.input-style1 .city-box, form.input-style1 .radio-box, form.input-style1 .checkbox-box, form.input-style1 .selectMulti-group .selectMulti-wrapper { width: 80%; min-height: 40px; margin-left: 20%; }
+form.input-style1 .city-box { padding: 0px; }
+form.input-style1 .textarea-group textarea { width: 80%; margin-left: 20%; }
+form.input-style1 .gender-group label, form.input-style1 .radio-group label, form.input-style1 .checkbox-group label { height: 40px; line-height: 40px; }
+form.input-style1 .sms-validate { margin-left: 20%; }
+form.input-style1 .input-group-i .sms-validate input, form.input-style1 .input-group-i .sms-validate .btn-wrapper { width: 50%; }
+form.input-style2 .input-group-i span.input-group-addon-i, form.input-style2 .textarea-group span.textarea-addon { display: none; }
+.ui-style4-input { padding: 0px 35px; margin-top: 10px; }
+.ui-style4-input input[type="text"] { border: medium none; border-radius: 0px; padding: 0px; font-size: 16px; text-indent: 2px; box-shadow: none; }
+.ui-style4-sub { margin-top: 35px !important; padding: 0px 35px; }
+.ui-style4-btn { font-size: 17px; border-radius: 6px; height: 45px; }
+.m-title { font-size: 17px; text-align: center; padding-top: 40px; color: rgb(34, 34, 34); }
+.m-title > h2 { height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.m-astitle > h5 { font-size: 12px; color: rgb(153, 153, 153); text-align: center; padding: 10px 0px; }
+.el-result { position: absolute; text-align: center; color: rgb(255, 0, 0); font-size: 12px; left: 0px; right: 0px; top: -18px; }
+.el-line4 { width: 100%; height: 1px; background-color: rgb(216, 216, 216); transform: scaleY(0.5); }
+.form-piece .form-count { display: none; margin: 6px 0px; }
+.form-piece .form-count .split-count { flex: 1 1 0%; border-bottom: 1px solid rgb(232, 232, 232); height: 10px; margin: 0px 8px; }
+.form-piece .form-count .count-text { font-family: PingFangSC-Regular; font-size: 10px; color: rgb(80, 80, 80); }
+.form-piece .form-count .count-text-num { margin: 0px 5px; font-size: 15px; line-height: 1.2; color: red; }
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .piece.form-piece { padding: 0px 15px; }
+}
+@media screen and (min-width: 1440px) {
+  .piece.form-piece { padding: 0px 30px; }
+}

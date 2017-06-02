@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.box{width:2950px; height:876px; background-color:#0F0; overflow:hidden; position:relative}
+.imgbox{ width:5900px; position:absolute}
+.imgbox img{ float:left;}
+
+.box span{ position:absolute;top:50%;  margin-top:-25px;width:50px; height:50px; background-color:#0F0; cursor: pointer; text-align:center; line-height:50px; border-radius:50%; border: solid 4px #0FF; font-size:36px; opacity:0.7;}
+.leftspan{ left:150px}
+.rightspan{ right:150px}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">
+	<div class="imgbox">
+   			 <img src="tu1.png">
+    		 <img src="tu2.png">
+    		 <img src="tu3.png">
+    		 <img src="tu4.png">
+    		 <img src="tu5.png">
+    		 <img src="tu6.png">
+    		 <img src="tu7.png">
+    		 <img src="tu8.png">
+    		 <img src="tu9.png">
+    		 <img src="tu10.png">
+       
+	</div>
+  	
+    	<span class="leftspan">&lt;</span>
+        <span class="rightspan">&gt;</span>
+    
+</div>
+
+<script>
+$(".box span:eq(0)").click(
+		function(){
+			$(".imgbox").animate({left:-590*5})
+		}
+)
+$(".box span:eq(1)").click(
+		function(){
+			$(".imgbox").animate({left:-590*0})
+		}
+)
+</script>
+
+</body>
+</html>

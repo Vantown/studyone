@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.btn{ border:solid 2px #0F0; background-color:#00F; color:#000}
+.qizhi{border:solid 2px #0F0; background-color:#00F; color:#000}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">新时代的我们</div>
+<div class="btn">点击进入达盖尔的旗帜</div>
+<div class="but2">恢复</div>
+
+<script>
+$(".btn").click(
+		function(){
+			$(".box").text("什么都没有");$(".box").toggleClass("qizhi");
+	}
+)
+$(".but2").click(
+		function(){
+			$(".box").removeClass("qizhi")	
+		}
+)
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+/* Code tidied up by ScrapBook */
+.ui-night-mode { background-color: rgb(37, 37, 37); }
+.ui-night-mode .m-title, .ui-night-mode .m-astitle > h5 { color: rgb(112, 112, 112); }
+.ui-night-mode .ui-style4-input input[type="text"] { background-color: transparent; color: rgb(112, 112, 112); }
+.ui-night-mode .el-line4 { background-color: rgb(70, 70, 70); }
+.ui-night-mode #content, .ui-night-mode > body { background-color: transparent; }
+.ui-night-mode .ui-style4-btn { opacity: 0.3; color: rgb(37, 37, 37); }
+.ui-night-mode input::-moz-placeholder { color: rgb(112, 112, 112); }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<style>
+
+.greenbox{ width:100px; height:100px; background-color:#0FF; position:absolute; left:0}
+.bluebox{ width:100px; height:100px; background-color:#0F0; position:absolute; left:200px}
+</style>
+<script src="jquery.js">
+function(){}
+function(){}
+
+
+</script>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="greenbox">
+</div>
+<div class="bluebox">
+</div>
+<script>
+$("div").click(
+	function(){
+			$("div:eq(1)").animate({marginLeft:400});
+	}
+)
+$(".greenbox").mouseenter(
+	function(){
+		$(" .bluebox").animate({width:30000, opacity:0.5},200);
+	}
+)
+.mouseenter(
+	function(){
+		$(" .bluebox").animate({width:200, opacity:1});
+	}
+)
+</script>
+</body>
+</html>

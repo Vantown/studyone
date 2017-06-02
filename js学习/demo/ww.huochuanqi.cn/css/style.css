@@ -1,0 +1,154 @@
+﻿/* CSS Document */
+.l { float: left }
+.r { float: right }
+/*nav*/
+.nav { width: 100%; height: 100px; background: #111111 }
+.nav_n { display: block; width: 1210px; margin: 0 auto; height: 100px; overflow: hidden }
+.nav_n li { width: 242px; height: 100px; display: block; float: left }
+.nav_n li a { width: 242px; height: 100px; display: block; text-align: center; line-height: 100px; color: #959595; }
+.nav_n li a i { color: #FFF; font-size: 18px; font-style: normal }
+/*top*/
+.top { width: 100%; height: 613px; text-align: center; position: relative; }
+.top_flash { width: 1980px; position: absolute; top: 0; left: 50%; margin-left: -990px; }
+/*container*/
+.container { min-height: 1391px; background: url(../images/contact_n_s.jpg) no-repeat center top }
+.container_er { min-height: 1391px; background: url(../images/contact_n_x.jpg) no-repeat center bottom }
+.xiazai { width: 1210px; margin: 0 auto }
+.xiazai_l { width: 265px; height: 336px; background: url(../images/xiazai_b.png) no-repeat; float: left; position: absolute; margin-left: -9px }
+.xiazaiqi { width: 265px; height: 154px; display: block }
+.xiazaiqi:hover { background: url(../images/denglu_hover1.png) no-repeat }
+.xiazaiqi1 { width: 265px; height: 40px; display: block }
+.hover1:hover { background: url(../images/denglu_hover2.png) no-repeat }
+.hover2:hover { background: url(../images/denglu_hover3.png) no-repeat }
+.hover3:hover { background: url(../images/denglu_hover4.png) no-repeat }
+.xiazai_r { width: 955px; height: 313px; background: url(../images/lunbo_b.png) no-repeat; margin-right: -6px }
+.xiazai_rr { width: 955px; overflow: hidden; margin-right: -6px }
+.header_nav { width: 922px; height: 292px; margin: 10px 0 0 16px }
+.btn_li { width: 910px; height: 8px; position: absolute; text-align: right; margin-top: -35px }
+.btn_li ul { display: inline-block; margin-right: 5px; overflow: hidden; z-index: 1; _float: right; _margin-right: 8px; }
+.btn_li ul li { width: 10px; height: 10px; margin: 0 2px; background: url(../images/btn01.gif) no-repeat center center; z-index: 1; cursor: pointer; float: left }
+.btn_li ul .current { background: url(../images/btn02.gif) no-repeat center center; }
+/*newceng*/
+.new { width: 1210px; margin: 10px auto 0; overflow: hidden }
+.new_pic { width: 266px; height: 351px; overflow: hidden; float: left }
+.banben { width: 266px; height: 351px; overflow: hidden }
+.games { width: 266px; height: 351px; position: relative; background: #333; }
+.games .photo { width: 266px; height: 351px; overflow: hidden; display: block; }
+.games .photo img { width: 100%; height: 100%; display: block; }
+.txt { position: absolute; margin-top: -80px; }
+/*newshow*/
+.news { float: left; width: 678px; height: 351px; background: url(../images/new_b.jpg) no-repeat; }
+.Tab { width: 658px; height: 64px; margin: 0 auto; border-bottom: 1px solid #4e4c49; }
+.Tab li { width: 60px; height: 64px; display: block; float: left; overflow: hidden }
+.Tab li a { width: 60px; height: 64px; display: block; line-height: 64px; text-align: center; font-size: 16px; color: #d1c0a5 }
+.Tab li.change a, .Tab li a:hover { color: #eb6100 }
+.Tab .lines { height: 0px; line-height: 0px; position: absolute; bottom: 0px; left: 0px; border-bottom: 1px solid #eb6100; }
+.a_more { width: 67px; height: 62px; display: inline-block; position: absolute; margin-left: 611px; z-index: 9999 }
+.Tab_nr { width: 614px; overflow: hidden; margin: 0 auto }
+.gonggao_title { width: 100%; text-align: center; font-size: 24px; color: #cfa972; font-weight: bold; margin-top: 22px }
+.gonggao_n { width: 600px; overflow: hidden; margin: 0 auto; font-size: 12px; color: #cfa972; line-height: 22px; margin-top: 10px }
+.DocList { width: 614px; overflow: hidden; margin-top: 12px }
+.DocList li { width: 614px; overflow: hidden; float: left; margin-bottom: 3px }
+.DocList li a { color: #d1c0a5; font-size: 12px }
+.DocList span { color: #d1c0a5; font-size: 12px }
+.time { display: inline-block; float: right }
+/*zhuangbei_show*/
+.new_zhuangbei { width: 266px; height: 351px; background: url(../images/zhuangbei_show.jpg) no-repeat }
+.activity { width: 266px; height: 351px; overflow: hidden; margin: 0 auto; position: relative; }
+.activity_area { width: 266px; margin: 0 auto; text-align: center; overflow: hidden; }
+.activity_area .imgs { width: 266px; margin: 40px; float: left; _margin-left: 20px; *padding-bottom:40px;
+_padding-bottom: 0 }
+.area_current .imgs { width: 185px; margin-top: 65px }
+.area_current .imgs img { width: 201px; height: 257px; vertical-align: middle; margin-left: -6px }
+.activity a { display: inline-block; width: 47px; height: 47px; background: url(../images/aoyoo.com_icon_01.png); }
+.activity #left { background-position: -395px -465px; position: absolute; left: 16px; top: 50%; margin-top: -14px; }
+.activity #left:hover { cursor: pointer; background-position: -334px -515px; }
+.activity #right { background-position: -394px -514px; position: absolute; right: 16px; top: 50%; margin-top: -14px; }
+.activity #right:hover { cursor: pointer; background-position: -334px -465px; }
+/*content*/
+.roles_content { width: 1210px; overflow: hidden; margin: 30px auto 0 }
+.occupation { width: 595px; height: 405px; overflow: hidden; float: left; }
+.occupation h1 { width: 555px; height: 27px; padding-left: 40px; margin-bottom: 30px; background: url(../images/bingpo_icon_c.png) no-repeat left top; font-size: 24px; line-height: 27px; color: #d1c0a5; font-weight: normal }
+.occupation h1 span { font-size: 14px; color: #7e6b5a; }
+.occupation h1 a { font-size: 14px; color: #d1c0a5; float: right; }
+.occupation .context { width: 595px; height: 358px; background: url(../images/bingpo_bkg.png) no-repeat center top; }
+#ZhiYe { width: 595px; height: 358px; position: relative; overflow: hidden; }
+#ZhiYe .ZhiYe_Nav { position: absolute; top: 30px; left: 36px; z-index: 2; }
+#ZhiYe .ZhiYe_Nav li { float: left; width: 47px; margin-right: 17px; cursor: pointer; }
+#ZhiYe .ZhiYe_Nav li.change { }
+#ZhiYe .ZhiYe_nr { width: 595px; height: 358px; position: absolute; top: 0px; left: 0px; display: none; }
+#ZhiYe .zhiyebox { width: 270px; line-height: 24px; position: absolute; top: 100px; left: 36px; z-index: 1; }
+#ZhiYe .zhiyebox strong { height: 83px; margin-bottom: 14px; border-bottom: 1px solid #cfa972; display: block; }
+#ZhiYe .zhiyebox span { color: #d1c0a5; display: block; font-size: 14px; line-height: 24px; padding-right: 10px; }
+#ZhiYe .zhiyebox .btn_videoplay_ { cursor: pointer; }
+#ZhiYe .zhiyebox a { float: right; width: 80px; height: 27px; line-height: 27px; text-align: center; font-size: 14px; color: #cfa972; margin: 30px 10px 0 0; border: 1px solid #cfa972; border-radius: 18px; }
+#ZhiYe .zhiyePic { width: 328px; position: absolute; top: 0; right: 0; }
+#ZhiYe .zhiyePic img { width: 100%; }
+.navicon_ { display: inline-block; width: 38.5px; height: 38px; background: url(../images/nav_icon.png) no-repeat left top; }
+.navicon_.navicon_1x1 { background-position: 0 0; }
+#ZhiYe .ZhiYe_Nav li.change .navicon_1x1 { background-position: -38px 0; }
+.navicon_.navicon_1x2 { background-position: 0 -38px; }
+#ZhiYe .ZhiYe_Nav li.change .navicon_1x2 { background-position: -38px -38px; }
+.navicon_.navicon_1x3 { background-position: 0 -76px; }
+#ZhiYe .ZhiYe_Nav li.change .navicon_1x3 { background-position: -38px -76px; }
+.game { width: 597px; height: 405px; overflow: hidden; float: right; }
+.game h1 { width: 555px; height: 27px; padding-left: 40px; margin-bottom: 30px; background: url(../images/bingpo_icon_t.png) no-repeat left 4px; font-size: 24px; line-height: 27px; color: #d1c0a5; font-weight: normal }
+.game h1 span { font-size: 14px; color: #7e6b5a; }
+.game h1 a { font-size: 14px; color: #d1c0a5; float: right; }
+.game .context { width: 597px; height: 230px; background: url(../images/bingpo_bkgs.jpg) no-repeat center top; }
+.game .context ul { width: 597px; overflow: hidden }
+.game .context ul li { width: 186px; margin-left: 110px; height: 105px; padding-top: 10px; float: left }
+.game .context ul li h5 { font-size: 14px; color: #f39800; line-height: 32px; font-weight: bold; }
+.game .context ul li a { display: inline-block; margin-right: 10px; line-height: 18px; color: #d1c0a5; font-size: 12px }
+.game .context ul li a:hover { color: #e46a05; }
+.clearfix { width: 597px; overflow: hidden; }
+.clearfix div { float: left; }
+.clearfix div img { vertical-align: middle; transform: scale(1); -o-transform: scale(1); -moz-transform: scale(1); -webkit-transform: scale(1); transition: all .8s ease-in; }
+.clearfix div a:hover img { transform: scale(1.1); -o-transform: scale(1.1); -moz-transform: scale(1.1); -webkit-transform: scale(1.1); transition: all .8s ease-in; }
+/*hudong_content*/
+.hudong_content { width: 1210px; overflow: hidden; margin: 40px auto 0 }
+.hudong_one { width: 299px; height: 192px; border-right: 1px solid #554a45; text-align: center; color: #facd89; line-height: 26px }
+.hudong_title { font-size: 24px; color: #d1c0a5; position: relative; margin-top: 11px; margin-left: -60px; margin-bottom: 30px }
+.kefu { width: 547px; height: 192px; border-right: 1px solid #554a45; }
+.erweima { font-size: 12px; color: #d1c0a5; text-align: center; margin: 24px 0 0 66px; }
+.kefu_n { width: 258px; overflow: hidden; margin: 0 58px 0 0 }
+.kefu_n p { width: 258px; height: 50px; line-height: 50px; font-size: 14px; color: #FFF; border-bottom: 1px solid #CCC }
+.kefu_n>p>img { display: inline-block; position: relative; top: 6px }
+.hezuo { width: 351px; height: 192px; overflow: hidden }
+.hezuo_title { width: 100%; text-align: center; font-size: 24px; color: #d1c0a5; margin-top: 10px; margin-bottom: 28px }
+.hezuo_ico { margin-left: 26px }
+.hezuo_ico li { width: 56px; overflow: hidden; float: left; text-align: center; margin-right: 25px }
+.hezuo_ico li a span { font-size: 12px; color: #715b4f }
+/*footer*/
+.footer { width: 100%; height: 200px; background: #000; overflow: hidden }
+.footer_n { width: 1210px; margin: 0 auto; overflow: hidden }
+.footer_l img { display: inline-block }
+.diyi_logo { margin-top: 54px }
+.dier_logo { margin-left: 30px; margin-top: 78px }
+.footer_r { width: 560px; overflow: hidden; color: #7e6b5a; font-size: 12px; margin-right: 40px; line-height: 24px; margin-top: 54px }
+.footer_r strong { font-size: 12px; margin: 0 10px }
+.footer_r a { color: #7e6b5a }
+/*在线客服*/
+.server { width: 96px; height: 450px; position: fixed; _position: absolute; _bottom: auto; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||0)-(parseInt(this.currentStyle.marginBottom, 10)||0)));
+right: 30px; top: 50%; margin-top: -221px; _margin-bottom: 40%; }
+.server ul li { float: none; }
+.server ul li a { display: inline-block; width: 96px; height: 95px; background: url(../images/aoyoo.com_icon_01.png); }
+.server ul li #statement { background-position: -376px -5px; }
+.server ul li #statement:hover { background-position: -486px -5px; }
+.server ul li #online_service { background-position: -376px -102px; }
+.server ul li #online_service:hover { background-position: -486px -102px; }
+.server ul li #repay { background-position: -376px -200px; }
+.server ul li #repay:hover { background-position: -486px -200px; }
+.server ul li #wechat { height: 125px; cursor: default; background-position: -376px -296px; }
+.server ul li #return_top { height: 25px; background-position: -376px -421px; }
+.server ul li #return_top:hover { height: 25px; background-position: -486px -421px; }
+/*子页*/
+.xiazai_l_2 { margin-top: 76px; margin-left: 19px }
+.ziye_r_s { width: 915px; height: 54px; background: url(../images/ziye_r_s.png) no-repeat; font-size:24px; color:#d1c0a5; line-height:62px; padding-left:40px}
+.ziye_r_z{ width: 943px; min-height:1000px; background: url(../images/ziye_r_z.jpg) repeat-y; margin-left:6px}
+.ziye_r_z ul{ width:814px; overflow:hidden; margin:0 auto; display: block; padding:46px 0}
+.ziye_r_z ul li { width:814px; overflow:hidden; float:left; margin-bottom:8px; }
+.ziye_r_z a{color:#cfa972; line-height:22px}
+.ziye_r_z a:hover{ color:#d1c0a5}
+.ziye_r_x{ width:943px; height:19px; background: url(../images/ziye_r_x.png) no-repeat; margin-left:6px}
+

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.box{background-color:#00F; width:200px; height:200px; color:#F00; position:relative}
+.upbox{ opacity:0.5; background-color:#FFF; width:100%; height:100%; left:0; top:0; position:absolute}
+</style>
+<script src="jquery.js">
+</script>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">三中全会
+	<div class="upbox">
+	</div>
+    
+</div>
+<script>
+$(".box").mouseenter(
+		function(){
+			$(".upbox").animate({top:200}).addClass("blue")
+			}
+)
+$(".box").mouseleave(
+		function(){
+			$(".upbox").animate({top:0}).addClass("blue")
+			}
+)
+</script>
+</body>
+</html>

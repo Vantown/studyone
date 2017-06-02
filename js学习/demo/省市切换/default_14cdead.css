@@ -1,0 +1,45 @@
+/* Code tidied up by ScrapBook */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, a, em, img, ol, ul, li, form, table, tbody, tfoot, thead, tr, th, td, dl, dt, dd { margin: 0px; padding: 0px; border: 0px none; }
+body, button, input { font-size: 14px; line-height: 1.4em; font-family: Arial,Helvetica,"Hiragino Sans GB","Microsoft YaHei",sans-serif; outline: medium none; }
+body { background-color: rgb(255, 255, 255); line-height: 1.5; margin: 0px auto; color: rgb(51, 51, 51); overflow-y: scroll; }
+body, html { width: 100%; }
+h2 { font-size: 100%; overflow-wrap: break-word; }
+em, i { font-weight: normal; font-style: normal; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; }
+table, td, th, li, img, input, select { vertical-align: middle; outline: medium none; }
+blockquote::before, blockquote::after, q::before, q::after { content: ""; }
+blockquote, q { quotes: "" ""; }
+input { padding: 5px; margin: 0px; outline: 0px none; font-size: 14px; vertical-align: top; box-sizing: border-box; }
+input[type="checkbox"] {  }
+input[type="radio"] {  }
+* { -moz-text-size-adjust: none; }
+a { text-decoration: none; outline: medium none; color: rgb(103, 157, 255); }
+a:hover { outline: medium none; text-decoration: none; }
+li { list-style: outside none none; vertical-align: middle; }
+span { display: inline-block; }
+.piece { width: 100%; background-color: transparent; position: relative; box-sizing: border-box; }
+.piece.fbottom, .piece.ftop { position: fixed !important; width: 100% !important; z-index: 10 !important; }
+@media screen and (min-width: 624px) and (max-width: 1023px) {
+  .piece.fbottom, .piece.ftop { width: 624px !important; }
+}
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .piece.fbottom, .piece.ftop { width: 824px !important; }
+}
+@media screen and (min-width: 1440px) {
+  .piece.fbottom, .piece.ftop { width: 1040px !important; }
+}
+.create-left-content { width: 70px; height: auto; text-align: center; z-index: 9999; position: fixed; bottom: 0px; left: 0px; }
+.create-right-content { width: 70px; height: auto; text-align: center; z-index: 9999; position: fixed; bottom: 0px; right: 0px; }
+.piece.fbottom { top: auto !important; bottom: 0px !important; }
+.piece.ftop { top: 0px !important; bottom: auto !important; }
+#content { min-height: 100%; position: relative; overflow: hidden; }
+@media screen and (min-width: 624px) {
+  #content { width: 624px; margin: 0px auto; }
+}
+@media screen and (min-width: 1024px) {
+  #content { width: 824px; margin: 0px auto; }
+}
+@media screen and (min-width: 1440px) {
+  #content { width: 1040px; margin: 0px auto; }
+}
+#MEIQIA-PANEL-HOLDER { right: 0px !important; }

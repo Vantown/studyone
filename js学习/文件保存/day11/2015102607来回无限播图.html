@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+img,span{display:block;}
+img{float:left; width:300px; float:left}
+.tubox{ width:600px; margin-left:auto; margin-right:auto; overflow:hidden; position:relative}
+.tubox span{ border-radius:50%; background-color:#999; width:25px; height:25px; position:absolute; top:150px; border:solid 2px #FFF; line-height:25px; text-align:center; font-size:16px; color:#FFF; font-weight:bold}
+.btnl{left:0}
+.btnr{right:0}
+.tukuang{ width:900px;}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+
+    <div class="tubox">
+    	<div class="tukuang">
+        	<img src="10hui.png">
+            <img src="11hui.png">
+            <img src="12hui.png">
+            <img src="13hui.png">
+            <img src="14hui.png">
+            <img src="15hui.png">
+        </div>
+        <span class="btnl">&lt;</span>
+        <span class="btnr">&gt;</span>
+    </div>
+    
+<script>
+var n=0;
+$(".tukuang").width(300*$(".tukuang img").length);
+$(".tukuang img").eq(n).attr("src","1"+n+".png")
+$(".btnl").click(
+		function(){
+			if(n<$(".tukuang img").length-2){
+				n=n+1}
+			$(".tukuang")
+			$(".tukuang img").eq(n).attr("src","1"+n+".png")
+			$(".tukuang").animate({marginLeft:-300*n})
+		}
+)
+$(".btnr").click(
+		function(){
+			if(n>0){
+				n=n-1}
+			
+			$(".tukuang img").eq(n+1).attr("src","1"+(n+1)+"hui.png")
+			$(".tukuang").animate({marginLeft:-300*n})
+		}
+)
+</script>
+</body>
+</html>

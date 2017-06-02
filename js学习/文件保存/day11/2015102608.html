@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.overflowH{overflow:hidden}
+dl,dd{margin:0}
+.box{ width:300px; height:30px; border:solid 1px #0F0; line-height:30px;}
+.box dl{ background-color:rgba(0,51,255,0.5)}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box overflowH">
+	<dl>
+    <dd><a href="">新闻1</a></dd>
+    <dd><a href="">新闻2</a></dd>
+    <dd><a href="">新闻3</a></dd>
+    <dd><a href="">新闻4</a></dd>
+    <dd><a href="">新闻5</a></dd>
+    </dl>
+</div>
+<script>
+var t=setInterval(function(){
+	$(".box dl").animate({marginTop:-30},1000,
+function(){
+	$(".box dd:last").after($(".box dd:first"));
+	$(".box dl").css({marginTop:0})	
+}) 
+},2000)
+$(".box").mouseenter(
+		function(){
+			clearInterval(t);
+		}
+).mouseleave(
+		(function(){t=setInterval(function(){
+	$(".box dl").animate({marginTop:-30},1000,
+function(){
+	$(".box dd:last").after($(".box dd:first"));
+	$(".box dl").css({marginTop:0})	
+}) 
+},2000)
+			
+}))
+</script>
+</body>
+</html>

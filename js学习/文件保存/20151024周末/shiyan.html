@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.box1{width:100px; height:100px; background-color:#0F0}
+.box2{width:100px; height:100px; background-color:#00F;}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box1">
+</div>
+<div class="box2">
+</div>
+<script>
+$(".box2").hide();
+$(".box1").click(
+		function(){
+			$(".box2").show().css({opacity:0.5})	
+		}
+)
+</script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>无标题页</title>
+    <script src="js/jquery-2.1.4.js" type="text/javascript"></script>
+    <style type="text/css">
+        /* CSS Document */
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,a,div,img{
+            padding: 0; margin: 0;
+        }
+        table{
+            border-collapse:separate;
+            border-spacing:0;
+        }
+        img {
+            border: 0;
+            margin:0;
+        }
+        ul,li{
+            list-style: none;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            font-weight: normal;
+            font-size: 100%;
+        }
+        a{
+            color:#514339;
+            text-decoration:none;
+        }
+        a:hover{
+            color:#c10000;
+            text-decoration:underline;
+        }
+        body{
+            font-size: 13px;
+            color: #514339;
+        }
+        /*CSS初始化结束*/
+
+
+        /*幻灯片CSS开始*/
+        .weichuangyi {
+            width:1000px;       /*最大容器*/
+            height:490px;
+            margin:0 auto;
+            position: relative;
+        }
+        .weichuangyi_main{
+            width:1000px;       /*轮播主体*/
+            height:auto;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .weichuangyi_main li a img {
+            display:block;      /*图片大小*/
+            width:1000px;
+            height:490px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .weichuangyi_span {
+            width:1000px;       /*按钮总容器*/
+            height:35px;
+            position: absolute;
+            left:0;
+            bottom:0;
+            zoom:1;
+        }
+        .weichuangyi_span span {
+            width:60px;     /*按钮*/
+            height:10px;
+            display:block;
+            float:left;
+            margin-left:10px;
+            background: #000;
+        }
+        .weichuangyi_span p {
+            width:350px;    /*按钮总长度*/
+            height:10px;
+            margin:0 auto;
+        }
+        .weichuangyi_span .weichuangyi_span_one{
+            background: #c30d23;
+        }
+        .weichuangyi_left {
+            width:60px;
+            height:90px;
+            cursor: pointer;
+            background:#000 url(../images/ad_ctr.png) no-repeat 5px -180px;
+            filter:alpha(opacity:50);opacity:0.5;
+            position: absolute;
+            left:0;
+            top:155px;
+            display:none;
+        }
+        .weichuangyi_left1 {
+            background:#000 url(../images/ad_ctr.png) no-repeat 3px top;
+        }
+        .weichuangyi_right {
+            width:60px;
+            height:90px;
+            cursor: pointer;
+            background:#000 url(../images/ad_ctr.png) no-repeat -5px bottom;
+            filter:alpha(opacity:50);opacity:0.5;
+            position: absolute;
+            right:0;
+            top:155px;
+            display:none;
+        }
+        .weichuangyi_right1 {
+            background:#000 url(../images/ad_ctr.png) no-repeat -3px -90px;
+        }
+        /*幻灯片css结束*/
+
+    </style>
+</head>
+<body>
+<div class="weichuangyi">
+    <div class="weichuangyi_main">
+        <ul class="weichuangyi_ul">
+            <li><a class="img"><img src="jsimg/lb1.png"  /></a></li>
+            <li><a target="_blank" class="img"><img src="jsimg/lb2.png" /></a></li>
+            <li><a class="img"><img src="jsimg/lb3.png"  /></a></li>
+            <li><a class="img"><img src="jsimg/lb1.png"  /></a></li>
+            <li><a class="img"><img src="jsimg/lb2.png"  /></a></li>
+        </ul>
+    </div>
+    <!--
+    <p class="weichuangyi_left"></p>
+    <p class="weichuangyi_right"></p>
+    -->
+    <div class="weichuangyi_span">
+        <p>
+            <span class="weichuangyi_span_one"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function(){
+        var num=$('.weichuangyi_span span').length;
+        var i_mun=0;
+        var timer_banner=null;
+
+        $('.weichuangyi_ul li:gt(0)').hide();//页面加载隐藏所有的li 除了第一个
+
+//底下小图标点击切换
+        $('.weichuangyi_span span').mouseover(function(){
+            $(this).addClass('weichuangyi_span_one')
+                    .siblings('span').removeClass('weichuangyi_span_one');
+            var i_mun1=$('.weichuangyi_span span').index(this);
+            $('.weichuangyi_ul li').eq(i_mun1).fadeIn('slow')
+                    .siblings('li').fadeOut('slow');
+
+            i_mun=i_mun1;
+        });
+
+//左边箭头点击时切换
+        $('.weichuangyi_left').click(function(){
+            if(i_mun==0){
+                i_mun=num
+            }
+            //大图切换
+            $('.weichuangyi_ul li').eq(i_mun-1).fadeIn('slow')
+                    .siblings('li').fadeOut('slow');
+            //小图切换
+            $('.weichuangyi_span span').eq(i_mun-1).addClass('weichuangyi_span_one')
+                    .siblings('span').removeClass('weichuangyi_span_one');
+
+            i_mun--
+        });
+
+        //左边按钮移动到其上时更换背景图片
+        $('.weichuangyi_left').mouseover(function(){
+
+            $('.weichuangyi_left').addClass('weichuangyi_left1');
+        });
+
+        //左边按钮移动到其上时还原背景图片
+        $('.weichuangyi_left').mouseout(function(){
+
+            $('.weichuangyi_left').removeClass('weichuangyi_left1');
+        });
+
+//右边箭头点击时切换
+        $('.weichuangyi_right').click(function(){
+            move_banner()
+
+        });
+
+        //右边按钮移动到其上时更换背景图片
+        $('.weichuangyi_right').mouseover(function(){
+
+            $('.weichuangyi_right').addClass('weichuangyi_right1');
+        });
+
+        //右边按钮移动到其上时更换背景图片
+        $('.weichuangyi_right').mouseout(function(){
+
+            $('.weichuangyi_right').removeClass('weichuangyi_right1');
+        });
+
+//鼠标移动到幻灯片上时 显示左右切换案例
+        $('.weichuangyi').mouseover(function(){
+            $('.weichuangyi_left').show();
+            $('.weichuangyi_right').show();
+        });
+
+//鼠标离开幻灯片上时 隐藏左右切换案例
+        $('.weichuangyi').mouseout(function(){
+            $('.weichuangyi_left').hide();
+            $('.weichuangyi_right').hide();
+        });
+
+        //自动播放函数
+        function bannerMoveks(){
+            timer_banner=setInterval(function(){
+                move_banner()
+            },4000)
+        };
+        bannerMoveks();//开始自动播放
+
+        //鼠标移动到banner上时停止播放
+        $('.weichuangyi').mouseover(function(){
+            clearInterval(timer_banner);
+        });
+
+        //鼠标离开 banner 开启定时播放
+        $('.weichuangyi').mouseout(function(){
+            bannerMoveks();
+        });
+
+
+//banner 右边点击执行函数
+        function move_banner(){
+            if(i_mun==num-1){
+                i_mun=-1
+            }
+            //大图切换
+            $('.weichuangyi_ul li').eq(i_mun+1).fadeIn('slow')
+                    .siblings('li').fadeOut('slow');
+            //小图切换
+            $('.weichuangyi_span span').eq(i_mun+1).addClass('weichuangyi_span_one')
+                    .siblings('span').removeClass('weichuangyi_span_one');
+
+            i_mun++
+
+        }
+
+    })
+
+
+
+
+</script>
+</body>
+</html>

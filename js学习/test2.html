@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>无标题页</title>
+    <link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon" />
+<script src="http://www.zhongyuedu.com/js/jquery-2.1.4.js"></script>
+    <style type="text/css">
+        /* CSS Document */
+        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, a, div, img {
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        img {
+            border: 0;
+            margin: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+            font-size: 100%;
+        }
+
+        a {
+            color: #514339;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c10000;
+            text-decoration: underline;
+        }
+
+        body {
+            font-size: 13px;
+            color: #514339;
+        }
+
+        /*CSS初始化结束*/
+
+        /*幻灯片CSS开始*/
+        .lbswplb {
+            width: 1000px; /*最大容器*/
+            height: 490px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .lbswplb_main {
+            width: 1000px; /*轮播主体*/
+            height: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .lbswplb_main li a img {
+            display: block; /*图片大小*/
+            width: 1000px;
+            height: 490px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .lbswplb_span {
+            width: 1000px; /*按钮总容器*/
+            height: 35px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            zoom: 1;
+        }
+
+        .lbswplb_span span {
+            width: 60px; /*按钮*/
+            height: 10px;
+            display: block;
+            float: left;
+            margin-left: 10px;
+            background: #000;
+        }
+
+        .lbswplb_span p {
+            width: 350px; /*按钮总长度*/
+            height: 10px;
+            margin: 0 auto;
+        }
+
+        .lbswplb_span .lbswplb_span_one {
+            background: #c30d23;
+        }
+
+        /*幻灯片css结束*/
+		
+		#div1{width: 100px;height: 100px;background: #ccc;}
+		#div2{width:100px;height: 20px;background: red;}
+		#div3{width: 300px;height: 200px;border: 1px solid #ccc;position: absolute;;margin-left: -150px;margin-top:-100px;left:50%;top: 50%;display: none;}
+		li{width: 100px;float: left;background: #ccc;}
+		.active{background: red;}
+		.tab_main{display: none;}
+		.clearfix:after{clear: both;display: table;content:'';}
+		.cleafix{zoom:1;}
+
+
+    </style>
+</head>
+<body style="height: 10000px;">
+
+ 
+<script>
+var arr=[ {"a":"1","b":"2","c":"3"}, {"a":"12","b":"22","c":"32"},{"a":"13","b":"23","c":"33"}];
+        var value_A = '12';
+        for(var i in arr){
+            if(arr[i].a==value_A){
+                alert(arr[i].c);
+
+            }
+        }
+		
+var arr=[ {"a":"1","b":"2","c":"3"}, {"a":"12","b":"22","c":"32"},{"a":"13","b":"23","c":"33"}];
+var str = '[{\"UId\":1,\"Uname\":\"a\",\"Pwd\":\"a1\"},{\"UId\":2,\"Uname\":\"b\",\"Pwd\":\"b1\"}]'		
+</script>
+
+</body>
+</html>

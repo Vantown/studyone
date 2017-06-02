@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.ctrlbut span{ float:left; width:10px; height:10px; background-color:#CCC; border-radius:50%; margin-left:3px; margin-right:3px;}
+.ctrlbut .lanse{ background-color:blue;}
+
+</style>
+<script src="jquery.js">
+</script>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="ctrlbut">
+	<span class="lanse"></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    
+</div>
+<script>
+$(".ctrlbut span").mouseenter(
+		function(){
+			$(this).addClass("lanse").siblings().removeClass("lanse")
+		}
+)
+</script>
+</body>
+</html>

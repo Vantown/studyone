@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://www.web-tinker.com/article/20015.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.highlight-dollar:before { content: "$ "; color: #CCC; }</style>
+  <meta charset="utf-8">
+  <meta name="description" content="看到大括号会想到什么？对象？函数？是那些没错，但是除了它们之外代码块也使用着大括号，也许你根本不知道代码块是什么，但是你一定用过它。这篇文章就说说命名代码块的使用方法，和一个奇妙的“歧义句”问题。">
+  <meta name="keywords" content="命名代码块,函数,语句,JSON,JavaScript">
+  <meta name="email" content="admin@web-tinker.com">
+  <meta name="viewport" content="width=device-width,height=device-height,user-scalable=0">
+  <title>神秘的大括号 JavaScript的命名代码块 - Web 技术研究所</title>
+  <link href="https://plus.google.com/114100741768373631212" rel="author">
+  <link href="https://www.web-tinker.com/rss.xml" rel="alternate" type="application/rss+xml">
+  <link href="https://www.web-tinker.com/atom.xml" rel="alternate" type="application/atom+xml">
+
+  <link href="jscss/main.css" rel="stylesheet">
+
+  <script src="jscss/core.js"></script>
+
+  <script src="jscss/predeclare.js"></script>
+
+  <script src="jscss/main.js"></script>
+</head>
+<body>
+<header>
+  <div class="z"></div>
+  <div class="x">
+    <nav>
+
+      <a href="https://www.web-tinker.com/">网站首页</a>   
+
+      <a href="https://www.web-tinker.com/articles/" class="active">文章一览</a>   
+
+      <a href="https://www.web-tinker.com/selection/">系列专题</a>   
+
+      <a href="https://www.web-tinker.com/subjects/">神奇海螺</a>   
+
+      <a href="https://www.web-tinker.com/profile/">次碳酸钴</a>   
+    <u style="width: 56px; left: 70px;"></u></nav>
+    <h2><a href="https://www.web-tinker.com/">Web 技术研究所</a></h2>
+    <h3>我一直坚信着，Web 将会成为未来应用程序的主流</h3>
+  </div>
+</header>
+<div class="article-detail o x">
+  <div class="left">
+    <div class="menu buttons-square" id="menu">
+      <a class="s time" href="https://www.web-tinker.com/articles/2012-10/" target="_blank">
+        <b>2012</b><br><span>10 18</span>
+      </a>
+      <a class="s menu-share" href="JavaScript:">
+        <b>分享</b><br><span style="font-size:22px;">+</span>
+      </a>
+
+      <a class="s neighbor" href="https://www.web-tinker.com/article/20016.html" title="JavaScript的new与类继承语言的new">
+        <b>上一篇</b><br><span>Newer</span>
+      </a>
+
+      <a class="s neighbor" href="https://www.web-tinker.com/article/20014.html" title="两种性质，三类元素，浅谈inline和block的基本性质">
+        <b>下一篇</b><br><span>Older</span>
+      </a>
+    </div>
+    <div class="article s" id="article" itemscope="" itemtype="http://schema.org/Article">
+      <meta itemprop="author" content="柳荣一">
+      <h1 itemprop="name">神秘的大括号 JavaScript的命名代码块</h1>
+      <article itemprop="articleBody">
+<code><font color="#333388">if</font>(<font color="#CC3322">1</font>){
+  alert(<font color="#CC3322">0</font>);
+};</code>
+　　看到这个代码，你会觉得它只有一个if语句，和一个判断为真时调用的函数。但是，事实上不止这些，if语句的部分仅仅是if(1)这个而已，而判断为真之后调用的函数也只是alert(0);这个而已。就这样，大括号完全被忽略了。人们通常会觉得，那个大括号是术语if语句的东西，其实不然。无论是if语句还是大括号，他们都是可以单独存在的。
+<code><font color="#998877">//if语句</font>
+<font color="#333388">if</font>(<font color="#CC3322">1</font>);<font color="#998877">//用分号结束的话，条件为真就执行一个空语句。</font>
+<font color="#998877">//大括号，可以作为一个独立的语句</font>
+{
+  alert(<font color="#CC3322">0</font>);
+};</code>
+　　它们完全可以作为独立的两个语句。if语句的作用，是判断条件是否成立，成立则执行紧接着的那个语句。而大括号在这里就是代码块，或者说匿名代码块。它是一个独立的语句，而它的作用是把许多个语句变成一个语句。比如有时候，if语句判断为真以后要做很多个动作，那么就会需要很多语句，而if本身判断为真以后只会执行紧接着的那个语句，这时候用大括号，把需要执行的一堆语句放在一个大括号中，变成代码块，这样就把一堆语句变成了一个语句。虽然if和大括号可以独立称为语句，但是它们写在一起的时候实际上是一个语句，这是因为if本身的功能是判断条件后直接后面的语句，所以“后面的语句”就变成了if的一部分，按照语句来划分就把“后面的语句”归入if语句中了。<br>
+　　通常，我们用的都是匿名代码块，但是还有命名代码块可以用。
+<code><font color="#333388">if</font>(<font color="#CC3322">1</font>)a:{
+  alert(<font color="#CC3322">0</font>);
+  <font color="#333388">break</font> a;
+  alert(<font color="#CC3322">1</font>);
+};</code>
+　　看这个代码，我们对if后面执行的代码快命名为a，在代码块内部，执行完第一个alert之后就强制结束这个代码块，那么后面的alert(1)就不会被执行到。也许在书本上找不到“命名代码块”这个东西，但是你可以结合label语句和break语句这这两个东西好好看看就会明白。label语句的作用是给语句命名，这里我们给代码块命名，所以就成了命名代码块。break语句通常是跳出循环，但是添加个操作数就可以跳出制定语句。这里的制定，这是说用label命名的语句。在这个例子中if语句其实可以去掉的，放着只是为了让break感觉上是从一个语句中跳出的。<br>
+　　命名代码块这玩意儿有什么用呢？比如表单验证之后需要执行很复杂的语句时就适合用匿名代码块
+<code><font color="#800080">&lt;</font><font color="#800080">form</font><font color="#994300">&nbsp;name</font><font color="#800080">=</font><font color="#800080">"</font><font color="#1A1AA6">f</font><font color="#800080">"</font><font color="#800080">&gt;</font><br>&nbsp;&nbsp;<font color="#800080">&lt;</font><font color="#800080">input</font><font color="#994300">&nbsp;name</font><font color="#800080">=</font><font color="#800080">"</font><font color="#1A1AA6">t1</font><font color="#800080">"</font><font color="#994300">&nbsp;</font><font color="#800080">/&gt;</font><font color="#800080">&lt;</font><font color="#800080">br</font><font color="#800080">/&gt;</font><br>&nbsp;&nbsp;<font color="#800080">&lt;</font><font color="#800080">input</font><font color="#994300">&nbsp;name</font><font color="#800080">=</font><font color="#800080">"</font><font color="#1A1AA6">t2</font><font color="#800080">"</font><font color="#994300">&nbsp;</font><font color="#800080">/&gt;</font><font color="#800080">&lt;</font><font color="#800080">br</font><font color="#800080">/&gt;</font><br>&nbsp;&nbsp;<font color="#800080">&lt;</font><font color="#800080">input</font><font color="#994300">&nbsp;name</font><font color="#800080">=</font><font color="#800080">"</font><font color="#1A1AA6">t3</font><font color="#800080">"</font><font color="#994300">&nbsp;</font><font color="#800080">/&gt;</font><font color="#800080">&lt;</font><font color="#800080">br</font><font color="#800080">/&gt;</font><br>&nbsp;&nbsp;<font color="#800080">&lt;</font><font color="#800080">input</font><font color="#994300">&nbsp;name</font><font color="#800080">=</font><font color="#800080">"</font><font color="#1A1AA6">t4</font><font color="#800080">"</font><font color="#994300">&nbsp;</font><font color="#800080">/&gt;</font><font color="#800080">&lt;</font><font color="#800080">br</font><font color="#800080">/&gt;</font><br>&nbsp;&nbsp;<font color="#800080">&lt;</font><font color="#800080">input</font><font color="#994300">&nbsp;type</font><font color="#800080">=</font><font color="#800080">"</font><font color="#1A1AA6">submit</font><font color="#800080">"</font><font color="#994300">&nbsp;</font><font color="#800080">/&gt;</font><br><font color="#800080">&lt;</font><font color="#800080">/form</font><font color="#800080">&gt;</font><br><font color="#800080">&lt;</font><font color="#800080">script</font><font color="#800080">&gt;</font><br><font color="#333388">var</font> f=<font color="#5555AA">document</font>.forms.f;<br>f.onsubmit=<font color="#333388">function</font>(){<br>  chk:{<br>    <font color="#333388">if</font>(f.t1.value==<font color="#AA5544">""</font>)<font color="#333388">break</font> chk;<br>    <font color="#333388">if</font>(f.t2.value==<font color="#AA5544">""</font>)<font color="#333388">break</font> chk;<br>    <font color="#333388">if</font>(f.t3.value==<font color="#AA5544">""</font>)<font color="#333388">break</font> chk;<br>    <font color="#333388">if</font>(f.t4.value==<font color="#AA5544">""</font>)<font color="#333388">break</font> chk;<br>    alert(<font color="#AA5544">"验证通过！"</font>);<br>    <font color="#333388">return</font> <font color="#DD6600">true</font>;<br>  };<br>  alert(<font color="#AA5544">"验证失败"</font>);<br>  <font color="#333388">return</font> <font color="#DD6600">false</font>;<br>};<br><font color="#800080">&lt;</font><font color="#800080">/</font><font color="#800080">script</font><font color="#800080">&gt;</font></code>
+　　当然也可以使用一个变量作为验证成功与否的标识符，最后再判断那个变量；或者还可以用函数去做，验证失败时直接return掉；方法是很多的，但是这只是方法之一。懂得它的用法就可以了，也许以后你会遇上更适合用这个方法解决的问题。<br>
+　　最后，来说一说歧义句。
+<code>{id:<font color="#CC3322">0</font>};<font color="#998877">//这是个啥？</font></code>
+　　一眼看过去，像是一个对象声明吧？但是又没有赋值语句，说是标准JSON又缺对双引号。其实，这玩意儿是
+<code>{
+  id:<font color="#CC3322">0</font>
+};</code>
+　　一个大括号语句，里面把0这个没用没有动作的语句命名为id而已。
+<code><font color="#998877">//{id:{name:"次碳酸钴"}};</font>
+{
+  id:{
+    name:<font color="#AA5544">"次碳酸钴"</font>
+  }
+};</code>
+　　这个也一样，这就是歧义句。如果想验证{id:0}到底是个啥？可以这样，
+<code>alert(<font color="#5555AA">eval</font>(<font color="#AA5544">"{id:0}"</font>));</code>
+　　这个代码输出的是0而不是object，所以显然这个大括号被解析为了代码块。如果想要让他输出object呢？很简单，让大括号做一个代码块不能做的操作，解析器就可以排除它是代码块的可能性了。
+<code>alert(<font color="#5555AA">eval</font>(<font color="#AA5544">"({id:0})"</font>));</code>
+　　只有这样，浏览器才能明白这玩儿而是一个object而不是代码块。这个歧义问题，可谓是JavaScript的一个BUG，自然语言有歧义就算了，编程语言怎么可以有歧义呢？所以后来标准JSON就被规定为所有键名必须加双引号，以区别开代码块和对象定义语句。
+      </article>
+    </div>
+    <ul class="comment-list s" id="list" data-order="creationtime,asc" style="background-image: none;"><li data-id="35" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">Anycalll</a>
+          <time itemprop="dateCreated" data-value="1350552201" title="2012-10-18 17:23:21">10-18</time>
+        </div>
+        <div itemprop="text">能提交？</div>
+      </li><li data-id="36" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">Anycalll</a>
+          <time itemprop="dateCreated" data-value="1350552264" title="2012-10-18 17:24:24">10-18</time>
+        </div>
+        <div itemprop="text">还不错哦。</div>
+      </li><li data-id="40" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">草地上</a>
+          <time itemprop="dateCreated" data-value="1350556133" title="2012-10-18 18:28:53">10-18</time>
+        </div>
+        <div itemprop="text">@Anycalll&nbsp;美女你好</div>
+      </li><li data-id="47" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">草地上</a>
+          <time itemprop="dateCreated" data-value="1350611494" title="2012-10-19 09:51:34">10-19</time>
+        </div>
+        <div itemprop="text">@美女你好&nbsp;&nbsp;&nbsp;=。=</div>
+      </li><li data-id="49" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">路过</a>
+          <time itemprop="dateCreated" data-value="1350625141" title="2012-10-19 13:39:01">10-19</time>
+        </div>
+        <div itemprop="text">路过</div>
+      </li><li data-id="57" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">要审核吗？</a>
+          <time itemprop="dateCreated" data-value="1350814916" title="2012-10-21 18:21:56">10-21</time>
+        </div>
+        <div itemprop="text">要审核吗？</div>
+      </li><li data-id="58" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">次碳酸钴</a>
+          <time itemprop="dateCreated" data-value="1350860812" title="2012-10-22 07:06:52">10-22</time>
+        </div>
+        <div itemprop="text">@要审核吗？&nbsp;不用审核</div>
+      </li><li data-id="89" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">冥羽</a>
+          <time itemprop="dateCreated" data-value="1351263775" title="2012-10-26 23:02:55">10-26</time>
+        </div>
+        <div itemprop="text">可以引用你的文章么？</div>
+      </li><li data-id="90" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">次碳酸钴</a>
+          <time itemprop="dateCreated" data-value="1351263902" title="2012-10-26 23:05:02">10-26</time>
+        </div>
+        <div itemprop="text">@冥羽&nbsp;留原文链接就行</div>
+      </li><li data-id="1152" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">靖鸣君</a>
+          <time itemprop="dateCreated" data-value="1379248768" title="2013-09-15 20:39:28">09-15</time>
+        </div>
+        <div itemprop="text">这篇文章剖析的很深刻！</div>
+      </li><li data-id="2229" itemscope="" itemtype="http://schema.org/Comment">
+        <div>
+          <a href="https://www.web-tinker.com/article/20015.html#comment" itemprop="author">222.85.69.*</a>
+          <time itemprop="dateCreated" data-value="1412957986" title="2014-10-11 00:19:46">10-11</time>
+        </div>
+        <div itemprop="text">11111111</div>
+      </li></ul>
+    <a name="comment" class="anchor"></a>
+    <div class="comment-form s">
+      <dl class="o">
+        <dt>网名：</dt>
+        <dd class="placeholder" installed-placeholder="true">
+          <input class="form-guest" id="guest" autocomplete="off" value="" placeholder="124.129.226.*">
+          <span style="display: none;">124.129.226.*</span>
+        </dd>
+        <dt>电子邮箱：</dt>
+        <dd class="placeholder" installed-placeholder="true">
+          <input class="form-email" id="email" autocomplete="off" type="email" value="" placeholder="仅用于接收通知">
+          <span style="display: none;">仅用于接收通知</span>
+        </dd>
+      </dl>
+      <dl class="o">
+        <dd><textarea class="form-content" id="content" style="height: 28px;"></textarea></dd>
+      </dl>
+      <dl class="o">
+        <dd>
+          <div class="buttons-submit">
+            <a class="form-submit s" id="submit" href="JavaScript:" title="Ctrl+Enter" text="提交" busy="提交中">提交</a>
+            <span class="form-tip" id="tip">悄悄的告诉你，Ctrl+Enter 可以提交哦</span>
+          </div>
+        </dd>
+      </dl>
+    </div>
+  </div>
+  <div class="right">
+    <div class="s">
+      <div class="placeholder unit-search" installed-placeholder="true">
+        <input value="" placeholder="请输入搜索内容"><a href="JavaScript:" title="我也要搜索！">搜</a>
+        <span style="display: none;">请输入搜索内容</span>
+      </div>
+    </div>
+    <dl class="s unit-related">
+      <dt>
+        <h6>相关文章</h6>
+        <a href="https://www.web-tinker.com/search/%E5%91%BD%E5%90%8D%E4%BB%A3%E7%A0%81%E5%9D%97%20%E5%87%BD%E6%95%B0%20%E8%AF%AD%E5%8F%A5%20JSON%20JavaScript/1.html">[全部]</a>
+      </dt>
+      <dd>
+        <ul data-maximum="10" style="background-image: none;"><li><a href="https://www.web-tinker.com/article/20097.html" title="eval的全局作用域问题">eval的全局作用域问题</a></li><li><a href="https://www.web-tinker.com/article/20910.html" title="JSON.parse 与 localStorage 的故事">JSON.parse&nbsp;与&nbsp;localStorage&nbsp;的故事</a></li><li><a href="https://www.web-tinker.com/article/20088.html" title="NoSQL与前端技术">NoSQL与前端技术</a></li><li><a href="https://www.web-tinker.com/article/20093.html" title="NodeJS简易聊天室（服务器端）">NodeJS简易聊天室（服务器端）</a></li><li><a href="https://www.web-tinker.com/article/20268.html" title="JavaScript的基本错误中断">JavaScript的基本错误中断</a></li><li><a href="https://www.web-tinker.com/article/20406.html" title="函数toString的实现差异与BUG">函数toString的实现差异与BUG</a></li><li><a href="https://www.web-tinker.com/article/20294.html" title="JavaScript消息机制入门篇">JavaScript消息机制入门篇</a></li><li><a href="https://www.web-tinker.com/article/20299.html" title="关于语句块后面的分号">关于语句块后面的分号</a></li><li><a href="https://www.web-tinker.com/article/20125.html" title="JavaScript的严格模式 &quot;use strict&quot;">JavaScript的严格模式&nbsp;"use&nbsp;strict"</a></li><li><a href="https://www.web-tinker.com/article/20019.html" title="JavaScript跨域与JSONP">JavaScript跨域与JSONP</a></li></ul>
+      </dd>
+    </dl>
+    <dl class="s unit-publish">
+      <dt class="o">
+        <h6>神奇海螺</h6>
+        <a href="https://www.web-tinker.com/subjects/">[查看全部主题]</a>
+      </dt>
+      <dd>
+        <div>各类Web技术问题讨论区</div>
+        <a href="https://www.web-tinker.com/subject/" class="s" target="_blank">发起新主题</a>
+        <div>本模块采用<strong>即时聊天</strong>与<strong>邮件通知</strong>的模式</div>
+        <div>让钛合金<span title="钛合金F5">F5</span>成为历史吧！</div>
+      </dd>
+    </dl>
+  </div>
+</div>
+<footer><div>Copyright ©2012-2016 次碳酸钴 All rights reserved</div></footer>
+<div id="roof">
+  <div class="bg"></div>
+  <div class="sd z"></div>
+  <dl class="x">
+    <dt>次碳酸钴的技术博客，文章原创，转载请保留原文链接 ^_^</dt>
+    <dd>
+      <a href="https://www.web-tinker.com/rss.xml" target="_blank" id="rss" title="RSS"></a>
+      <a href="JavaScript:" id="share" title="分享"></a>
+      <a href="JavaScript:" id="setting" title="设置"></a>
+      <a href="JavaScript:" id="network" title="延迟 49ms" style="background-position: 0px -48px;"></a>
+    </dd>
+  </dl>
+</div>
+<div id="blackbox"></div>
+
+
+<textarea style="overflow: hidden; position: absolute; left: 0px; top: -1000px; line-height: normal; font-size: 12px; font-family: Helvetica, Arial, &#39;Hiragino Sans GB&#39;, 微软雅黑; width: 584px; word-wrap: break-word; word-break: normal; padding: 5px;"></textarea></body></html>

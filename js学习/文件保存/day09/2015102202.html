@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.box{width:30px;height:30px;border:solid 3px #e8e8e8;position:relative;}
+.box img{position:absolute;left:3;top:3;}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">
+<img src="箭头0.png">
+<img src="箭头.png">
+<img src="箭头3.png">
+</div>
+
+<script>
+$(".box img").eq(1).css("opacity",0)
+$(".box").mouseenter(
+function(){$(".box img").eq(1).animate({opacity:1});
+}
+
+).mouseleave(
+function(){$(".box img:eq(0),.box img:eq(1)").animate({opacity:0});
+}
+).click(
+function(){
+	$(".box img:eq(1),.box img:eq(2)").animate({opacity:0});
+}
+)
+
+</script>
+
+</body>
+</html>

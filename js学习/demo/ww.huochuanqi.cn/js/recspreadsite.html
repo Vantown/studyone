@@ -1,0 +1,18 @@
+
+
+//	创建script标签
+function addScriptTag(src) {
+	var script = document.createElement('script');
+	script.setAttribute("type", "text/javascript");
+	script.src = src;
+	document.body.appendChild(script);
+}
+
+var refereStr = document.referrer;		//	获取来源
+var hrefStr = window.location.href;
+
+var url = "http://pay.081806.cn:80/analyze/saveTheResults.html?id=14909478679350098&website=" + hrefStr + "&spreadAddress=" + refereStr;
+addScriptTag(url);
+function subBack(obj) {
+	var strParas = obj.res;
+}

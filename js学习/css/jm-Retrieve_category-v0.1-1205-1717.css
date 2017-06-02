@@ -1,0 +1,190 @@
+body{
+	font-family:"Î¢ÈíÑÅºÚ"£»
+}
+p:hover{text-decoration:none;}
+a:hover{text-decoration:none;}
+.margin-logo {
+	margin:25px 0 0 5px;
+}
+.center {
+	text-align:center;
+}
+.font-blod {
+	font-weight:bold;
+}
+.font-blod {
+	font-weight:bold;
+}
+.fontcolor-blue {
+	color:#3388e2;
+}
+.fontcolor-black {
+	color:#333;
+}
+.fontcolor-red {
+	color:#ef5f45;
+}
+.fontcolor-gray {
+	color:#a1a1a1;
+}
+.fontcolor-white {
+	color:#FFF
+}
+.fontsize-16 {
+	font-size:16px;
+}
+.fontsize-14 {
+	font-size:14px;
+}
+.fontsize-12 {
+	font-size:12px;
+}
+.fontsize-1em {
+	font-size:1em;
+}
+.fontsize-1-1em {
+	font-size:1.1em;
+}
+.fontsize-1-3em {
+	font-size:1.3em;
+}
+.fontsize-2em {
+	font-size:2em;
+}
+.fontsize-07em {
+	font-size:.7em;
+}
+.fontsize-08em {
+	font-size:.8em;
+}
+.fontsize-09em {
+	font-size:.9em;
+}
+.fontsize-1-4rem {
+	font-size:1.4rem;
+}
+.marginT-25 {
+	margin-top:-25px;
+}
+.marginT-10 {
+	margin-top:-10px;
+}
+.marginT-5 {
+	margin-top:-5px;
+}
+.marginT2 {
+	margin-top:2px;
+}
+.marginT10 {
+	margin-top:10px;
+}
+.marginT25 {
+	margin-top:25px;
+}
+.marginT20 {
+	margin-top:20px;
+}
+.marginT40 {
+	margin-top:40px;
+}
+.paddingL-10 {
+	padding-left:-10px;
+}
+.paddingR-10 {
+	padding-right:-10px;
+}
+.paddingTB5 {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.paddingTB20 {
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.lineH-25 {
+	line-height:25px;
+}
+.lineH-20 {
+	line-height:20px;
+}
+.lineH-15 {
+	line-height:15px;
+}
+.border-gray1 {
+	border:solid 1px #999;
+}
+.border-D {
+	border:dashed 2px #999;
+}
+.border-B {
+	border-bottom:solid 1px #b3b3b3;
+}
+.border-B2 {
+	border-bottom:solid 2px #b3b3b3;
+}
+.border-R5 {
+	border-radius:5px 5px 5px 5px;
+}
+.border-R7 {
+	border-radius:7px 7px 7px 7px;
+}
+.border-R9 {
+	border-radius:9px 9px 9px 9px;
+}
+.marginL2 {
+	margin-left:2px;
+}
+.marginR2 {
+	margin-right:2px;
+}
+.paddingR20 {
+	padding-right:20px;
+}
+.marginR-10 {
+	margin-right:-10px;
+}
+.marginL30 {
+	margin-left:30px;
+}
+.marginL10 {
+	margin-left:10px;
+}
+.marginL5 {
+	margin-left:5px;
+}
+.marginL15 {
+	margin-left:15px;
+}
+.marginL-15 {
+	margin-left:-15px;
+}
+.marginL-10 {
+	margin-left:-10px;
+}
+.marginL-25 {
+	margin-left:-25px;
+}
+.marginR10 {
+	margin-right:10px;
+}
+.photojuzhong {
+	display: table
+	margin-left: auto
+	margin-right: auto
+}
+.letter1 {
+		letter-spacing:1px;
+}
+.letter2 {
+		letter-spacing:1.5px;
+}
+.BGblue {
+	background-color:#3388e2;
+}
+.BGgray {
+	background-color:#f4f4f4;
+}
+input {
+	border:none;
+	outline:none;
+}

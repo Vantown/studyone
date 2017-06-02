@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.box{ width:590px; height:876px; position:relative}
+img{ display:block}
+.ctrl{ position:absolute; right:20px;top:40px; width:160px}
+.ctrl a{ display: block; background-color:rgba(0,0,0,0.7); font-size:16px; color:#FFF; line-height:23px;  text-align:center; letter-spacing:1px; font-weight:bold}
+.ctrl .beijing{ color:#333}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">
+	<img src="tu1.png">
+    <img src="tu2.png">
+    <img src="tu3.png">
+    <img src="tu4.png">
+    <img src="tu5.png">
+    <div class="ctrl">
+    	<a href="">新闻焦点图内容01</a>
+        <a href="">新闻焦点图内容02</a>
+        <a href="">新闻焦点图内容03</a>
+        <a href="">新闻焦点图内容04</a>
+        <a href="">新闻焦点图内容05</a>
+    </div>
+</div>
+
+<script>
+$(".box img").hide().first().show()
+$(".ctrl a").mouseenter(
+		function(){
+			$(this).addClass("beijing").siblings().removeClass("beijing")
+			$(".box img").hide().eq($(this).index()).show()
+		}
+)
+</script>
+</body>
+</html>

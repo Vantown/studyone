@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <script src="js/jquery-2.1.4.js"></script>
+
+
+    <link rel="shortcut icon" type="image/ico" href="http://jz.zhongyuedu.com/images/green/favicon.ico">
+    <meta charset="gb2312">
+
+    <title>中域教育</title>
+    <script type="text/javascript">
+        function checkTelT(){
+            var reg=/^(1\d{10})$/;
+            var tel=document.getElementById("atc_my_2461").value;
+            if(!(reg.test(tel))){
+                alert("请输入正确的手机号1");
+                document.getElementById("atc_my_2461").value="";
+                return false;
+            }else {
+                $(function () {
+                    $("#atc_my_2461").focus();//输入焦点
+                    $("#atc_my_2461").keydown(function (event) {
+                        if (event.which == "13") {//回车键,移动光标到密码框
+                            $("#txtPass").focus();
+                        }
+                    });
+                    $("#txtPass").keydown(function (event) {
+                        if (event.which == "13") {//回车键，用.ajax提交表单
+                            $("#btnLogin").trigger("click");
+                        }
+                    });
+                    $(function () { //“登录”按钮单击事件
+                        //获取用户名称
+                        var atc_my_2461 = encodeURI($("#atc_my_2461").val());
+                        var mid = encodeURI($("#mid").val());
+                        //获取输入密码
+                        var strTxtPass = encodeURI($("#txtPass").val());
+                        //开始发送数据
+                        $.ajax
+                        ({ //请求登录处理页
+                            url: "http://yx.zhongyuedu.com/form/formsc_index_m_test.php", //登录处理页
+                            dataType: "html",
+                            //传送请求数据
+                            data: "postdb[my_2461]="+$("#atc_my_2461").val()+"&mid="+$("#mid").val(),
+                            //data: { atc_my_2461: atc_my_2461, txtPass: strTxtPass, mid: mid },
+                            success: function (strValue) { //登录成功后返回的数据
+                                //根据返回值进行状态显示
+                                /*
+                                 if (strValue == "True") {//注意是True,不是true
+                                 $(".clsShow").html("操作提示，登录成功！" + strValue);
+                                 }
+                                 else {
+                                 $("#divError").show().html("用户名或密码错误！" + strValue);
+                                 }
+                                 */
+                            }
+                        });
+                        document.getElementById('frmUserLogin').style.display = "none";
+                    });
+
+                })
+            }
+        }
+
+    </script>
+
+</head>
+
+<body style="margin: 0;">
+
+<form id="frmUserLogin">
+    <div style="width:100%;height:100%;background-image:url(http://sc.zhongyuedu.com/images/sc_reg_pc1.png);background-position:center;overflow:hidden; min-height:1000px;position: fixed;top:0;">
+        <div class="divFrame" style="position: fixed;left:50%;top:0;margin-left:-495px;z-index: 99999;width:990px;height:1000px;background-image:url(http://sc.zhongyuedu.com/images/sc_reg_pc2.png);background-position:center;">
+            <div class="divContent">
+                <div class="clsShow">
+                    <div id="divError" class="clsError">
+                    </div>
+                    <div style="margin:230px 0 0 617px;">
+                        <input id="atc_my_2461" type="text" class="txt"  name='postdb[my_2461]' style="float:left;width:250px;height:50px;margin-left:50px;background:none;outline:none;border:none;font-size:16px;padding:0" />
+
+                        <input id="txtPass" class="txt" style="clear:both;float:left;width:250px;height:50px;margin:5px 0 0 50px;background:none;outline:none;border:none;font-size:16px;padding:0" placeholder="请输入密码"/>
+
+                        <input id="btnLogin" type="button" class="btn" onclick="checkTelT()" style="clear:both;float:left;width:305px;height:50px;margin-top:60px;background:none;border:none"  onfocus="blur(this)"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <input id="mid" type="hidden" name="mid" value="31">
+        <input type="hidden" name="id" value="">
+    </div>
+</form>
+
+
+</body>
+</html>

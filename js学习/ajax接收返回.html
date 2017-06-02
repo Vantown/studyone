@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>let</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=gb2312'/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0"><!--设置禁用缓存-->
+
+    <style>
+        table {
+            border: solid 1px green;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: solid 1px green;
+        }
+    </style>
+    <script src="js/jquery-2.1.4.js"></script>
+
+
+</head>
+<body style="height: 10000px;">
+1
+
+
+<form id="form1" method="post" enctype="multipart/form-data">
+    <input id="btn_ajax" type="button" style="width: 150px;height: 50px;" value="点击请求数据">
+    <input id="atc_my_680" type="text" name="postdb[my_680]"  placeholder="请输入手机号" value="">
+    <input id="mid" type="hidden" name="mid" value="19">
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>FruitCategory_nbr</th>
+        <th>CategoryName</th>
+    </tr>
+    </thead>
+    <tbody id="tbody1"></tbody>
+</table>
+
+<script>
+    var test_m = document.getElementById('atc_my_680').value,mid_v = document.getElementById('mid').value;
+    /*$('#btn_ajax').click(
+     function(){
+     alert($('#atc_my_680').val())
+     }
+     )*/
+
+        $('#btn_ajax').click(function () {
+            alert(test_m);
+            $.ajax({
+                async: true,     //异步
+                type: "POST",
+                url: 'http://yx.zhongyuedu.com/form/form_test.php',
+                dateType: 'text',
+                data:"postdb[680]=" + $("#atc_my_680").val() + "&mid=" + mid_v,
+                crossDomain: true,       //跨域
+                cache: false,        //缓存
+                //jsop: 'callback',        //请求到之后立即执行
+                success: function (data) {
+                    data = JSON.prase(data);
+                    var tbody = $('tbody1');
+                    $each(data, function (index, item) {
+                        OutputData(tbody, item);
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR + '\n\r Error Message:' + textStatus + '\n\r HTTP Error:' + errorThrown);
+                }
+            });
+        });
+
+    function OutputDate() {
+        tbody.append(
+                '<tr>' +
+                '<td>' +
+                item.FruitCategory_nbr +
+                '</td>' +
+                '<td>' +
+                item.CategoryName +
+                '</td>' +
+                '</tr>');
+    }
+</script>
+</body>
+</html>

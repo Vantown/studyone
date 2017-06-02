@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title></title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+</head>
+
+<body>
+<script>
+
+
+function ios_v(){
+	if(navigator.userAgent.match(/OS 7_[1-9] /i)   || navigator.userAgent.match(/OS 7_[1-9]_[0-9] /i) || navigator.userAgent.match(/OS [8-9]_[0-9] /i)  || navigator.userAgent.match(/OS [8-9]_[0-9]_[0-9] /i)){
+                     alert("7.1+");
+                   
+}else{
+                       
+alert("7.1-");
+                       } 
+}
+ios_v();
+alert(navigator.userAgent.toLowerCase());
+alert(window.navigator.appVersion);
+alert(window.navigator.cookieEnabled);//cookie
+</script>
+
+</body>
+</html>

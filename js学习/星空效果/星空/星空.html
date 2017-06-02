@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+ 
+<html>
+ 
+<head>
+ 	<meta charset="utf-8">
+    <title></title>
+ 	<script src="jquery-1.12.3.min.js"></script>
+	<script src="three69.js"></script>
+	<script src="controls/OrbitControls.js"></script>
+</head>
+ 
+<body>
+<div id="WebGL-output"></div>
+
+<script type="text/javascript">
+    var camera;
+	var cc;
+    $(function () {
+        // 舞台
+        var scene = new THREE.Scene();
+
+        // 相机
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
+ 		camera.position.set(200,200,200);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+        // 渲染器
+       var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMapEnabled = true;
+       
+        // 把渲染器加到页面中
+        $("#WebGL-output").append(renderer.domElement);
+		var clock = new THREE.Clock();
+        function render() {
+			cloud.rotation.x+=0.001;
+			
+			var delta = clock.getDelta();
+			//cc.update(delta);
+			
+            renderer.render(scene, camera);
+			requestAnimationFrame(render);
+        }
+		
+		//创建纹理
+		function test00(){
+			var canvas = document.createElement('canvas');
+			canvas.width = 16;
+			canvas.height = 16;
+			var pen = canvas.getContext('2d');
+			var gradient = pen.createRadialGradient(
+				canvas.width/2,canvas.height/2,0,canvas.width/2,canvas.height/2,canvas.width/2
+			);//创建放射状渐变
+			gradient.addColorStop(0,'rgba(255,255,255,1)');
+			gradient.addColorStop(0.2,'rgba(0,255,255,1)');
+			gradient.addColorStop(0.4,'rgba(0,0,164,1)');
+			gradient.addColorStop(1,'rgba(0,0,0,1)');
+			pen.fillStyle = gradient;						//将笔触填充色设置为这个渐变放射状
+			pen.fillRect(0,0,canvas.width,canvas.height);	//画矩形
+			var texture = new THREE.Texture(canvas);		//生成贴图对象（参数是图片或canvas画布）
+			texture.needsUpdate = true;						//将这个对象缓存到GPU
+			return texture;
+		}
+		
+		//创建基本粒子系统
+		function test(){
+			//粒子材质
+			 var material = new THREE.PointCloudMaterial({
+                color: 0xffffff,
+                size: 3,
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+                map: test00()
+            });
+			
+			var geom = new THREE.Geometry();
+			var range = 500;
+            for (var i = 0; i < 15000; i++) {
+                var particle = new THREE.Vector3(Math.random() * range - range / 2, Math.random() * range - range / 2, Math.random() * range - range / 2);
+                geom.vertices.push(particle);
+                var color = new THREE.Color(0x00ffcc);
+                color.setHSL(color.getHSL().h, color.getHSL().s, Math.random() * color.getHSL().l);
+                geom.colors.push(color);
+            }
+
+			//创建粒子系统，相当于abc中的c
+            cloud = new THREE.PointCloud(geom, material);//参数是形状和材质
+            cloud.sortParticles = true;					//粒子重新排序
+            scene.add(cloud);
+			
+			//创建镜头控制器
+			//cc = new THREE.OrbitControls(camera);
+			//cc.autoRotate = false;
+		}
+		
+		test();
+      	render();
+    });
+</script>
+</body>
+</html>

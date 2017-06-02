@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<style>
+/*重置*/
+body,dl,dd,h1,p{margin:0;}
+ul{margin:0;padding:0;}
+a{text-decoration:none;}
+li{list-style:none;}
+img{display:block;}
+*{font-size:12px;color:#7d7d7d;font-family:Helvetica,"微软雅黑";}
+.overflowH{overflow:hidden;}
+.topbox{background-color:#1a1a1a;}
+.header{width:940px;margin-left:auto;margin-right:auto;}
+.logo{float:left;line-height:84px;font-size:20px;color:white;}
+.nav{float:right;line-height:26px;margin-top:29px;margin-bottom:29px;}
+.nav li{float:left;border-right:solid 1px #323232;}
+.nav a{display:block;padding-left:15px;padding-right:15px;font-size:16px;}
+.nav a:hover{color:white;}
+.menu{float:right;line-height:40px;width:100px;display:none;text-align:center;}
+.menu dl{position:absolute;width:100px}
+.menu dd{float:right;background-color:black;padding-left:10px;padding-right:10px;margin-bottom:2px;}
+.banner{width:1260px;margin-left:auto;margin-right:auto;height:430px;background-image:url(../%E8%80%81%E6%AE%B5%E4%BB%A3%E7%A0%81/day12/images/intro-middle.png);}
+.bannerbox{background-image:url(../%E8%80%81%E6%AE%B5%E4%BB%A3%E7%A0%81/day12/images/intro-repeat.png);}
+@media (max-width:940px){
+	.header{width:98%;}
+}
+@media (max-width:760px){
+	.nav a{font-size:12px;}
+}
+@media (max-width:640px){
+	.logo{line-height:40px;}
+	.nav{display:none;}
+	.menu{display:block;}
+}
+</style>
+<meta charset="UTF-8">
+<title>一个设计师的网站</title>
+</head>
+
+<body>
+<div class="topbox">
+	<div class="header overflowH">
+    	<div class="logo">个人标志</div>
+        <ul class="nav">
+        	<li><a href="">基本信息</a></li>
+            <li><a href="">作品展示</a></li>
+            <li><a href="">绘画与生活</a></li>
+            <li><a href="">自我评价</a></li>
+        </ul>
+        <div class="menu">收藏菜单
+        	<dl>
+                <dd><a href="">基本信息介绍</a></dd>
+                <dd><a href="">作品展示</a></dd>
+                <dd><a href="">绘画与生活</a></dd>
+                <dd><a href="">自我评价</a></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="bannerbox">
+	<div class="banner">
+    	<h1>标题</h1>
+        <p>段落</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

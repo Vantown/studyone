@@ -1,0 +1,638 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.boss{background-image:url(beijing.png); background-repeat:repeat-x; background-color:#000}
+img{display:block}
+body,h1,p{ margin:0}
+a{text-decoration:none;}
+.overflowH{overflow:hidden}
+.huikuang{ border:solid 1px #999;}
+.huishangkuang{border-top: solid 1px #999;}
+.huixiakuang{border-bottom:solid 1px #999;}
+.zuofudong{float:left}
+input{margin:0; padding:0; outline: none; border:none}
+
+.yemei{ background-color:#eaeaea; width:1000px; margin-left:auto; margin-right:auto; border-bottom: solid #FFF 2px; border-bottom: solid #FFF 1px; }
+.yemeiyueshu{ width:895px; margin-left:auto; margin-right:auto}
+.yemeiyueshu h1{ font-size:12px; color:#706f70; line-height:23px; margin-top:5px;}
+.yemeiyueshu *{float:left}
+.yemeiyueshu a{font-size:12px; color:#FFF; font-family:微软雅黑; font-weight:bold; margin-top:3px; line-height:23px; margin-left:14px; margin-top:-3px; }
+
+.danav{background-color:#FFF; width:1000px; margin-left:auto; margin-right:auto;}
+.navzi h1,.navzi a,.navyueshu img{float:left}
+.navyueshu{ width:900px; margin-left:auto; margin-right:auto}
+.navyueshu .logo{margin-top:11px;}
+.navzi h1{font-size:36px; font-family: "方正水柱简体"; color:#F00; margin-top:22px; margin-left:10px; letter-spacing:2px;}
+.navzi a{font-size:36px; font-family:微软雅黑; margin-top:18px; color:#0f3795; margin-left:5px; letter-spacing:3px;}
+.banner1{ margin-top:2px; margin-bottom:5px; margin-left:55px;}
+
+.shouyebj{width:1000px; margin-left:auto; margin-right: auto; background-image:url(shouyebj.png); background-repeat:}
+.shouyeyueshu{ margin-left:auto; margin-right:auto; width:893px;; font-weight:bold;}
+.shouyeyueshu a{margin-right:7px; line-height:36px; font-size:12px; color:#FFF}
+.shouyeyueshu a:hover{color:#666;}
+.shouyeyueshu a:active{background-color:#000;}
+
+.shouyexiahui{width:1000px; height:35px; background-image:url(shouyexiahui.png); background-repeat:; margin-left: auto; margin-right:auto;}
+
+.mainbox{width:1000px; margin-left:auto; margin-right:auto; background-color:#FFF;}
+.mainyueshu{width:920px; margin-left:auto; margin-right:auto;}
+.leftdakuang{float:left; margin-left:10px; margin-top:5px;}
+.leftyueshu{float:left;}
+.leftxia{margin-top:5px;}
+.leftxia .chanpin{margin-top:10px}
+.leftcolumn{ background-color:#CCC}
+.leftcolumn .leftshuzi,leftcolumn a{float:left;}
+.leftshuzi{ width:21px; height:12px; border-radius:15%; background-color:#666; margin-top:9px; margin-left:3px; color:#FFF; text-align:center; font-size:12px}
+.leftcolumn a{font-size:12px; color:#999; line-height:29px; font-weight:bold; margin-left:2px;}
+.leftcolumn .leftlan{color:#5281c1;}
+.leftcolumn1{ background-color:#FFF}
+.leftcolumn1 .leftshuzi,leftcolumn1 a{float:left;}
+.leftshuzi{ width:21px; height:12px; border-radius:15%; background-color:#666; margin-top:9px; margin-left:3px; color:#FFF; text-align:center; font-size:12px}
+.leftcolumn1 a{font-size:12px; color:#999; line-height:29px; font-weight:bold; margin-left:2px;}
+.leftcolumn1 .leftlan{color:#5281c1;}
+
+
+.leftyueshu2{float:left; margin-left:9px; width:346px}
+.eryueshushang p{ margin-left:285px; margin-top:-50px; font-size:14px; font-weight:bold}
+.eryueshushang h1{font-size:14px; color:#286bbb;}
+.eryueshushang a{font-size:12px; color:#5886c7;}
+.neirongyueshu{ margin-top:24px; width:333px; margin-left:auto; margin-right:auto;}
+.neirongyueshu *{margin:11px;}
+
+.eryueshuxia{ margin-top:5px; background-color:#f7f7f7;}
+.eryueshuxia .hangyeh1{font-size:14px; color:#000; font-weight:bold; font-family:微软雅黑; float:left; line-height:30px; margin-left:15px;}
+.eryueshuxia .gengduoa{font-size:12px; color:#000; float:left; margin-left:220px; line-height:30px;}
+.eryueshuxianei{margin-top:30px; background-color:#FFF; width:321px; margin-left:auto; margin-right:auto; margin-bottom:12px;}
+.eryueshuxianei1{display:block;}
+.eryueshuxianei1 img{margin:11px; float:left}
+.eryueshuxianei1 a{float:left; margin:0px; font-size:12px; color:#5986c6; font-weight:bold}
+.eryueshuxianeizi{ width:210px; height:60px; float:left; margin-top:12px;}
+.eryueshuxianei2{ display:block; margin-left:auto; margin-right:auto;}
+.eryueshuxianei2zi a{font-size:12px; font-weight:bold; color:#666;display:block; margin-left:17px; line-height:24px; border-top:dotted 1px #666}
+
+.rightyueshu{}
+.rightyueshushang{background-color:#f7f7f7; float:left; margin-left:9px; margin-top:5px;}
+.rightyueshu1 h1{font-size:14px; color:#000; font-weight:bold;float:left; margin-left:18px; margin-bottom:3px; margin-top:9px;}
+.rightyueshu1 img{float:left; margin-left:90px; margin-bottom:3px; margin-top:9px;}
+.rightyueshu2{float:left}
+.rightyueshu2 img{margin:6px;}
+
+.rightyueshuxia{ float:left; background-color:#f7f7f7; margin-left:9px; margin-top:5px; margin-right:10px;}
+.rightyueshuxianei{ margin-left:10px; margin-right:4px;}
+.rightyueshuxianei img{margin-top:12px;}
+.rightyueshuxianei input{ border:solid 1px #666; margin-top:5px; float:left; height:19px; margin-bottom:9px;}
+.rightyueshuxianei .serach{width:30px; line-height:22px; font-size:14px; color:#000; background-color:#c6c2ba; float:left; margin-top:4px; font-weight:bold; margin-left:3px; box-shadow:#666 2px 2px 2px}
+.zhexue{background-color:#054ba1; margin-top:7px;}
+.zhexue h1{ font-size:14px; font-weight:bold; color:#FFF; float:left;margin:10px;}
+.zhexue a{font-size:14px; font-weight:bold; color:#FFF; float:left; margin:10px; margin-left:40px;}
+.rightyueshuxianeixia img{float:left; margin-bottom:15px;}
+.rightyueshuxianeixia p{float:left; width:100px; line-height:; font-size:12px; margin-top:11px; color:#2d75ce; font-weight:bold; margin-left:7px;}
+
+.newsbox{width:1000px; margin-left:auto; margin-right:auto; padding-top:5px;; background-color:#FFF}
+.photonews{width:900px; margin-left:auto; margin-right:auto; background-color:#f7f7f7;}
+.photonewstop{ float:left}
+.photonewstop h1,.photonewstop a{ float:left; color:#333; margin-bottom:20px;}
+.photonewstop h1{ font-size:14px; margin-left:12px; margin-top:8px;}
+.photonewstop a{font-size:12px; margin-top:10px; margin-left:780px;}
+.photonewsbottom{width:900px; margin-left:auto; margin-right:auto; background-color:#f7f7f7;float:left}
+.photonewstu1{ float:left; margin-right:3px; margin-bottom:14px;}
+.photonewstu1 a{font-size:12px; color:#666}
+
+.lanloubox{background:#FFF; width:1000px; margin-left:auto; margin-right:auto; padding-top:10px; padding-bottom::10px; }
+.lanlouyueshu{ border:solid 1px #CCC; margin-left:auto; margin-right:auto; width:900px;}
+.lanlouyueshu img{ margin-left:auto; margin-right:auto}
+
+.wenhuabox{ background-color:#FFF; width:1000px; margin-left:auto; margin-right:auto;}
+.wenhuayueshu{ width:900px; margin-left:auto; margin-right:auto; background-color:#f7f7f7}
+.wenhuatop{float:left; background-color:#f7f7f7;}
+.wenhuatop1{ background-color:#f7f7f7}
+.wenhuatop1 h1{float:left; font-size:14px; color:#535353; margin-left:14px; line-height:27px;}
+.wenhuatop1 a{float:left; font-size:12px; color:#535353;margin-left:180px; line-height:27px;}
+.wenhuatop2{ float:left; width:282px; margin-left:10px; background-color:#FFF}
+.wenhuatop2top h1{background-image: url(wenhuabj1.png); background-repeat:no-repeat; font-size:12px; color:#FFF; line-height:26px; margin:9px; letter-spacing:1px; font-weight: bold}
+.wenhuatop2top a{font-size:12px; font-size:12px; color:#727272; line-height:20px; display:block; margin-left:5px;}
+.wenhuatop2bottom{ float:left; width:265px; margin-left:9px; border-top:dotted 1px #999}
+.wenhuatop2bottom h1{background-image: url(wenhuabj1.png); background-repeat:no-repeat; font-size:12px; color:#FFF; line-height:26px; margin:9px; letter-spacing:1px; font-weight: bold}
+.wenhuatop2bottom a{font-size:12px; font-size:12px; color:#727272; line-height:20px; display:block; margin-left:5px;}
+.wenhuatu{ width:890px; margin-left:auto; margin-right:auto; margin-top:8px;}
+.wenhuatu img{float:left}
+.rexiaobox{ margin-left:auto; margin-right:auto}
+.rexiaoyueshu h1{ font-size:14px; font-weight:bold; color:#424242; float:left; margin-left:10px; margin-top:12px}
+.rexiaoyueshu a{ font-size:12px; font-weight:bold; color:#424242; float:left; margin-left:750px; margin-top:14px}
+.rexiaotubj{margin-left:auto; margin-right:auto; background-color:#FFF; width:874px; margin-bottom:13px; margin-top:11px;}
+.rexiaotuyueshu{margin-left:auto; margin-right:auto;}
+.rexiaotuyueshu img{ float:left; margin-right:3px; margin-left:3px; margin-top:13px; margin-bottom:13px;}
+
+.shipinbj{ width:1000px; margin-left:auto; margin-right:auto; background-color:#FFF; padding-top:9px;}
+.shipinzongyueshu{ width:900px; margin-left:auto; margin-right:auto; background-color:#f7f7f7; }
+.shipinyueshu1{ float:left; margin-left:10px; margin-top:8px; background-color:#f7f7f7}
+.shipinbiaoti h1{ font-size:14px; font-weight:bold; color:#535353; float:left; margin-left:12px;}
+.shipinbiaoti a{font-size:12px; color:#535353; float:left; margin-left:170px;}
+.shipinneirongyueshu{ width:280px; margin-top:20px; margin-right:5px; background-color:#FFF;}
+.shipinneirongyueshu img{ float:left}
+.shipinneirongyueshu a{font-size:12px; color:#535353; float:left;}
+.shipinneirongtop{ border-bottom:dotted 1px #666; padding:1px; padding-top:10px; padding-bottom:12px;}
+.shipinneirongtop img{ float:left; margin-left:10px;}
+.shipinneirongtop a{ float:left;width:165px; color:#1f6bc9; margin-left:12px; line-height:20px; letter-spacing:1px;}
+.shipinneirongbottom{ margin-left:auto; margin-right:auto; margin-left:15px; margin-top:14px;}
+.shipinneirongbottom1{float:left; margin-bottom:12px;}
+.shipinneirongbottom1 img{ float:left}
+.shipinneirongbottom1 a{ float:left}
+.shipinxiadatu{margin-left:auto; margin-right:auto; background-color:#FFF; float:left; margin-left:9px; margin-top:5px; margin-bottom:10px; padding-left:5px; padding-right:5px;}
+.shipinxiadatu img{ float:left; margin-top:10px; margin-left:7px; margin-bottom:9px;}
+
+.hangyebox{width:1000px; margin-left:auto; margin-right:auto; background-color:#FFF;padding-top:9px}
+.hangyeyueshu{ width:900px; margin-left:auto; margin-right:auto; background-color:#f7f7f7;}
+.hangyeyueshu h1{ font-size:14px;color:#666; margin:8px;}
+.hangyeyueshu a{font-size:12px;color:#666}
+.hangyeneirong{ margin-left:auto; margin-right:auto; margin-left:10px; padding-left:5px; padding:5px; background-color:#FFF; margin-bottom:18px; }
+
+.jiewei{width:1000px; margin-left:auto; margin-right:auto; background-color:#FFF;}
+.jiewei img{ margin-left:auto; margin-right:auto}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+
+<div class="boss">
+
+	<div class="yemei overflowH">
+    	<div class="yemeiyueshu">
+    		<h1>中文版|英文版|联系我们</h1>
+        	<span style=" width:100px; height:20px; background-color:#F00; margin-top:6px; margin-left:5px; border-radius:50%; box-shadow:#333 2px 2px 2px;"><a>没有网址导航</a></span>
+        </div>
+    </div>
+    
+    <div class="danav">
+    	<div class="navyueshu overflowH">
+        <img class="logo" src="logo.png">
+        	<div class="navzi">
+            	<h1>修正</h1>
+                <a>药业</a>
+            </div>
+            <img class="banner1" src="banner1.png">
+        </div>
+    </div>
+  	<div class="shouyebj">
+    	<div class="shouyeyueshu">
+        	<a href="">网站首页</a>
+            <a href="">走进修正</a>
+            <a href="">新闻中心</a>
+            <a href="">集团产品</a>
+            <a href="">产业基地</a>
+            <a href="">科技研发</a>
+            <a href="">用药指南</a>
+            <a href="">市场营销</a>
+            <a href="">招标采购</a>
+            <a href="">修正文化</a>
+            <a href="">党团建设</a>
+            <a href="">爱心修正</a>
+            <a href="">人力资源</a>
+            
+        </div>
+    </div>  
+    <div class="shouyexiahui">
+    </div>
+    <div class="mainbox">
+    	<div class="mainyueshu overflowH">
+        	<div class="leftdakuang">
+        		<div class="leftyueshu">
+         			<img class="fudongtu huikuang" src="fudongtu.png">
+                    <div class="leftxia huikuang">
+                    	<img class="chanpin" src="chanpinzhanshi.png">
+                        <img src="sidashu.png">
+                        <div class="leftcolumn">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn1">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn1">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn1">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn1">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div class="leftcolumn">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        <div style="margin-bottom:2px;" class="leftcolumn1">
+                        	<div class="leftshuzi">02</div>
+                        	<a href="">风湿类骨&nbsp;&nbsp;颈腰康胶囊...[<span class="leftlan">详细</span>]</a>
+                        </div>
+                        
+                        
+                    </div>
+         		</div>
+                <div class="leftyueshu2">
+                	<div class="eryueshushang huikuang">
+                    	<img class="zuofudong" src="newsanjiao.png">
+                        <p class="zuofudong">更多>></p>
+                        <div class="neirongyueshu">
+                        	<h1>&nbsp;&nbsp;&nbsp;修正药业集团博士后工作站&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 召开研究课题阶段进展汇报研讨会</h1>
+                        	<a href="">5月19日，修正药业集团博士后工作站在长春修正大厦召开了研究课题阶段性进展汇报、研讨会。</a>
+                        	<h1 >&nbsp; “现代中药制药过程质量控制现金技术师范应用 产业化”项目正在长白山地区修正药业生产基地设实施</h1>
+                        	<a href="">&nbsp;“现代中药制药过程质量控制现金技术师范应用产业化”项目于2010年列入国家高技术产业发展专项</a>
+                        	<h1>&nbsp;&nbsp;&nbsp;新药“美洛昔康注射剂”完成临床研究实验</h1>
+                        	<a href="">&nbsp;美洛昔康注射剂是修正药业集团风湿骨痛系列产品研究研发的新药成果之一，现已完成临床试验研究。......</a>
+                        </div>
+                    </div>
+                    <div class="eryueshuxia">
+                    	<div class="erxiamain">
+                        </div>
+                    </div>
+                    <div class="eryueshuxia huikuang">
+                    	<h1 class="hangyeh1">行业新闻</h1>
+                        <a class="gengduoa" href="">更多>></a>
+                    	<div class="eryueshuxianei huikuang">
+                        	<div class="eryueshuxianei1 overflowH">
+                        		<img src="hangyexinwen.png">
+                                <div class="eryueshuxianeizi">
+                                <a style="line-height:12px" href="">修正药业集团2012年第一期新药研发成果引进洽谈会在北京召开</a>
+                                <a style="line-height:12px; margin-top:10px;" href="">修正药业集团2012年第一期新药研发成果引进洽谈会在北京召开</a>
+                                </div>
+                           </div>
+                           <div class="eryueshuxianei2">
+                           		<div class="eryueshuxianei2zi overflowH">
+                           			<a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                    <a href="">中华全国工商联医药业商会常务理事会在深圳召开</a>
+                                </div>
+                           </div>
+                        </div>
+                        
+                </div>
+                </div>
+                
+             <img style="clear:both; margin-top:727px;" src="mainbottom.png">
+            </div>
+            
+            
+            <div class="rightyueshu">
+            	<div class="rightyueshushang huikuang">
+                	<div class="rightyueshu1">
+                    	<h1>专题回顾</h1>
+                        <img src="sanyuan.png">
+                    </div>
+                    <div class="rightyueshu2">
+                    	<img src="righttu.png">
+                        <img src="righttu.png">
+                        <img src="righttu.png">
+                        <img src="righttu.png">
+                    </div>
+                </div>
+                <div class="rightyueshuxia overflowH huikuang">
+                	<div class="rightyueshuxianei">
+                				<img src="neswjiansuo.png">
+                                <input>
+                                <div class="serach">搜索</div>
+                                <img style="clear:both;" src="jiameng.png">
+                                <div class="zhexue overflowH">
+                                	<h1>○修正企业哲学</h1>
+                                    <a href="">更多>></a>
+                                </div>
+                    	<div class="rightyueshuxianeixia">
+                        	<img src="xiuzhengzhexue.png">
+                            <p>修涞贵是一名成功的企业家，也是一名哲学管理家，更是一名超越企业家和财经人物范畴的高哲学素养的大成成功人士。他的很多注明企业思想被传媒成为“中国新时期成长”...<span style="color:#000">[</span>详细<span style="color:#000">]</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+            
+             
+        </div>
+    </div>
+    
+    
+    
+  <div class="newsbox">
+    <div class="photonews overflowH huikuang">
+    	<div class="photonewstop">
+        	<h1>图片新闻</h1>
+            <a href="">更多>></a>
+        </div>
+        <div class="photonewsbottom">
+        	<div class="photonewsbottomtu">
+            	<img style=" margin-left:20px; margin-top:36px; float:left; margin-right:12px;" src="xiaojiantou1.png">
+                <div class="photonewstu1">
+                	<img src="newsphoto1.png">
+                    <a href="">修正药业集团被中华人民共...</a>
+                </div>
+                <div class="photonewstu1">
+                	<img src="newsphoto2.png">
+                    <a href="">修正药业集团被中华人民共...</a>
+                </div>
+                <div class="photonewstu1">
+                	<img src="newsphoto3.png">
+                    <a href="">修正药业集团被中华人民共...</a>
+                </div>
+                <div class="photonewstu1">
+                	<img src="newsphoto4.png">
+                    <a href="">修正药业集团被中华人民共...</a>
+                </div>
+                <div class="photonewstu1">
+                	<img src="newsphoto5.png">
+                    <a href="">修正药业集团被中华人民共...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="lanloubox">
+  	<div class="lanlouyueshu">
+  		<img src="lanlou.png">
+    </div>    
+  </div>
+  
+  <div class="wenhuabox">
+  	<div class="wenhuayueshu huikuang overflowH">
+    	<div class="wenhuatop">
+        	<div class="wenhuatop1">
+            	<h1>修正文化</h1>
+                <a href="">更多>></a>
+            </div>
+            <div class="wenhuatop2 huikuang">
+            	<div class="wenhuatop2top">
+                	<h1>&nbsp;修正图书</h1>
+               	 	<a href="">·修正哲学Ⅰ——开启卓越人生的心灵智慧</a>
+               	 	<a href="">·修涞贵与修正哲学——应当天下共享</a>
+                	<a href="">·正道——我的人生感悟和创业心路</a>
+                	<a style="margin-bottom:12px;" href="">·人人都是董事长</a>
+                </div>	
+                <div class="wenhuatop2bottom">
+                	<h1>&nbsp;修正图书</h1>
+               	 	<a href="">·修正哲学Ⅰ——开启卓越人生的心灵智慧</a>
+               	 	<a href="">·修涞贵与修正哲学——应当天下共享</a>
+                	<a href="">·正道——我的人生感悟和创业心路</a>
+                	<a style="margin-bottom:12px;" href="">·人人都是董事长</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wenhuatop">
+        	<div class="wenhuatop1">
+            	<h1>修正文化</h1>
+                <a href="">更多>></a>
+            </div>
+            <div class="wenhuatop2 huikuang">
+            	<div class="wenhuatop2top">
+                	<h1>&nbsp;修正图书</h1>
+               	 	<a href="">·修正哲学Ⅰ——开启卓越人生的心灵智慧</a>
+               	 	<a href="">·修涞贵与修正哲学——应当天下共享</a>
+                	<a href="">·正道——我的人生感悟和创业心路</a>
+                	<a style="margin-bottom:12px;" href="">·人人都是董事长</a>
+                </div>	
+                <div class="wenhuatop2bottom">
+                	<h1>&nbsp;修正图书</h1>
+               	 	<a href="">·修正哲学Ⅰ——开启卓越人生的心灵智慧</a>
+               	 	<a href="">·修涞贵与修正哲学——应当天下共享</a>
+                	<a href="">·正道——我的人生感悟和创业心路</a>
+                	<a style="margin-bottom:12px;" href="">·人人都是董事长</a>
+                </div>
+            </div>
+        </div><div class="wenhuatop">
+        	<div class="wenhuatop1">
+            	<h1>修正文化</h1>
+                <a href="">更多>></a>
+            </div>
+            <div class="wenhuatop2 huikuang">
+            	<div class="wenhuatop2top">
+                	<h1>&nbsp;修正图书</h1>
+               	 	<a href="">·修正哲学Ⅰ——开启卓越人生的心灵智慧</a>
+               	 	<a href="">·修涞贵与修正哲学——应当天下共享</a>
+                	<a href="">·正道——我的人生感悟和创业心路</a>
+                	<a style="margin-bottom:12px;" href="">·人人都是董事长</a>
+                </div>	
+                <div class="wenhuatop2bottom">
+                	<h1>&nbsp;修正图书</h1>
+               	 	<a href="">·修正哲学Ⅰ——开启卓越人生的心灵智慧</a>
+               	 	<a href="">·修涞贵与修正哲学——应当天下共享</a>
+                	<a href="">·正道——我的人生感悟和创业心路</a>
+                	<a style="margin-bottom:12px;" href="">·人人都是董事长</a>
+                </div>
+            </div>
+        </div>
+        <div class="wenhuatu overflowH">
+        	<img style="margin-top:8px;" src="wenhua1.png">
+        	<img style="margin-left:5px; margin-top:8px;" src="wenhua2.png">
+        </div>
+        
+        <div class="rexiaobox">
+        	<div class="rexiaoyueshu overflowH">
+            	<h1>热销产品</h1>
+                <a href="">更多>></a>
+            </div>
+            <div class="rexiaotubj overflowH huikuang">
+            	<div class="rexiaotuyueshu">
+                	<img style="margin-left:20px;" src="rexiao1.png">
+                    <img src="rexiao2.png">
+                    <img src="rexiao3.png">
+                    <img style="margin-right:20px;" src="rexiao4.png">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+  </div>  
+    <div class="shipinbj">
+    	<div class="shipinzongyueshu huikuang overflowH">
+        	<div class="shipinyueshu1" >
+            	<div class="shipinbiaoti">	
+                <h1>视频报道</h1>
+                <a href="">更多>></a>    
+                </div>
+                <div class="shipinneirongyueshu huikuang overflowH">
+                	<div class="shipinneirongtop overflowH">
+                    	<img src="shipintu1.png">
+                        <a href="">刘世财总经理接受独家专访医药产业发展任重道远[详细]</a>
+                    </div>
+                    <div class="shipinneirongbottom">
+                    	<div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div> 
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                         <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shipinyueshu1" >
+            	<div class="shipinbiaoti">	
+                <h1>视频报道</h1>
+                <a href="">更多>></a>    
+                </div>
+                <div class="shipinneirongyueshu huikuang overflowH">
+                	<div class="shipinneirongtop overflowH">
+                    	<img src="shipintu1.png">
+                        <a href="">刘世财总经理接受独家专访医药产业发展任重道远[详细]</a>
+                    </div>
+                    <div class="shipinneirongbottom">
+                    	<div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div> 
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                         <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shipinyueshu1" >
+            	<div class="shipinbiaoti">	
+                <h1>视频报道</h1>
+                <a href="">更多>></a>    
+                </div>
+                <div class="shipinneirongyueshu huikuang overflowH">
+                	<div class="shipinneirongtop overflowH">
+                    	<img src="shipintu1.png">
+                        <a href="">刘世财总经理接受独家专访医药产业发展任重道远[详细]</a>
+                    </div>
+                    <div class="shipinneirongbottom">
+                    	<div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div> 
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                         <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                        <div class="shipinneirongbottom1">
+                    		<img src="shipintu2.png">
+                        	<a href="">刘不贵专访：品牌才是吸引消费者的关键</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         	<div class="shipinxiadatu huikuang overflowH">
+            	<img src="shipinda1.png">
+                <img src="shipinda2.png">
+                <img src="shipinda3.png">
+                <img style="margin-right:10px;" src="shipinda4.png">
+            </div>  
+        </div>
+    </div>
+    <div class="hangyebox">
+    	<div class="hangyeyueshu huikuang">
+        	<h1>行业协会</h1>
+            <div class="hangyeneirong">
+            	<a>|中华全国工商联医药商会|中国医促会|中国医药会|中国医药商业协会|中国中药协会|中国医药质量管理协会|中国医疗企业管理协会|紧邻省食品药品监督管理局</a>
+            </div>
+        </div>
+    </div>
+    <div class="hangyebox">
+    	<div class="hangyeyueshu huikuang">
+        	<h1>行业链接</h1>
+            <div class="hangyeneirong">
+            	<a style="margin-left:300px;">|修正保健品|修正日化|修正孕婴事业部|修正健康科技</a>
+            </div>
+        </div>
+    </div>
+    <div class="hangyebox">
+    	<div style=" padding-top:10px" class="hangyeyueshu huikuang">
+            <div  class="hangyeneirong">
+            	<a style="margin-left:330px;;">联系我们——诚聘英才——事业部专题栏</a>
+            </div>
+        </div>
+    </div>
+    <div  class="jiewei">
+    	<img src="zuihou.png">
+    </div>
+</div>
+
+</body>
+</html>

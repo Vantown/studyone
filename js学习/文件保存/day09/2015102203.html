@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.parent{width:100px; height:40px; background-color:#0F0; position:relative; float:left;}
+.childrent{ width:200px; height:150px; background-color:#0FF; position:absolute; left:0; top:40px;}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="parent">菜单
+	<div class="childrent">内容列表
+    </div>
+</div>
+<div class="parent">菜单
+	<div class="childrent">内容列表
+    </div>
+</div>
+<div class="parent">菜单
+	<div class="childrent">内容列表
+    </div>
+</div>
+<div class="parent">菜单
+	<div class="childrent">内容列表
+    </div>
+</div>
+<div class="parent">菜单
+	<div class="childrent">内容列表
+    </div>
+</div>
+<div class="parent">菜单
+	<div class="childrent">内容列表
+    </div>
+</div>
+<div style="clear:both">下面的内容</div>
+
+<script>
+$(".childrent").hide();
+$(".parent").mouseenter(
+		function(){
+			$(this).children().show().animate({opacity:0.5});
+		}
+).mouseleave(
+		function(){
+			$(".childrent").hide();
+		}
+
+)
+
+
+</script>
+</body>
+</html>

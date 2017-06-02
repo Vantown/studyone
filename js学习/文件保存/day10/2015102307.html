@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.box{ width:590px; height:870px; position:relative;}
+img{ display:block}
+.ctrl{ position: absolute; right:30px; bottom:50px;}
+.ctrl span{ float:left; width:10px; height:10px; background-color:#999; margin-left:3px; margin-right:3px; border-radius:50%}
+.ctrl .current{ background-color:#FFF}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="box">
+	<img src="tu1.png">
+    <img src="tu2.png">
+    <img src="tu3.png">
+    <img src="tu4.png">
+    <img src="tu5.png">
+    <img src="tu6.png">
+    <img src="tu7.png">
+    <img src="tu8.png">
+    <img src="tu9.png">
+    <img src="tu10.png">
+    <div class="ctrl">
+    	<span class="current"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<script>
+$(".box img").hide().first().show()
+$(".ctrl span").mouseenter(
+		function(){
+			$(this).addClass("current").siblings().removeClass("current")
+			$(".box img").hide().eq($(this).index()).show();
+		}
+)
+</script>
+</body>
+</html>

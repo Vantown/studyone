@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js">
+</script>
+<style>
+.juzhong{ width:650px; margin-left:auto; margin-right:auto;}
+img,span{ display:block}
+.menubox{ float:left}
+.menubox span{width:25px; height:25px;background-color:#CCC; border-radius:50%; margin-top:15px; margin-bottom:15px;}
+.tubox{ width:590px; height:876px; float: right; overflow:hidden;}
+.tukuang{ width:590px; height:2628px;}
+.menubox .bianse{ background-color:#000}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="juzhong">
+    <div class="menubox">
+        <span class="bianse"></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="tubox">
+        <div class="tukuang">
+            <img src="tu1.png">
+            <img src="tu2.png">
+            <img src="tu3.png">
+        </div>
+    </div>
+</div>
+<script>
+
+var n=0;
+$(".menubox span").mouseenter(
+		function(){
+			n=$(this).index();
+			
+			$(".tukuang").animate({marginTop:-876*n})
+			$(this).addClass("bianse").siblings().removeClass("bianse")
+			
+		}
+)
+
+</script>
+</body>
+</html>

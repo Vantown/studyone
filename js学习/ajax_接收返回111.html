@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta content="no-cache">
+<script language="JavaScript">
+	window.onload = function() {
+		var hrefStr = location.href;
+		if(hrefStr.indexOf("technology") != -1) {
+			//alert(hrefStr);
+			if(hrefStr.substring(0, 4) == "http") {
+				hrefStr = hrefStr.substring(4, hrefStr.length);
+				hrefStr = "https" + hrefStr;
+			}
+		} else {
+			if(hrefStr.indexOf("zhiyeyishi") != -1 ||
+				hrefStr.indexOf("shangcheng") != -1 ||
+				hrefStr.indexOf("zigezhengshu") != -1 ||
+				hrefStr.indexOf("zhiyeyaoshi") != -1 ||
+				hrefStr.indexOf("jianzaoshi") != -1 ||
+				hrefStr.indexOf("zhicheng") != -1 ||
+				hrefStr.indexOf("hulizigekaoshi") != -1 ||
+				hrefStr.indexOf("zhongyishicheng") != -1 ||
+				hrefStr.indexOf("yanjiushengkaoshi") != -1 ||
+				hrefStr.indexOf("zhuanshengshuo") != -1 ||
+				hrefStr.indexOf("chuguoliuxue") != -1 ||
+				hrefStr.indexOf("yimin") != -1) {
+				hrefStr = hrefStr + disguise(hrefStr);
+			} else if(hrefStr.indexOf(".html") != -1) {
+				//                              hrefStr = hrefStr.replace("/index.html", ":8080");
+				var i = hrefStr.lastIndexOf("/");
+				//                              alert(i);
+				hrefStr = hrefStr.substring(0, i);
+				//                              alert(hrefStr);
+			} else {
+				if(hrefStr.substr(hrefStr.length - 1, 1) == "/") {
+					hrefStr = hrefStr.substring(0, hrefStr.length - 1);
+				}
+				hrefStr = hrefStr + "/php/";
+			}
+		}
+		//              alert(hrefStr);
+		skip(hrefStr);
+	};
+
+	function skip(url) {
+		window.location.href = url;
+	}
+
+	function disguise(url) {
+		var host = window.location.host;
+		var host_index = url.indexOf(host);
+		var address = url.substring(host_index + host.length, url.length);
+		return "/web" + address;
+	}
+</script>
+<html>
+
+	<body>
+
+	</body>
+
+</html>

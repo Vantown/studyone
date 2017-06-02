@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.beijing{background-color:#0F0; color:#FFF}
+</style>
+<script src="jquery.js">
+</script>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div>
+	<a>点击</a>
+    <a>点击</a>
+    <a>点击</a>
+    <a>点击</a>
+    <a>点击</a>
+    <a>点击</a>
+</div>
+<script>
+$("div a").click(
+		function(){
+			$("div a").eq(3).addClass("beijing").siblings().removeClass("beijing")
+		}
+)
+</script>
+</body>
+</html>

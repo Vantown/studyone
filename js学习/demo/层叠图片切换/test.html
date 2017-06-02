@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link href="css/zhongyu_project_v0.1_0122.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="shortcut icon" type="image/ico" href="http://jz.zhongyuedu.com/images/green/favicon.ico">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.roundabout.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style type="text/css">
+        .hover_red:hover {
+            color: #a02b30 !important;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .hover_shou:hover {
+            cursor: pointer;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        .font_weight_N {
+            font-weight: normal;
+        }
+
+        img {
+            display: block;
+            border: 0;
+        }
+
+        .hover_blue:hover {
+            color: #1aa6fe !important;
+        }
+
+        .hover_BGblue:hover {
+            background-color: #0291ed !important;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function checkTel() {
+            var reg = /^(1\d{10})$/;
+            var tel = document.getElementById("atc_my_827").value;
+            if (!(reg.test(tel))) {
+                alert("请输入正确的手机号");
+                document.getElementById("atc_my_827").value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <title>中域职称</title>
+
+
+</head>
+
+
+<body>
+<center>
+    <div style="width: 100%;height: 300px;">
+        <div style="width: 990px;height: 300px;background-color: #0c4da8"></div>
+    </div>
+</center>
+<div style="">
+    <div id="tour" class="zebra">
+        <div class="wrap">
+            <div class="switcher-wrap slider">
+                <a class="prev jQ_sliderPrev" href=""></a>
+                <a class="next jQ_sliderNext" href=""></a>
+
+                <ul id="img-slider" style="height: 450px;">
+                    <li class="img">
+                        <img src="images/client.png"/>
+                        <div class="label">Client</div>
+                    </li>
+                    <li class="img">
+                        <img src="images/developer.png"/>
+                        <div class="label">Developer</div>
+                    </li>
+                    <li class="img">
+                        <img src="images/manager.png"/>
+                        <div class="label">Manager</div>
+                    </li>
+                    <li class="img">
+                        <img src="images/tester.png"/>
+                        <div class="label">Tester</div>
+                    </li>
+                    <li class="img">
+                        <img src="images/user.png"/>
+                        <div class="label">Power User</div>
+                    </li>
+                </ul>
+                <ul class="switcher jQ_sliderSwitch">
+                    <li class="active"><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<center>
+    <div style="width: 100%;height: 300px;">
+        <div style="width: 990px;height: 300px;background-color: #0c4da8"></div>
+    </div>
+</center>
+</body>
+</html>

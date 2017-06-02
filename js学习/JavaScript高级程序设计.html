@@ -1,0 +1,3333 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="shortcut icon" type="image/ico"
+          href="http://jz.zhongyuedu.com/images/green/favicon.ico">
+
+
+    <script src='js/jquery-2.1.4.js'></script>
+
+    <script src='js/device.min.js'></script>        <!--这个是判断访问设备和当前屏幕分辨率的-->
+
+    <!--[if IE 6]>
+    <script type="text/javascript" src="js/2.js"></script>
+    <![endif]-->
+
+    <script src='jQueryAssets/jquery-ui-1.9.2.accordion.custom.min.js'
+            type='text/javascript'></script>
+    <script type='text/javascript'>
+        function scroll() {
+            var title = document.title;
+            var firstch = title.charAt(0);
+            var leftstar = title.substring(1, title.length);
+            document.title = leftstar + firstch;
+        }
+        setInterval('scroll()', 500);//网页title滚动显示，注意要加上 <meta http-equiv='Content-Type' content='text/html; charset=gb2312' >
+    </script>
+
+    <script src="js/device.min.js"></script>
+    <script type="text/javascript">
+        //这俩是判断访问设备和当前分辨率的
+        if (device.mobile()) {
+            window.location = "http://m.zhongyuyao.com";
+        }
+    </script>
+    <SCRIPT LANGUAGE="JavaScript">
+        //屏蔽可忽略的js脚本错误
+        /*function killErr(){
+         return true;
+         }
+         window.onerror=killErr;*/
+    </SCRIPT>
+
+
+    <meta http-equiv='Page-Enter' content='revealTrans(duration=1000,?transition=10)'>
+    <meta http-equiv='Page-Exit' content='revealTrans(duration=x,?transition=y)'>
+    <meta http-equiv='Content-Type' content='text/html; charset=gb2312'/>
+
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+    <meta name='keywords' content='执业医师培训，执业医师考试培训，执业医师培训机构，执业医师培训班，执业医师资格培训，执业医师考试辅导'>
+    <meta name='description'
+          content='中域医考执业医师考试培训，中国最专业的执业医师考试培训机构，中域医考执业医师面授培训班，医考权威名师云集，2016年执业医师最新培训课程立志打造医考培训行业超高通过率'>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0"><!--设置禁用缓存-->
+    <!-- package com.servlet;
+HTML的HTTP协议头信息中控制着页面在几个地方的缓存信息，包括浏览器端，中间缓存服务器端(如：squid等)，Web服务器端。本文讨论头信息 中带缓存控制信息的HTML页面(JSP/Servlet生成好出来的也是HTML页面)在中间缓存服务器中的缓存情况。
+      HTTP协议中关于缓存的信息头关键字包括Cache-Control(HTTP1.1)，Pragma(HTTP1.0)，last-Modified，Expires等。
+      HTTP1.0中通过Pragma 控制页面缓存，可以设置：Pragma或no-cache。网上有非常多的文章说明如何控制不让浏览器或中间缓存服务器缓存页面，通常设置的值为no- cache，不过这个值不这么保险，通常还加上Expires置为0来达到目的。但是如我们刻意需要浏览器或缓存服务器缓存住我们的页面这个值则要设置为 Pragma。
+      HTTP1.1中启用Cache-Control 来控制页面的缓存与否，这里介绍几个常用的参数：
+no-cache，浏览器和缓存服务器都不应该缓存页面信息；
+public，浏览器和缓存服务器都可以缓存页面信息；
+no-store，请求和响应的信息都不应该被存储在对方的磁盘系统中；
+must-revalidate，对于客户机的每次请求，代理服务器必须想服务器验证缓存是否过时；
+       Last-Modified只页面的最后生成时间，GMT格式；
+       Expires过时期限值，GMT格式，指浏览器或缓存服务器在该时间点后必须从真正的服务器中获取新的页面信息；
+       上面两个值在JSP中设置值为字符型的GMT格式，无法生效，设置long类型才生效；
+
+下面是一个测试例子：
+ import java.io.IOException;
+ import java.io.PrintWriter;
+
+ import javax.servlet.ServletException;
+ import javax.servlet.http.HttpServlet;
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;
+
+public class ServletA extends HttpServlet {
+    @Override
+  public void service(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+       response.setContentType("text/html");
+       //servlet页面默认是不缓存的
+       //本页面允许在浏览器端或缓存服务器中缓存，时限为20秒。
+       //20秒之内重新进入该页面的话不会进入该servlet的
+         java.util.Date date = new java.util.Date();
+        response.setDateHeader("Last-Modified",date.getTime()); //Last-Modified:页面的最后生成时间
+         response.setDateHeader("Expires",date.getTime()+20000); //Expires:过时期限值
+        response.setHeader("Cache-Control", "public"); //Cache-Control来控制页面的缓存与否,public:浏览器和缓存服务器都可以缓存页面信息；
+        response.setHeader("Pragma", "Pragma"); //Pragma:设置页面是否缓存，为Pragma则缓存，no-cache则不缓存
+
+         //不允许浏览器端或缓存服务器缓存当前页面信息。
+        /*response.setHeader( "Pragma", "no-cache" );
+        response.setDateHeader("Expires", 0);
+        response.addHeader( "Cache-Control", "no-cache" );//浏览器和缓存服务器都不应该缓存页面信息
+         response.addHeader( "Cache-Control", "no-store" );//请求和响应的信息都不应该被存储在对方的磁盘系统中；
+         response.addHeader( "Cache-Control", "must-revalidate" );*///于客户机的每次请求，代理服务器必须想服务器验证缓存是否过时；
+
+        System.out.println("进入了servlet");
+         response.getWriter().write("欢迎光临我的主页");
+     }
+
+
+ }
+
+　　如果需要在html页面上设置不缓存，这在<head>标签中加入如下语句：
+1 <meta http-equiv="pragma" content="no-cache">
+2 <meta http-equiv="cache-control" content="no-cache">
+3 <meta http-equiv="expires" content="0">
+
+附：html页面中meta的作用
+　　meta是用来在HTML文档中模拟HTTP协议的响应头报文。meta 标签用于网页的<head>与</head>中，meta 标签的用处很多。meta 的属性有两种：name和http-equiv。name属性主要用于描述网页，对应于content（网页内容），以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）。这其中最重要的是description（站点在搜索引擎上的描述）和keywords（分类关键词），所以应该给每页加一个meta值。比较常用的有以下几个：
+　　name 属性
+　　1、<meta name="Generator" contect="">用以说明生成工具（如Microsoft FrontPage 4.0）等；
+　　2、<meta name="KEYWords" contect="">向搜索引擎说明你的网页的关键词；
+　　3、<meta name="DEscription" contect="">告诉搜索引擎你的站点的主要内容；
+　　4、<meta name="Author" contect="你的姓名">告诉搜索引擎你的站点的制作的作者；
+　　5、<meta name="Robots" contect= "all|none|index|noindex|follow|nofollow">
+　　其中的属性说明如下：
+　　设定为all：文件将被检索，且页面上的链接可以被查询；
+　　设定为none：文件将不被检索，且页面上的链接不可以被查询；
+　　设定为index：文件将被检索；
+　　设定为follow：页面上的链接可以被查询；
+　　设定为noindex：文件将不被检索，但页面上的链接可以被查询；
+　　设定为nofollow：文件将不被检索，页面上的链接可以被查询。
+　　http-equiv属性
+　　1、<meta http-equiv="Content-Type" contect="text/html";charset=gb_2312-80">
+和 <meta http-equiv="Content-Language" contect="zh-CN">用以说明主页制作所使用的文字以及语言；
+　　又如英文是ISO-8859-1字符集，还有BIG5、utf-8、shift-Jis、Euc、Koi8-2等字符集；
+　　2、<meta http-equiv="Refresh" contect="n;url=http://yourlink">定时让网页在指定的时间n内，跳转到页面http://yourlink；
+　　3、<meta http-equiv="Expires" contect="Mon,12 May 2001 00:20:00 GMT">可以用于设定网页的到期时间，一旦过期则必须到服务器上重新调用。需要注意的是必须使用GMT时间格式；
+　　4、<meta http-equiv="Pragma" contect="no-cache">是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出；
+　　5、<meta http-equiv="set-cookie" contect="Mon,12 May 2001 00:20:00 GMT">cookie设定，如果网页过期，存盘的cookie将被删除。需要注意的也是必须使用GMT时间格式；
+　　6、<meta http-equiv="Pics-label" contect="">网页等级评定，在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的；
+　　7、<meta http-equiv="windows-Target" contect="_top">强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用；
+　　8、<meta http-equiv="Page-Enter" contect="revealTrans(duration=10,transtion= 50)">和<meta http-equiv="Page-Exit" contect="revealTrans(duration=20，transtion=6)">设定进入和离开页面时的特殊效果，这个功能即FrontPage中的“格式/网页过渡”，不过所加的页面不能够是一个frame页面。
+-->
+
+    <title>
+        JavaScript学习JavaScript学习JavaScript学习JavaScript学习JavaScript学习JavaScript学习JavaScript学习</title>
+
+
+    <style>
+        @import "css/zhongyu_project_v0.1_0122.css"; /*引入css（导入式），这样会网页加载完之后再加载css*/
+        /*@charset "utf-8"; 这个表示css的编码格式，在css文件和style里都可以*/
+        ::-webkit-input-placeholder { /* WebKit browsers */
+            color: #999;
+        }
+
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #999;
+        }
+
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #999;
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: #999;
+        }
+
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+            color: #636363;
+        }
+
+        input:-moz-placeholder, textarea:-moz-placeholder {
+            color: #636363;
+        }
+
+        .btn {
+            font-size: .9rem;
+            line-height: 25px;
+            margin-top: 10px;
+            border: solid 1px #b9e093;
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#efffea), to(#e8ffd1));
+            height: 25px;
+            width: 90%;
+            display: block;
+            text-align: center;
+            color: #7cb345;
+            border-radius: 5px /*渐变色*/
+        }
+
+        @font-face {
+            font-family: 方正兰亭细黑;
+            src: url('css/方正兰亭细黑GBK.ttf'),
+        }
+
+        .fzltxh {
+            font-family: 方正兰亭细黑;
+        }
+
+        #form_pc input {
+            color: #7cb6f6;
+            border: solid 1px #7cb6f6;
+            background-color: #fff;
+        }
+
+        #form_pc input.cc {
+            color: #fff;
+            background-color: #7cb6f6;
+        }
+    </style>
+</head>
+
+<body style="background-color: #C7EDCC;height: 10000px" onload="myFunction1666()">
+<button style="background: -webkit-gradient(linear, 0 0, 0 100%, from(#efffea), to(#e8ffd1));height: 150px;width: 150px;">渐变</button>
+<script>
+    function myFunction1666() {
+
+    }
+</script>
+<script>
+    var a = (function () {
+        "use strict";       //严格模式
+        return '这里是严格模式';
+    })();
+    //alert(a);
+    var tnull = null;
+    //alert(null instanceof  Object);//变量null是对象吗？
+    var tvar = 'test';
+    //alert(typeof(tvar));  //两种都可以
+    //alert(typeof tvar);
+</script>
+
+<script>
+    //3.4数据类型
+    // 数值转换：有3个函数可以吧非数值转换为数值：Number()、parseInt、和parseFloat()，第一个函数，即转型函数Number（）可以用于任何数据类型，而另两个函数则专门用于把字符串转换成数值
+    /*var str_1 = 10;
+    var value1 = null;
+    var value2;*/
+    //alert(str_1.toString(16));        //16 是基数，就是进制
+    //alert(String(value2));        //不确定值是不是null或undefined的情况下，用String的时候，如果值有toString（）方法，则调用该方法（没有参数）并返回相应的结果，如果值是null则返回‘null’，如果值是undefined，则返回‘undefined’，因为null和undefined没有toString（）的方法，所以返回这两个值的字面量。
+</script>
+<script>
+    /*3.47 Object类型
+     * Object的每个实例都具有下列属性和方法
+     * Constructor：保存着用于创建当前对象的函数（constructor即构造器，构造器就是函数，函数就是构造器,是prototype的属性，即对象实例的属性，而prototype是函数的属性），比如var o = new Object（），构造函数（constructor）就是Object（）
+     * hasOwnProperty（propertyName）：用户检查给定的属性在当前对象实例中（而不是在实例的原型中）是否存在，其中，作为参数的属性名（propertyName）必须以字符串形式指定（例如：o.hasOwnProperty（‘name’））
+     * PrototypeOf（object）；用于检查传入的对象是否是另一个对象的原型；
+     * propertyIsEnumerable（propertyName）：用于检查给定的属性是否能够使用for-in语句来枚举。与hasOwnProperty（）方法是一样，作为参数的属性名必须以字符串形式指定。
+     * toLocaleString（）：返回对象的字符串表示，该字符串与执行环境的地区对应
+     * toString（）：返回对象的字符串表示
+     * valueOf（）；返回对象的字符串、数值或布尔值表示，通常与toString（）方法返回值相同。
+     * 由于在ECMAScript中Object是所有对象的基础，因此所有对象都具有这些基本的属性和方法。*/
+    var age = 29;
+    //alert(--age + "," + ++age);
+    /*这些操作符对任何值都适用，也就是他们不仅适用于整数，还可以用于字符串、布尔值、浮点数值和对象，在应用于不同的值时，递减和递减操作符遵循下列规则
+     * 1：在应用于一个包含有效数字字符的字符串时，先将其转换为数字值，再执行加减1的操作，字符串变量变成数值变量
+     * 2：在应用于一个不包含有效数字字符的字符串时，将变量的值设置为NaN，字符串变量变成数值变量
+     * 3：在应用于布尔值false时，先将其转换为0再执行加减1的操作，布尔值变量变成数值变量。
+     * 4：在应用于布尔值true时，先将其转换为1再执行加减1的操作，布尔值变量变成数值变量。
+     * 5：在应用于浮点数值时，执行加减1的操作。
+     * 5：在应用于对象时。先调用对象的valueOf（）方法以取得一个可供操作的值，然后对该值应用钱数规则，如果结果是NaN，则在调用toString（）方法后再应用前述规则，对象变量变成了数值变量*/
+</script>
+<img src="jsimg2/3.4字符字面量.png">
+<input value="我是1"><input value="我是2"><input value="我是3"><input value="我是4"><input value="我是5">
+<script>
+    (function () {
+        var a = document.getElementsByTagName('input');
+        if (a.length > 0) {
+            for (i = 0; i < a.length; i++) {
+                document.write(a[i].value + '<br>')
+            }
+        }
+    })();
+    var oldValue = 2;
+    var newValue = oldValue << 5;       //左移操作符（<<）会将数值的所有位向左移动到指定的位数，例如数值2（二进制码为10）向左移动5位，结果就是64（二进制码为100000），右移（>>）
+    document.write(newValue + '<br>');
+    //绝对值：比如-18的绝对值是18，二进制的时候先求出数值的绝对值，然后反码（0和1互换）然后加1，就得到了负数的二进制码
+    //无符号右移（>>>）会将数值的所有32位都向右移动，对整数来说，无符号右移和有符号右移结果是相同的，但对负数来说就不一样了，其次无符号右移操作符会吧负数的二进制码当成整数的二进制码，而且由于负数以其绝对值的二进制补码形式表示，因此就会导致无符号右移后的结果非常之大，
+</script>
+
+
+<script>
+    //*******************************************************************重点，与或非判断返回结果****************************************************************************
+    /*3.53布尔操作符，与或非
+     逻辑非操作符
+     * 可以应用于任何值，无论这个值是个什么类型，都会返回一个布尔值，逻辑非操作符首先会将它的操作数转换成一个布尔值，然后再对其求反，也就是说，逻辑非操作符遵循下列规则：
+     * 1：如果操作数是一个对象，返回false
+     * 2：如果操作数是一个空字符串，返回true
+     * 3：如果操作数是一个非空字符串，返回false
+     * 4：如果操作数是数值0，返回true
+     * 5：如果操作数是任意非0的数值（包括Infinity），返回false
+     * 6：如果操作数的null，返回true
+     * 7：如果操作数是NaN，返回true
+     * 8：如果操作数是undefined，返回true*/
+
+    /*alert(!false);      //true
+     alert(!"blue");     //false
+     alert(!0);          //true
+     alert(!NaN);        //true
+     alert(!"");         //true
+     alert(!12345);      //false*/
+
+    //逻辑非操作符也可以用于将一个值转换为与其对应的布尔值，而同时使用两个逻辑非操作符，实际上就会模拟Boolean（）转型函数的行为。其中，第一个逻辑非操作符会基于无论什么操作符返回一个布尔值，而第二个逻辑非操作符则对应该布尔值求反，于是就得到了这个值真正对应的布尔值，当然，最终结果与对这个值使用Boolean（）函数相同，如下面的例子所示：
+
+    /*alert(!false);      //true
+     alert(!!"blue");     //true
+     alert(!!0);          //false
+     alert(!!NaN);        //false
+     alert(!!"");         //false
+     alert(!!12345);      //true*/
+
+    //2.逻辑与
+    //逻辑与操作符有两个和号（&&）表示，有两个操作数，如下面的例子所示：
+    var result = true && false;
+    /*逻辑与的真值表如下
+     第一个操作数true  第二个操作数true  结果true
+     true                false           false
+     false               true            false
+     false               false           false*/
+    var a = 2;
+    var b = 3;
+    var andflag = a && b;
+    var orflag = a || b;
+    /*
+     问andflag 和orflag 分别是什么？
+     起初我认为： andflag 和orflag 的值都为 true; 毕竟 && 和 || 都是求Boolean ，后来发现，我错了。
+     答案应该是 andflag = 3,orflag = 2;
+
+     其实，&&和||返回的是两个操作数的其中一个。
+     &&，左操作数为假值时，返回左操作数，否则返回右操作数。
+     ||，左操作数为假值时，返回右操作数，否则返回左操作数。
+     假值有空字符串""，数值0和-0，NaN，false，null和undefined。
+     */
+    var a1 = 1;
+    var b1 = 2;
+    //var a1result = (a1==1 && alert('左侧值为真值，执行这个，返回的是右边方法（在&&后面的方法）'));        //直接写就执行了
+    //alert(a1result)       //左侧值为真值，执行这个，返回的是右边方法（在&&后面的方法）
+    //var a2result = (a1==2 && alert('左侧值为假值，返回左操作数（左操作数结果为false）'));
+    //alert(a2result)
+    /*逻辑与操作可以应用于任何类型的操作数，而不仅仅是布尔值，再有一个操作数不是布尔值的情况下，逻辑与操作就不一定返回布尔值，此时，它遵循下列规则
+     * 如果第一个操作数是对象，则返回第二个操作数
+     * 如果第二个操作数是对象，则只有在第一个操作数的求值结果为true的情况下才返回该对象
+     * 如果两个操作数都是对象，则返回第二个操作数
+     * 如果有一个操作数是null，则返回null
+     * 如果有一个操作数是NaN，则返回NaN
+     * 如果有一个操作数是undefined，则返回undefined
+     * 逻辑与操作符属于短路了操作，即如果第一个操作数能够决定结果，那么就不会再对第二个操作数求值，对于逻辑与操作而言，如果第一个操作数是false，无论第二个操作数是什么值，结果都不再可能是true了，来看下面的例子*/
+    var found = true;
+    //var result = (found && someUndefinedVarible);       //这里会发生错误
+    //alert(result);      //这一行不会执行
+    //在上面的代码中，当执行逻辑与操作符时会发生错误，因为变量someUndefinedVarible没有声明，由于变量found的值是true，所以逻辑与操作符对变量someUndefinedVarible求值，但someUndefinedVarible尚未定义，因此就会导致错误，这说明不能再逻辑与操作符中使用未定义的值，如果向下面的这个例中一样，将found的值设置为false，就不会发生错误了
+    var found = false;
+    var result = (found && someUndefinedVarible);       //不会发生错误
+    //alert(result);      //会执行false
+    //在这个例子中，警告框会弹出来，无论变量someUndefinedVarible有没有定义，也永远不会对它求值，因为第一个操作数的值就是false，而这也就意味着逻辑与操作符的结果必定是false，根本用不着再对&&右侧的的操作数求值了，在志勇逻辑与操作符时要始终铭记它是一个短路操作符
+
+    /*3逻辑或
+     * 逻辑或操作符由两个熟悉那符号（||）表示，有两个操作数，如下面的例子所示*/
+    var result = true || false;
+    /*逻辑或的真值表如下
+     * 第一个操作数true    第二个操作数true  结果true
+     * true                  false           true
+     * false                 true            true
+     * false                 false           false
+     *
+     * 与逻辑与操作符相似，如果有一个操作数不是布尔值的话。逻辑或也不一定返回布尔值，此时，它遵循下列规则：
+     * 如果第一个操作数是对象，则返回第一个操作数
+     * 如果第一个操作数的求值结果为false，则返回第二个操作数
+     * 如果两个操作数都是对象，则返回第一个操作数
+     * 如果两个操作数都是null，则返回null
+     * 如果两个操作数都是NaN，则返回NaN
+     * 如果两个操作数都是undefined，则返回undefined
+     * 与逻辑与操作符相似，逻辑或操作符也是短路操作符，也就是说，如果第一个操作数的求值结果为true，就不会对第二个操作数求值了，下面看一个例子*/
+    var found = true;
+    var result = (found || someUndefinedVarible);       //不会发生错误
+    //alert(result);      //会执行（‘true’）
+    //这个例子跟前面的例子一样，变量someUndefinedVarible也没有定义，但是由于found的值是true，而变量someUndefinedVarible永远不会被求值，因此结果就会输出‘true’。如果像下面这个例子一样，把found的值改为false，就会导致错误
+    var found = false;
+    //var result = (found || someUndefinedVarible);       //这里会发生错误
+    //alert(result);      //这一行不会执行
+    //我们可以利用逻辑或的这一行来避免变量赋null或undefined值，例如：
+    //var myObject = preferredObject || backupObject;
+    //在这个例子中，变量myObject将被赋予等号后面两个值中的一个。变量preferredObject中包含优先赋予变量myObject的值，变量backupObject负责在preferredObject中不包含有效值的情况下提供后备值，如果preferredObject的值不是null，那么它的值将被赋给myObject，如果是null，则将backupObject的值赋给myObject，ECMAScript程序的赋值语句经常会使用这种模式，本书也将采用这种模式
+</script>
+
+<script>
+    /*3.5.4乘性操作符
+     * ECMAScript定义了3个乘性操作符：乘法、出发和求模。这些操作符与Java、C或者Perl中的相应操作符用途类似，只不过在操作数为非数值的情况下会执行自动的类型转换，如果参与乘法计算的某个操作数不是数值，后台会先使用Number（）转型函数将其转换为数值，也就是说，空字符串将被当做0，true将被当做1
+     * 1乘法
+     * 乘法操作符由一个型号（*）表示，用于计算两个数值的乘积，其语法类似于C，如下面的例子所示*/
+    var result = 34 * 56;
+    /*在处理特殊值的情况下，乘法操作符遵循下列特殊的规则
+     * 如果操作符都是数值，执行常规的乘法计算，即两个正数或两个负数想成的结果还是正数，而如果只有一个操作数有符号，那么结果就是负数，如果乘积超过了ECMAScript数值的表示范围，则返回Infinity活-Infinity；
+     * 如果有一个操作数的NaN，则结果是NaN；
+     * 如果是Infinity与0相乘，则结果是NaN
+     * 如果是Infinity与非0数值相乘，则结果是Infinity或-Infinity，取决于有符号操作数的符号
+     * 如果是Infinity与Infinity相乘，则结果是Infinity
+     * 如果有一个操作数不是数值，则在后台调用Number（）将其转换为数值，然后再应用上面的规则
+     *
+     * 2除法
+     * 除法操作符由一个斜线符号（/）表示，执行第二个操作数除第一个操作数的计算，如下面的例子所示：
+     * var result = 66 / 11
+     * 与乘法操作符类似，除法操作符对特殊的值也有特殊的处理规则，这些规则如下：
+     * 如果操作数都是数值，执行常规的除法计算，即两个正数或两个负数相除的结果还是正数，而如果只有一个操作数有符号，那么结果就是负数，如果商超过了ECMAScript数值的表示范围，则返回Infinity或-Infinity；
+     * 如果有一个操作数是NaN，则结果是NaN
+     * 如果是Infinity被Infinity除，则结果是NaN
+     * 如果是零被零除，则结果是NaN
+     * 如果是非零的有限数被零除，则结果是Infinity或-Infinity，取决于有符号的操作数的符号
+     * 如果是Infinity被任何非零的数值除，则结果是Infinity或-Infinity，取决于有符号的操作数的符号；
+     * 如果有一个操作数不是数值，则在后台调用Number（）将其转换为数值，然后再应用上面的规则*/
+</script>
+
+<script>
+    /*3.5.5加性操作符
+     * 加法和减法这两个加性操作符应该说是编程语言中最简单的算术操作符了，但是在ECMAScript中，这两个操作符却都有一系列的特殊行为。与乘性操作符类似，加性操作符也会在后台转换不同的数据类型，然而，对于加性操作符而言，相应的转换规则还稍微有点复杂
+     * 1.加法
+     * 加法操作符（+）的用法如下所示：
+     * var result1 = 1 + 2;
+     * 如果两个操作符都是数值，执行常规的加法计算，然后根据下列规则返回结果
+     * 如果有一个操作数是NaN，则结果是NaN
+     * 如果是Infinity加Infinity，则结果是Infinity
+     * 如果是-Infinity加-Infinity，则结果是-Infinity
+     * 如果是Infinity加-Infinity，则结果是NaN
+     * 如果是+0加+0，则结果是+0
+     * 如果是-0加-0，则结果是-0
+     * 如果是+0加-0，则结果是+0
+     * 不过，如果有一个操作数是字符串，那么就要应用如下规则
+     * 如果两个操作数都是字符串，则将第二个操作数与第一个操作数拼接起来
+     * 如果只有一个操作数是字符串，则将另一个操作数转换为字符串，然后再将两个字符串拼接起来
+     * 如果有一个操作数是对象、数值、或布尔值，则调用他们的toSting（）方法取得相应是字符串值，然后再应用前面关于字符串的规则，对于undefined和null，则分别调用String（）函数并取得字符串‘undefined’和‘null’
+     * 下面来举几个例子：*/
+    var result2 = 5 + 5;
+    //alert(result2);       //10
+    var result3 = 5 + '5';
+    //alert(result3);       //'55'
+    //以上代码演示了加法操作符在两种模式下的差别，第一行代码演示了正常的情况，即5+5=10（数值），但是如果将一个操作数改为字符串‘5’，结果就变成了‘55’（字符串值），因为第一个操作数也被转换成了‘5’。忽视加法操作符中的数据类型是ECMAScript编程中最常见的一个错误，再来看一个例子
+    var num1 = 5, num2 = 10, message = 'the sum of 5 and 10 is ' + num1 + num2;
+    //alert(message);     //'the sum of 5 and 10 is 510'
+    //在这个例子中，变量message的值是执行两个加法操作之后的结果，有人可能认为最后得到的字符串是‘the sum of 5 and 10 is 15’，但实际的结果却是‘the sum of 5 and 10 is 510’。之所以为这样，是因为每个加法操作符是独立执行的，第一个加法操作符将一个字符串和一个数值（5）拼接了起来，结果是一个字符串，而第二个加法操作又用这个字符串去加另一个数值（10），当然也会得到一个字符串，如果想先对数值执行算术计算，然后再将结果与字符串拼接起来，应该像下面这样使用圆括号：
+    var num3 = 5, num4 = 10, message = 'the sum of 5 and 10 is ' + (num1 + num2);
+    //alert(message);     //'the sum of 5 and 10 is 15'
+    //在这个例子中，一对圆括号把两个数值变量括在了一起，这样就会告诉解析器先计算其结果，然后再将结果与字符串拼接起来，因此，就得到了结果‘the sum of 5 and 10 is 15’
+
+    /*2.减法
+     * 减法操作符（-）是另一个极为常用的操作符，其用法如下所示
+     * var result4 = 2 - 1;
+     * 与加法操作符类似，ECMAScript中的减法操作符在处理各种数据类型转换时，同样需要组训一些特殊规则，如下所示
+     * 如果两个操作符都是数值，则执行常规的算术减法操作并返回结果
+     * 如果有一个操作数是NaN，则结果是NaN
+     * 如果是Infinity减Infinity，则结果是NaN
+     * 如果是-Infinity减-Infinity，则结果是NaN
+     * 如果是Infinity减-Infinity，则结果是Infinity
+     * 如果是-Infinity减Infinity，则结果是-Infinity
+     * 如果是+0减+0，则结果是+0
+     * 如果是+0减-0，则结果是-0
+     * 如果是-0减-0，则结果是+0
+     * 如果有一个操作数是字符串、布尔值、null或undefined，则在后台调用Number（）函数将其转换为数值，然后再根据前面的规则执行减法计算，如果转换的结果是NaN，则减法的结果就是NaN
+     * 如果有一个操作数是对象，则调用对象的valueOf（）方法以取得表示该对象的数值，如果得到的值是NaN，则减法对象的结果是NaN，如果对象没有valueOf（）方法，则调用其toString（）方法并将得到的字符串转换为数值，下面几个例子展示了上面的规则*/
+    var result5 = 5 - true;     //4,因为true被转换成了1
+    var result6 = NaN - 1;      //NaN
+    var result7 = 5 - 3;        //2
+    var result8 = 5 - '';       //5，因为‘’被转换成了0
+    var result9 = 5 - '2';      //3，因为‘2’被转换成了2
+    var result10 = 5 - null;    //5，因为null被转换成了0
+</script>
+
+<script>
+    /*3.5.6关系操作符
+     * 小于（<）、大于（>）、小于等于（<=）和大于等于（>=）这几个关系操作符用于对两个值进行比较，比较的规则与我们在数学课上所学的一样。这几个操作符都返回一个布尔值，如下面的例子所示：
+     * var result1 = 5 > 3;      //true
+     * var result2 = 5 < 3;      //false
+     * 与ECMAScript中的其他操作符一样，当关系操作符的操作使用了非数值时，也要进行数据转换或完成某些奇怪的操作，以下就是相应的规则
+     * 如果两个操作数都是数值，则执行数值比较
+     * 如果两个操作数都是字符串，则比较两个字符串的字符编码值
+     * 如果一个操作数是数值，则将另一个操作数转换为一个数值，然后执行数值比较
+     * 如果一个操作数是对象，则调用这个对象的valueOf（）方法，用得到的结果按照前面的规则执行比较，如果对象没有valueOf（）方法，则调用toString（）方法，并用得到的结果根据前面的规则执行比较。
+     * 如果一个操作数是比而至，则先将其转换为数值，然后再执行比较
+     * 在使用关系操作符比较两个字符串时，会执行一种奇怪的操作，很多人都会认为，在比较字符串值时，小于的意思是‘在字母表中的位置靠前’，而大于则意味着‘在字母表中的位置靠后’，但实际上完全不是那么回事。在比较字符串时，实际比较的是两个字符串中对应位置的每个字符串的字符编码值，经过这么一番比较之后，再返回一个布尔值，由于大写字母的字符编码全部小于小写字母的字符编码，因此我们就会看到如下所示的奇怪现象：
+     * var result3 = 'Brick' < 'alphabet';        //true
+     * 在这个例子中，字符串‘Brick’被认为小于字符串‘alphabet’，原因是字符B的字符编码为66，而字母a的字符编码是97，如果要真正按字母表顺序比较字符串，就必须把两个操作数转换为相同的大小写，然后再执行比较，如下所示
+     * var result = 'Brick'.toLowerCase() < 'alphabet'.toLowerCase();        //false
+     * 通过将两个操作数都转换为小写形式，就可以得出‘alphabet’按字母表顺序排在‘Brick’之前的正确判断了
+     * 另一种奇怪的现场发生在比较两个数字字符串的情况下，比如下面这个例子
+     * var result = '23' < '3';      //true
+     * 确实，当比较字符串‘23’是否小于‘3’时，结果居然是true，这是因为两个操作数都是字符串，而字符串比较的是字符编码（‘2’的字符编码是50，而‘3’的字符编码是‘51’），不过，如果想下面的例子中一样，将一个操作数改为数值，比较的结果就正常了：
+     * var result = ‘23’ < 3;    //false
+     * 此时，字符串‘23’会被转换成数值23，然后再与3进行比较，因此就会得到合理的结果，在比较数值和字符串时，字符串都会被转换成数值，然后再以数值方式与另一个数值比较，当然，这个规则对前面的例子是适用的，可是，如果那个字符串不能被转换成合理的数值呢？比如
+     * var result = ‘a’ < 3 ;        //false，因为‘a’被转换成了NaN
+     * 由于字母‘a’不能转换成合理的数值，因此就被转换成了NaN，根据规则，任何操作数与NaN进行关系比较，结果都是false，于是，就出现了下面这个有意思的现场：
+     * var result = NaN < 3;     //false
+     * var result = NaN >=3;     //false
+     * 按照常理，如果一个值不小于另一个值，则一定是大于或等于那个值，然而，在与NaN进行比较时，这两个比较操作的结果都返回false*/
+</script>
+
+<script>
+    /*3.5.7相等操作符
+     * 最早的ECMAScript中的相等和不等操作会在执行比较之前，先将对象转换成相似的类型，后来有人提出了这种转换到底是否合理的质疑，最后ECMAScript的解决方案就是提供两组操作符，相等和不相等--先转换再比较，全等和不全等--仅比较而不转换。
+     * 1.相等和不相等
+     * 相等==，不相等！=
+     * 在转换不同的数据类型时，相等和不相等操作符遵循下列基本规则
+     * 如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值--false转换为0，而true转换为1
+     * 如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值
+     * 如果一个操作数是对象，另一个操作数不是，则调用对象的valueOf（）方法，用得到的基本类型值按照前面的规则进行比较
+     * 这两个操作符在进行比较时则要遵循下列规则
+     * null和undefined是相等的
+     * 要比较相等性之前，不能将null和undefined转换成其他任何值。
+     * 如果有一个操作数是NaN，则相等操作符返回false，而不相等操作符返回true，重要提示：即使两个操作数都是NaN，相等操作符也返回false，因为按照规则，NaN不等于NaN
+     * 如果两个操作数都是对象，则比较他们是不是同一个对象，如果两个操作数都指向同一个对象，则相等操作符返回true，否则，返回false
+     *
+     * 2.全等和不全等
+     * 除了在比较之前不转换操作数之外，全能和不全等操作符与相等和不相等操作符没什么区别
+     * 记住null==undefined会返回true，因为他们是类似的值，但null===undefined会返回false，因为他们是不同类型的值
+     * 由于相等和不相等存在类型转换问题，而为了保持代码中数据类型的完整性，我们推荐使用全等和不全等操作符*/
+</script>
+<img src="jsimg2/3.5.7相等操作符.png" alt="3.5.7相等操作符">
+
+<script>
+    /*3.5.8条件操作符
+     * variable = boolean_expression ？ true_value ： false_value；
+     * 本质上，这行代码的含义就是基于对boolean_expression求值的结果，决定给变量variable赋什么值。如果求值结果为true，则给变量variable赋true_value值；如果求值结果为false，则给变量variable赋false_value值。再看一个例子
+     * var max = (num1 > num2) ? num1 : num2;
+     * 在这个例子中，max中将会保存一个最大的值，这个表达式的意思是：如果num1大于num2（关系表达式返回true），则将num1的值赋给max，如果num1的值小于或等于num2（关系表达式返回false），则将num2的值赋给max*/
+</script>
+
+<script>
+    /*3.5.9赋值操作符
+     * var num = 10, num = num + 10;
+     * var num = 10, num += 10;  两种写法是一样的
+     * 每个主要算术操作符都有对应的符合赋值操作符
+     * 乘/赋值（*=）  除/赋值（/=）    模/赋值（%=）    加/赋值（+=）    减/赋值（-=）    左移/赋值（<<=）  有符号右移/赋值(>>=)  无符号右移/赋值(>>>=)       （%模的意思是取整，18%5=3）
+     * 设计这些操作符的主要目的就是简化赋值操作，使用它们不会带来任何性能的提示*/
+</script>
+
+<script>
+    /*3.5.10逗号操作符
+     * var num = (1, 2, 3, 4, 5);        //num的值为5，由于5是表达式中的最后一项，因此num的值就是0，虽然逗号的这种使用方式并不常见，但这个例子可以帮我们理解逗号的这种行为。*/
+</script>
+
+
+<script>
+    /*3.6语句
+     * 3.6.1 if语句
+     * if的条件里可以是任意表达式，而且这个表达式求值的结果不一定是布尔值，ECMAScript会自动调用Boolean（）转换函数将这个表达式的结果转换为一个布尔值*/
+</script>
+
+<script>
+    /*3.6.2 do-while语句
+     * do-while语句是一种后测试循环语句，即只有在循环体重的代码执行之后，才会测试出口条件，换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次，以下是do-while语句的语法
+     * do {
+     *       statement(声明)
+     * } while (expression（表达式）)；
+     * 下面是一个例子
+     * var i = 0;
+     * do {
+     *   i += 2;
+     * } while (i < 10);
+     * alert(i);
+     * 在这个例子中，只要变量i的值小于10，循环就会一直持续下去，而且变量i的初始值为0，每次循环都会递增2
+     * 像do-while这种后测试循环语句最常用语循环体中的代码至少要被执行一次的情形*/
+</script>
+
+<script>
+    /*3.6.3 while语句
+     * while语句属于前测试语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值，因此，循环体内的代码有可能永选不会被执行
+     * var i = 0;
+     * while (i < 10){
+     *   i += 2;
+     *   }
+     *   在这个例子中，变量i开始时的值为0，每次循环都会递增2，而只要i的值小于10，循环就会继续下去*/
+</script>
+
+<script>
+    /*3.6.4 for语句
+     * for语句也是一种前测试循环语句，但它具有在执行之前初始化变量和定义循环后要执行的代码的能力，以下是for语句的用法：
+     * var count = 10;
+     * for (var i = 10; i < count; i++){
+     *       alert(i);
+     * }
+     * 等同于下面的while语句
+     * var count = 10, i = 0;
+     * while (i < count){
+     *       alert(i);
+     *       i++
+     *       }
+     * 使用while循环做不到的，使用for循环同样也做不到，也就是说，for循环只是把与循环有关的代码集中在了一个位置
+     * 有必要支出的是，在for循环的变量初始化表达中，也可以不使用var关键字，该变量的初始化可以在外部执行
+     * var count = 10,i;
+     * for (i = 0; i < count; i++){
+     *   alert(i);
+     * }
+     * 以上代码与在循环初始化表达式中声明变量的效果是一样的，由于ECMAScript中不存在块级作用域，因此在循环内部定义变量也可以在外部访问到
+     * 此外，for语句中的初始化表达式、控制表达式和循环后表达式都是可选的，将这两个表达式全部省略，就会创建一个无限循环，例如
+     * for(;;){      //无限循环
+     *   doSomething();
+     * }
+     * 而只给出控制表达式实际上就把for循环转换成了while循环
+     * var count = 10, i = 0;
+     * for (; i < count; ){
+     *   alert(i);
+     *   i++;
+     * }*/
+</script>
+
+<script>
+    /*3.6.5 for-in语句
+     * for-in语句是一种精准的爹带雨具，可以用来枚举对象的属性，以下是for-in语句的方法
+     * for (var propName in window){
+     *   document.write(propName);
+     * }
+     * 在这个例子中，我们使用for-in 循环来显示了BOM中window对象的所有属性，每次执行循环时，都会将window对象中存在的一个属性名赋值给变量propName，这个过程会一直持续到对象中的所有属性都被枚举一遍为止，与for语句类似，这里控制语句中的var操作符也不是不许的，但是，为了保证使用局部变量，我们推荐上面例子中的这种做法
+     * EMCAScript对象的属性没有顺序，因此，通过for-in循环谁出的属性名的顺序是不可预测的，具体来讲，所有属性都会被返回一次，但返回的先后次序可能会因浏览器而异
+     * 但是，如果表示要迭代的对象的变量值为null或undefined，for-in语句会跑出错误，ECMAScript5更正了这一行为，对这种情况不在抛出错误，而只是不执行循环体，为了保证最大限度的兼容性，建议在使用for-in循环之前，先检测确认该对象的值不是null或undefined。*/
+</script>
+
+<script>
+    /*3.66  label语句
+     * 使用label语句可以在代码中提那家标签，以便将来使用，一下是label语句的语法
+     * start: for (var i=0, i < count; i++){
+     *   alert(i);
+     * }
+     * 这个例子中定义的start标签可以在将来由break或continue语句引用，加标签的语句一般都要与for语句等循环语句配合使用,具体看下面的解释*/
+</script>
+<form name="f">
+    <input name="t1"/><br/>
+    <input name="t2"/><br/>
+    <input name="t3"/><br/>
+    <input name="t4"/><br/>
+    <input type="submit"/>
+</form>
+<!--<script>
+    var f=document.forms.f;
+    f.onsubmit=function(){
+        chk:{
+            if(f.t1.value=="")break chk;        //上面的label语句，用来跳出循环阻止代码往下执行
+            if(f.t2.value=="")break chk;
+            if(f.t3.value=="")break chk;
+            if(f.t4.value=="")break chk;
+            alert("验证通过！");
+            return true;
+        };
+        alert("验证失败");
+        return false;
+    };
+</script>-->
+<script>
+    //在javascript中，我们可能很少会去用到 Label 语句，但是熟练的应用 Label 语句，尤其是在嵌套循环中熟练应用 break, continue 与 Label 可以精确的返回到你想要的程序的位置。
+    //Label 语句，按书本上说的语法是：
+    //Label: statement
+    //如：
+    begin: for (var i = 0; i < 10; i++) {
+        //alert(i);
+    }
+    //举一个比较典型的例子，看完后即明白 Label 的应用：（未添加 Label）
+    var num = 0;
+    for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 10; j++) {
+            if (i == 5 && j == 5) {
+                break;
+            }
+            num++;
+        }
+    }
+    //alert(num); // 循环在 i 为5，j 为5的时候跳出 j循环，但会继续执行 i 循环，输出 95
+    //对比使用了 Label 之后的程序：（添加 Label 后）
+    var num = 0;
+    outPoint:
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 10; j++) {
+                    if (i == 5 && j == 5) {
+                        break outPoint;
+                    }
+                    num++;
+                }
+            }
+    //alert(num); // 循环在 i 为5，j 为5的时候跳出双循环，返回到outPoint层继续执行，输出 55
+</script>
+
+<script>
+    /*3.6.7 break和continue语句
+     * break会立即退出循环，强制执行循环后面的语句，而continue语句虽然也是立即退出循环，但退出循环后会从循环的顶部继续执行
+     * var num = 0；
+     * for (var i=1; i<10; i++){
+     *   if(i % 5 ==0){
+     *   break;
+     *   }
+     *   num++;
+     * }
+     * alert(num);   //4,num是执行的次数，alert检测i的话是5
+     * 在这个例子中的for循环会将变量i由1递增至10，在循环体内，有一个if语句检查i的值是否可以被5整除（使用求模操作符）。如果是，则执行break语句跳出循环，另一方面，变量num从0开始，用于记录循环执行的次数。在执行break语句之后，要执行的下一行代码是alert（）函数，结果显示4，也就是说，在变量i等于5时，循环总共执行了4次，而break语句的执行，导致了循环在num再次递增之前就退出了，如果在这里把break替换为continue的话，则可以看到另一种结果
+     * var num = 0；
+     * for (var i=1; i<10; i++){
+     *   if(i%5==0){
+     *   continue;
+     *   }
+     *   num++
+     * }
+     * alert(num);       //8
+     * 例子的结果显示8，也就是循环总共执行了8次，当变量i等于5时，循环会在num再次递增之前退出，但接下来执行的是下一次循环，，即i的值等于6的循环，于是，循环又继续执行，直到i等于10时自然结束。而num的最终值之所以是8，是因为continue语句导致它少递增了一次。
+     * break和continue语句都可以与label语句联合使用，从而返回代码中特定的位置，这种联合使用的情况多发生在循环嵌套的情况下，如下面的例子所示
+     * var num = 0；
+     * outermost:
+     * for (var i =0; i<10; i++){
+     *       for (var j=0; j<10; j++){
+     *               if(i == 5 && j == 5){
+     *                       break outermost;
+     *               }
+     *               num++
+     *       }
+     * }
+     * alert(num);       //55
+     * 在这个例子中，outermost标签表示外部的for语句，如果每个循环正常执行10次，则num++语句就会正常执行100次。换句话说，如果两个循环都自然结束，num的值应该是100.但内部循环中的break语句带了一个参数：要返回到的标签。添加这个标签的结果将导致break语句不仅会退出内部的for语句（即使用变量j的循环），而且也会退出外部的for语句（即使用变量i的循环）。为此，当变量i和j都等于5时，num的值正好是55，（本来应该跳出j循环，执行外面的i循环，是95）同样，continue语句也可以像这样与label语句联用，如下面的例子所示：
+     * var num = 0;
+     * outermost:
+     * for (var i=0; i<10; i++){
+     *       for (var j=0; j<10; j++){
+     *           if(i == 5 && j ==5){
+     *                   continue outermost;
+     *           }
+     *           num++
+     *       }
+     * }
+     * alert(num);       //95
+     * 在这种情况下，continue语句会强制继续执行循环--退出内部循环，执行外部循环，当j是5时，continue语句执行，而这也就意味着内部循环少执行了5次，因此num的结果是95.
+     * 虽然联用break、continue和label语句能够执行复杂的操作，但如果使用过度，也会给调试带来麻烦，在此，我们建议如果使用label语句，一定要使用描述性的标签，同时不要嵌套过多的循环*/
+</script>
+
+<script>
+    /*3.6.8 with语句
+     * with语句的作用是将代码的作用于设置到一个特定的对象中。with语句的语法如下
+     * with（expression）statemen
+     * 定义with语句的目的主要是为了简化多次编写同一个对象的工作，如下面的例子所示
+     * var qs = location.search.substring(1);
+     * var hostName = location.hostname;
+     * var url = location.href;
+     * 上面几行代码都包含location对象，如果使用with语句，可以把上面的代码改写成如下所示
+     * with(location){
+     *   var qs = search.substring(1);
+     *   var hostName = hostname;
+     *   var url = href;
+     * }
+     * 在这个重写后的例子中，使用with语句关联了location对象。这意味着在with语句的代码块内部，每个变量首先被认为是一个局部变量，而如果在局部环境中找不到该变量的定义，就会查询location对象中是否有同名的属性，如果发现了同名属性，则以location对象属性的值作为变量的值，
+     * 严格模式下不允许使用with语句，否则将视为语法错误
+     * 由于大量使用with语句会导致性能下降，同事也会给调试代码造成困难，因此在开发大型应用程序时，不建议使用with语句。*/
+</script>
+
+<script>
+    /*3.6.9 switch语句
+     * switch语句与if语句的关系最为密切，而且也是在其他语言中普遍使用的一种流控制语句，ECMAScript中的switch语句的语法与其他基于C的语言非常接近，如下所示
+     * switch(i){
+     *   case 25:
+     *       //合并两种情形
+     *   case 35:
+     *       alert('25 or 35');
+     *       break;
+     *   case 45:
+     *       alert('45');
+     *       break;
+     *   default:
+     *       alert('Other');
+     * }
+     * 虽然ECMAScript中的switch语句借鉴自其他语言，但这个语句也有自己的特色，首先，可以再switch语句中使用任何数据类型（在很多其他语言中只能使用数值），无论是字符串，还是对象都没有问题，其次，每个case的值不一定是常量，可以是变量，甚至是表达式，请看下面这个例子
+     * switch ('hello world'){
+     *   case 'hello' + 'world':
+     *       alert('greeting was found');
+     *       break;
+     *   case 'goodbye':
+     *       alert('Closing was found');
+     *       break;
+     *   default:
+     *       alert('unexpected message was found');
+     * }
+     * 在这个例子中，switch语句使用的就是字符串，其中第一种情形实际上是一个对字符串拼接操作求值的表达式。由于这个字符串拼接表达式的结果与switch的参数相等，因此结果就会显示‘greeting was found'。而且，使用表达式作为case值还可以实现下列操作：
+     * var num = 25;
+     * switch(true){     //传true的话会每个都执行一遍，如果不匹配就返回default，传false会返回第一个case
+     *   case num < 0:
+     *       alert('less than 0');
+     *       break;
+     *   case num >= 0 && num <= 10:
+     *       alert('between 0 and 10');
+     *       break;
+     *   case num > 10 && num <= 20:
+     *       alert('between 10 and 20');
+     *       break;
+     *   default:
+     *       alert('more than 20');
+     * }
+     * 这个例子首先在switch语句外面声明了变量num，而之所以给switch语句传递表达式true，是因为每个case值都可以返回一个布尔值，这样，每个case都按照顺序被求值，直到找到匹配的值或者遇到default语句为止（这正是这个例子的最终结果）
+     * switch语句在比较值时使用的是全等操作符，因此不会发生类型转换，例如（字符串‘10’不等于数值10）*/
+</script>
+
+
+<script>
+    /*3.7 函数
+     * function test(a,b){
+     *   return;     //执行完return语句之后停止并退出，如果不需要返回值直接写return就可以
+     *   alert('name');      //永远不会被执行
+     * }
+     * 推荐的做法是要么让函数始终都返回一个值，要么永远都不要返回值，否则，如果函数有时候返回值，有时候又不返回值，会给调试代码带来不便
+     * 严格模式对函数有一些限制：
+     * 不能把函数和参数命名为evel或arguments
+     * 不能出现两个命名参数同名的情况
+     * 如果发生以上情况，就会导致语法错误，代码无法执行*/
+</script>
+
+<script>
+    /*3.7.1 理解参数
+     * ECMAScript的参数在内部是用一个数组来表示的，其实，arguments对象只是与数组类似（它并不是Array的实例），因为可以使用方括号语法访问它的每一个元素（即第一个元素是arguments[0]，第二个元素是arguments[1]，以此类推），使用length属性来确定传递进来多少个参数，如下
+     * function test(){
+     *       alert(arguments[0] + ',' + arguments[1]);
+     * }
+     * 通过访问arguments对象的length属性可以获知有多少个参数传递给了函数，下面这个函数会在每次被调用时，输出传入其中的参数个数
+     * function howManyArgs(){
+     *       alert(arguments.length);
+     * }
+     * howManyArgs('string', 45);        //2
+     * howManyArgs();        //0
+     * howManyArgs(12);      //1
+     * 可以利用个数判断这一点让函数能够接收任意个参数并分别实现适当的功能。请看下面的例子
+     * function doAdd(){
+     *   if(arguments.length ==1){
+     *           alert(arguments[0] + 10);
+     *   }else if (arguments.length ==2){
+     *       alert(arguments[0] + arguments[1]);
+     *   }
+     * }
+     * doAdd(10);        //20
+     * doAdd(30, 20);    //50
+     * 函数doAdd（）会在只有一个参数的情况下给该参数加上10；如果是两个参数，则将那个参数简单相加并分会结果，因此，doAdd（10）会返回20，而doAdd（30,20）则返回50，虽然这个特性算不上完美的重载，但也足够弥补ECMAScript的这一缺憾了
+     * 另一个与参数相关的重要方面，就是arguments对象可以与命名参数一起使用，如下面的例子所示
+     * function doAdd(num1, num2){
+     *   if(arguments.length == 1){
+     *       alert(num1 + 10);
+     *   }else if (arguments.length == 2){
+     *       alert(arguments[0] + num2);
+     *   }
+     * }
+     * 在重写的这个doAdd（）函数中，两个命名参数都与arguments对象一起使用，由于num1的值与arguments[0]的值相同，因此它们可以互换使用（当然num2和arguments[1]也是如此）
+     * 关于arguments的行为，还有一点比较有意思，那就是它的值永远与对应名参数的值保持同步，例如：
+     * function doAdd（num1， num2）{
+     *       argument[1] = 10;
+     *       alert(arguments[0] + num2);
+     * }
+     * 每次执行这个doAdd（）函数都会重写第二个参数，将第二个参数的值修改为10，因为arguments对象中的值自动反映到对应的命名参数，所以修改arguments[1]，也就修改了num2，不过，这并不是说读取这两个值会访问相同的内存空间，他们的内存空间是独立的，但是它们的值会同步，但这种影响是单向的，修改命名参数不会改变arguments中对应的值，另外还要记住，如果之传入了一个参数，那么为arguments[1]设置的值就不会反应到命名参数中，这是因为arguments对象的长度是由传入的参数个数决定的，不是由定义函数时的命名参数的个数决定的。
+     * 关于参数还要记住最后一点，没有传递至的命名参数将自动被赋予undefined值，这就跟定义了变量但没有初始化一样，例如，如果值给doAdd（）函数传递了一个参数，则num2中就会保存undefined至
+     * 严格模式对如何使用arguments对象做出了一些限制，首先，像前面的例子中那样的负值会变得无效，也就是说，即使吧arguments[1]设置为10，num的值仍然还是undefined，其次，重写arguments的值会导致语法错误（代码将不会被执行）
+     * ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数*/
+</script>
+
+<script>
+    /*3.7.2 没有重载
+     * ECMAScript函数不能像传统意义上那样实现重载，而在其他语言（如java）中，可以为一个函数编写两个定义，只要这两个定义的签名（接受的参数的类型和数量）不同即可，如前所述，ECMAScript的函数没有签名，因为其参数都是有包含零或多个值的数组来表示的，而没有函数签名，真正的重载是不可能做到的
+     * 如果在ECMAScript中定义了两个名字相同的函数，则该名字只属于后定义的函数，请看下面的例子
+     * function addSomeNumber（num）{
+     *       return num + 100;
+     * }
+     * function addSomeNumber(num){
+     *       return num + 200;
+     * }
+     * var result = addSomeNumber(100);      //300
+     * 在此，函数addSomeNumber（）被定义了两次，第一个版本给参数加100，而第二个版本给参数加200，由于后定义的函数覆盖了先定义的函数，因此当在最后一行代码中调用这个函数时，返回的结果就是300。
+     * 如前所述，通过检查传入函数中参数的类型和数量并作出不同的反应，可以模仿方法的重载。
+     * (模拟重载)只靠参数长度来实现function重载是可以实现的,别忘了arguments这个对象,定义一个function像这样: function myFunc(){},一个形参都不写,调用的时候,myFunc('a');myFunc('a','b');myFunc('a','b','c');然後可根据arguments.length来判断*/
+</script>
+
+<script>
+    /*3.8 小结
+     * JavaScript的核心语言特性在ECMA-262中是以名为ECMAScript的伪语言的形式来定义的，ECMAScript中包含了所有基本的语法、操作符、数据类型以及完成基本的计算任务所必须的对象，但没有对取得输入和产生输入的机制作出规定，理解ECMAScript及其纷繁复杂的各种细节，是理解其在Web浏览器中的实现--JavaScript的关键，目前大多数实现所遵循的都是ECMA-262第3版，但很多也已经着手开始实现第5版了，以下简要总结了ECMAScript中基本的要素
+     * ECMAScript中的基本数据类型包括Undefined、Null、Boolean、Number和String
+     * 与其它语言不同，ECMAScript没有为整数和浮点数值分别定义不同的数据类型，Number类型可以用于表示所有数值
+     * ECMAScript中也有一种复杂的数据类型，即Object类型，该类型是这门语言中所有对象的基础类型
+     * 严格模式为这门语言中容易出错的地方施加了限制
+     * ECMAScript提供了很多与C及其他类C语言中相同的基本操作符，包括算术操作符、布尔操作符、关系操作符、相等操作符及赋值操作符等
+     * ECMAScript从其他语言中借鉴了很多流控制语句，例如if语句、for语句和switch语句等，ECMAScript中的函数与其他语言中的函数有诸多不同之处
+     * 无需指定函数的返回值，因为任何ECMAScript函数都可以在任何时候返回任何值
+     * 实际上，未指定返回值的函数返回的是一个特殊的undefined值
+     * ECMAScript中也没有函数签名的概念，因为其函数参数是以一个包含零或多个值的数组的形式传递的
+     * 可以向ECMAScript的函数传递任意数量的参数，并且可以通过arguments对象来访问这些参数。
+     * 由于不存在函数签名的特性，ECMAScript函数不能重载。*/
+</script>
+
+
+<script>
+    /*4 变量、作用于、和内存问题
+     * 4.1基本类型和引用类型的值
+     * undefined、null、Boolean、number、string这5种基本类型是按值访问的，因为可以操作保存在变量中的实际的值，基本类型引用类型的值是保存在内存中的对象，和其他语言不同，JavaScript不允许直接访问内存中的文职，也就是说不能直接操作对象的内存空间，在操作对象时，实际上是操作对象的引用而不是实际的对象，为此，引动类型的值是按引用访问的，在很多语言中，字符串以对象的形式来表示，因此被认为是引动类型的，ECMAScript放弃了这一传统*/
+</script>
+
+<script>
+    /*4.11 动态的属性
+     * 定义基本类性值和引用类型值的方法是类似的，创建一个变量并为该变量赋值，但是，当这个值保存到变量中以后，对不同类型可移植性的操作大相径庭，对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法，请看下面的例子
+     * var person = new Object();
+     * person.name = 'jack sprrow';
+     * alert(person.name);   //'jack sprrow'
+     * 以上代码创建了一个对象并将其保存在了变量person中，然后我们为该对象添加了一个名为name的属性，并将字符串值‘jack sprrow’赋给了这个属性，紧接着，又通过alert（）函数访问了这个新属性，如果对象不被销毁或者这个属性不被删除，则这个属性将一直存在。
+     * 但是我们不能给基本类型的值添加属性，尽管这样做不会导致任何错误，比如
+     * var name = ‘jack sprrow’；
+     * name.age = ‘25’；
+     * alert（name.age）；      //undefined
+     * 在这个例子中我们为字符串name定义了一个名为age的属性，并为该属性赋值27，但在下一行访问这个属性时，发现这个属性不见了，这说明只能给引动类型之动态的添加属性，以便将来使用。*/
+</script>
+
+<script>
+    /*4.1.2 复制变量值
+     * 复制基本类型的值会在变量对象上穿件一个新值，然后把该值复制到为新变量分配的位置上，两个变量的值是完全独立的，不会互相影响
+     * 当一个变量向另一个变量复制引用类型的值时，同样也会将存储在变量对象中的值复制一份放到为新变量分配的空间中，不同的是，这个值的副本实际上是一个指针，而这个指针像存储在对堆中的一个对象，复制操作结束后，两个变量实际上将引用同一个对象，因此，改变其中的一个变量，就会影响另一个变量，如下面的例子所示：
+     * var obj1 = new Object();
+     * var obj2 = obj1;
+     * obj1.name = 'jack sprrow';
+     * alert(obj2.name);     //'jack sprrow'
+     * 首先，变量obj1保存了一个对象的新实例，然后这个值被复制到了obj2中，换句话说，obj1和obj2都指向同一个对象，这样，当为obj1添加name属性后，可以通过boj2来访问这个属性，因为这两个变量引用的都是同一个对象，图4-2展示了保存在变量对象中的变量和保存在堆中的对象之间的这种关系*/
+</script>
+dw
+<img src="jsimg2/复制引用类型.png">
+
+<script>
+    /*4.1.3 传递参数
+     * ECMAScript中所有函数的参数都是按值传递的，也就是说，把函数外部的值复制给函数内部的参数，就和把值从一格变量复制到另一个变量一样，基本类型值的传递如同基本类型变量的复制一样，而引用类型值的传递，则如同引用类型变量的复制一样，有不少开发人员在这一点上可能会感到困惑，因为访问变量有按值和按引用两种方式，而参数只能按值传递，
+     * ！！！值传递仅仅传递的是值
+     * ！！！引用传递，传递的是内存地址，修改后会改变内存地址对应储存的值。
+     * 在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量（即命名参数，或者用ECMAScript的概念来说，就是arguments对象中的一个元素）。在向参数传递引用类型值时，会把这个值在内存中的地址复制给一个局部变量，因此这个局部变量的变化会反映在函数的外部，请看下面这个例子
+     * function addTen(num){
+     *       num+=10;
+     *       return num;
+     * ]
+     * var count = 20
+     * var result = addTen(count);
+     * alert(count);     //20，没有变化
+     * alert(result);    //30
+     * 这里的函数addTen（）有一个参数num，而参数实际上是函数的局部变量，在调用这个函数时，变量count作为参数被传递给函数，这个变量的值是20，于是，数值20被复制给参数num以便在addTen（）中使用，在函数内部，参数num的值被加上了10，但这一变化不会影响函数外部的count变量，参数num与变量count互不相识，他们仅仅是具有相同的值，加入num是按引用传递的话，那么变量count的值也将变成30，从而反应函数内部的修改，当然，使用数值等基本类型值来说明按值传递的参数比较简单，但如果使用对象，那问题就不怎么好理解了，再举一个例子：
+     * function setName(obj){
+     *   obj.name = 'jack sprrow';
+     * }
+     * var person = new Object();
+     * setName(person);
+     * alert(person.name);
+     * 以上代码创建一个对象，并将其保存在了变量person中，然后这个对象被传递到setName（）函数中之后就被赋值给了obj，在这个函数内部，obj和person引用的是同一个对象，换句话说即使这个函数是按值传递的，obj也会按引用来访问同一个对象，于是，当在函数内部为obj添加name属性后，函数外部的person也将有所反映，因为person指向的对象在堆内存中只有一个，而且是全局对象。有很多开发人员错误的认为：在局部作用域中修改的对象会在全局作用域中反映出来，就说明参数是按引用传递的，为了证明对象是按值传递的，我们再看一下下面这个经过修改的例子
+     * function setName(obj){
+     *   obj.name = 'jack sprrow';
+     *   obj = new Object();
+     *   obj.name = 'test';
+     * }
+     * var person = new Object();
+     * setName(person);
+     * alert(person.name);       //‘jack sprrow’
+     * 这个例子与前一个例子的唯一区别，就是在setName()函数中添加了两行代码：一行代码为obj重新定义了一个对象，另一个代码为该对象定义了一个带有不同值的name属性，在把person传递给setName（）后，其name属性被设置为‘jack sprrow’，然后，又将一个新对象赋给变量obj，同时将其name属性设置为‘test’，如果person是按引用传递的，那么person就会自动被修改为指相其name属性值为‘test’的新对象，但是，当解下来在访问person.name时，显示的值仍然是‘jack sprrow’，这说明即使在函数内部修改了参数的值，但原始的引用仍然保持未变，实际上，当在函数内部重写obj时，这个变量引用的就是一个局部对象了，而这个局部对象会在函数执行完毕后立即被销毁
+     * 可以把ECMAScript函数的参数想象成局部变量。*/
+</script>
+
+<script>
+    /*4.14 检测类型
+     * 要检测一个变量是不是基本数据类型，第三章介绍的typeof操作符是最佳的工具，说的更具体一点，typeof操作符是确定一个变量是字符串、数值、布尔值、还是undefined的最佳工具，如果变量的值是一个对象或null，则typeof操作符会像下面的例子中所示的那样返回‘object’；
+     * var s = 'jack sprrow';
+     * var b = true;
+     * var i = 22;
+     * var u;
+     * var n = null;
+     * var o = new Object();
+     * alert(typeof s);      //string
+     * alert(typeof b);      //boolean
+     * alert(typeof i);      //number
+     * alert(typeof u);      //undefined
+     * alert(typeof n);      //object
+     * alert(typeof o);      //object
+     * 虽然在检测基本数据类型时typeof是非常得力的助手，但在检测引用类型的值时，这个操作符的用处不大，通常，我们并不是想知道某个值是对象，而是想知道它是什么类型的对象，为此，ECMAScript提供了instanceof操作符其语法如下所示：
+     * result = variable instanceof constructor
+     * 如果变量是给定引用类型（根据它的原型链来识别，第六章将介绍原型链）的实例，那么instanceof操作符就会返回true，请看下面的例子
+     * alert(person instanceof Object);      //变量person是Object吗？
+     * alert(colors instanceof Array);       //变量colors是Array吗？
+     * alert(pattern instanceof RegExp);     //变量pattern是RegExp吗？
+     * !!!根据规定，所有引用类型的值都是Object的实例，因此，在检测一个引用类型值和Object狗仔函数时，instanceof操作符始终返回true，当然，如果使用instanceof操作符检测基本类型的值，则该操作符始终会返回false，因为基本类型不是对象
+     * 使用typeof操作符检测函数时，该操作符会返回‘function’，ECMA-262规定任何在内部实现[[Call]]方法的对象都应该在应用typeof操作符时返回‘function’*/
+</script>
+
+<script>
+    /*4.2 执行环境及作用域
+     * 执行环境（execution context，为了简单起见，有时也称为‘环境’）是JavaScript中最为重要的一个概念，执行环境定义了变量或函数有权访问的其他数据，决定了它们各自的行为，每个执行环境都有一个与之前关联的变量对象（variable object），环境中定义的所有变量和函数都保存在这个对象中，虽然我们编写的代码无法访问这个对象，但解析器在处理数据时会在后台使用它
+     * 全局执行环境是最外围的一个执行环境，根据ECMAScript实现所在的宿主环境不同，表示执行环境的对象也不一样。在Web浏览器中，全局执行环境被认为是window对象（第七章将详细讨论），因此所有全局变量对象和函数都是作为window对象的属性和方法创建的，某个执行环境中的所有代码执行完毕后，该环境被销毁，保存在其中的所有变量和函数定义也随之销毁（全局执行环境直到应用程序退出，例如关闭网页或浏览器时才会被销毁）
+     * 每个函数都有自己的执行环境，当执行流进入一个函数时，函数的环境就会被推入一个环境栈中，而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境，ECMAScript程序中的执行流整是由这个方便的机制控制着。
+     * 当代码在一个环境中执行时，会创建变量对象的一个作用域链（scope chain），作用域链的用途，是保证对执行环境有权访问的所有变量和函数的有序访问，作用域链的顶端，始终都是当前执行的代码所在的环境的环境变量，如果这个环境是函数，则将其活动对象（activation object）作为变量对象，活动对象在最开始时只包含一个变量，即arguments对象（这个对象在全局环境中是不存在的），作用域链中的下一个变量对象来自包含（外部）环境，而再下一个变量对象则来自于下一个包含环境，这样，一直延续到全局执行环境，全局执行环境的变量对象始终都是作用域链中的最后一个对象。
+     * 标识符解析是沿着作用域链一级一级的搜索标识符的过程，搜索过程始终从作用域链的前端开始，然后逐级的向后回溯，直到找到标识符为止（如果找不到标识符，通常会导致错误发生）
+     * 请看下面的示例代码
+     * var color = 'blue';
+     * function changeColor(){
+     *  if (color === 'blue'){
+     *      color = 'red';
+     *  }else {
+     *      color = 'blue';
+     *  }
+     * }
+     * changeColor();
+     * alert('Color is now ' + color);
+     * 在这个简单的例子中，函数changeColor（）的作用域链包含两个对象：它自己的变量对象（其中定义着arguments对象）和全局环境的变量对象，可以再函数内部访问变量color，就是因为可以再这个作用域链中找到它。
+     * 此外，在局部作用域中定义 变量可以再局部环境中与全局变量互换使用，如下面的例子所示：
+     * var color = 'blue';
+     * function changeColor(){
+     *  var anotherColor = 'red';
+     *  function swapColors(){
+     *      var tempColor = anotherColor;
+     *      anotherColor = color;
+     *      color = tempColor;
+     *      //这里可以访问color、anotherColor和tempColor
+     *  }
+     *  //这里可以访问color和anotherColor，但不能访问tempColor
+     *  swapColors()；
+     * }
+     * //这里只有访问color
+     * changeColor();
+     * 以上代码共涉及3个执行环境：全局环境、changeColor（）的全局环境和swapColors（）的局部环境，全局环境中有一个变量color和一个函数changeColor（）。changeColor（）的局部环境中有一个名为anotherColor的变量和一个名为swapColors（）的函数，但它也可以访问全局环境中的变量color，swapColors（）的局部环境中有一个变量tempColor，然后，在swapColors（）内部则可以访问其他两个环境中的所有变量，因为那两个环境是它的父执行环境，下图形象的展示了前面这个例子的作用域链
+     * 下图中的矩形表示特定的执行环境，其中，内部环境可以通过作用域链访问所有的外部环境，但外部环境不能访问内部环境中的任何变量和函数，这些环境之间的联系是线性、有次序的，每个环境都可以向上搜索作用域链，以查询变量和函数名，但任何环境都不能通过向下搜索作用域链而进入另一个执行环境，对于这个例子中的swapColors（）而言，其作用域链中包含3个对象：swapColors（）的变量对象、changeColor（）的变量对象和全局变量对象，swapColors（）的局部环境开始时会现在自己的变量对象中搜索变量和函数名，如果搜索不到则再搜索上一级作用域链，changeColor（）的作用域链中只包含两个对象，它自己的变量对象和全局变量对象，这也就是说，它不能访问swapColors（）的环境
+     * 函数参数也被当做变量来对待，因此其访问规则与执行环境中的其他变量相同。*/
+</script>
+<img src="jsimg2/作用域链.png">
+
+<script>
+    /*4.2.1 延长作用域链
+     * 虽然执行环境的类型总共只有两种??全局和局部（函数），但还是有其他办法来演唱作用域链，这么说是因为有些语句可以再作用域链的前端临时增加一个变量对象，该变量对向会在代码执行后被移除，在两种情况下会发生这种现象，具体来说，就是当执行流浸入下列任何一个语句时，作用域链就会得到加长：
+     * try-catch语句的catch块
+     * with语句       //with语句的使用在下面能找到，可以搜索“可以理解为跟继承差不多”
+     * 这两个语句都会在作用域链的前端添加一个变量对象，对with语句来说，会将指定对象添加到作用域链中，对catch语句来说，会创建一个新的变量对象，其中包含的是被抛出的错误对象的声明，下面看一个例子
+     * function buildRul(){
+     *      var qs = '?debug=true';
+     *      with(location){
+     *          var url = href +qs;
+     *      }
+     *      return url;
+     * }
+     * 在此，with语句接收的是location对象，因此其变量对象中就包含了location对象的所有属性和方法，而这个变量对象被添加到了作用域链的前端，buildUrl（）函数中定义了一个变量qs，当在with语句中引用变量href时（实际引用的是location.href），可以在当前执行环境的变量对象中找到，当引用变量qs时，引用的则是在buildUrl（）中定义的那个变量，而该变量位于函数环境的变量对象中，至于with语句的内部，则定义了一个名为url的变量，因而url就成了函数执行环境的一部分，所以可以作为函数的值被返回。*/
+</script>
+
+<script>
+    /*4.2.2 没有块级作用域
+     * JavaScript没有块级作用域经常会导致理解上的困惑，在其他类C的语言中，由花括号封闭的代码都有自己的作用域（如果用ECMAScript的话来讲，就是它们自己的执行环境），因而支持根据条件来定义变量，例如，下面代码在JavaScript中并不会得到想要的结果
+     * if(true){
+     *   var color = 'blue';
+     * }
+     * alert(color);     //blue
+     * 这里是在一个if语句中定义了变量color。如果是在C、C++或Java中，color会在if语句执行完毕后被销毁，但在JavaScript中，if语句中的变量声明会将变量添加到当前的执行环境（在这里是全局环境）中，在使用for语句时尤其要牢记这一差异，例如：
+     * for(var i=10; i < 10; i++){
+     *       doSomething(i);
+     * }
+     * alert(i);     //10
+     * 对于有块级作用域的语言来说，for语句初始化变量的表达式所定义的变量，只会存在于循环的环境之中，而对于JavaScript来说，由for语句创建的变量i即使在for循环执行结束后，也依旧会存在于循环外部的执行环境中，
+     *
+     var scope="global";
+     function t(){
+     console.log(scope);     //！！！会输出undefined，因为代码还没有执行到var scope="local"，如果声明变量放在console的上面，就会输出global了，或者声明变量不加var（不加var是全局变量），var scope="local"覆盖了全局的scope，但是执行到这一行还没有赋值，所以输出undefined
+     var scope="local";
+     console.log(scope);
+     }
+     t();
+
+     * 1.声明变量
+     使用var声明的变量会自动被添加到最接近的环境中，在函数内部，最接近的环境就是函数的局部环境，在with语句中，最接近的环境就是函数环境，如果初始化变量时没有使用var声明，该变量会自动被添加到全局环境，如下所示：
+     * function add(num1, num2){
+     *       var sum = num1 + num2;
+     *       return sum;
+     * }
+     * var result = add(10, 20);     //30
+     * alert(sum);       //由于sum不是有效的变量，因此会导致错误
+     * 以上代码中的函数add（）定义了一个名为sum的局部变量，该变量包含加法操作的结果，虽然结果值从函数中返回了，但sum在函数外部是访问不到的，如果省略了这个例子中var关键字，那么当add（）执行完毕后，sum也将可以访问到
+     * function add(num1, num2){
+     *       sum = num1 + num2;
+     *       result sum;
+     * }
+     * var result = add(10, 20);     //30
+     * alert(sum);       //30
+     * 这个例子中的变量sum在被初始化赋值时没有使用var关键字，于是，当调用完add（）之后，添加到全局环境中的变量sum将继续存在，即使函数已经执行完毕，后面的代码以后可以访问到它
+     * 在严格模式下，不使用var声明变量会导致错误
+     *
+     * 2.查询标识符
+     * 当在某个环境中为了读取或写入而引用一个标识符时，必须通过搜索来确定该标识符实际代表什么，搜索过程从作用域链的前端开始，向上逐级查询与给定名字匹配的标识符，如果在局部环境中找到了该标识符，搜索过程停止，变量就绪，如果在局部环境中没有找到该变量名，则继续沿作用域链向上搜索，搜索过程将一直追溯到全局环境的变量对象，如果在全局环境中也没有找到这个标识符，则意味着该变量尚未声明
+     * 通过下面这个示例，可以理解查询标识符的过程
+     * var color = 'blue';
+     * function getColor(){
+     *       return color;
+     * }
+     * alert(getColor());        //'blue'
+     * 调用本例中的函数getColor（）时会引用变量color，为了确定变量color的值，将开始一个两步的搜索过程，首先，搜索getColor（）的变量对象，查找其中是否包含一个名为color的标识符，在没有找到的情况下，搜索继续道下一个变量对象（全局环境的变量对象），然后在那里找倒了名为color的标识符，因为搜索到了定义这个变量的变量对象，搜索过程宣告结束，图4-4形象的展示了上述搜索过程
+     * 在这个搜索过程中，如果存在一个局部的变量的定义，则搜索会自动停止，不再进入另一个变量对象，换句话说，如果局部环境中存在着同名标识符，就不会使用位于父环境的标识符，如下面的例子所示：
+     * var color = 'blue';
+     * function getColor(){
+     *       var color = 'red';
+     *       return color;
+     * }
+     * alert(getColor());        //'red'
+     * 修改后的代码在getColor()函数中声明了一个名为color的局部变量，调用函数时，该变量就会被声明，而当函数中的第二行代码执行时，意味着必须找到并返回变量color的值，搜索过程首先从局部环境中开始，而且在这里离发现了一个名为color的变量，其值为‘red’，因为变量已经找到了，所以搜索即行停止，return语句就是用这个局部变量，并为函数返回‘red’，也就是说，任何位于局部变量color的声明之后的代码，如果不使用window.color都无法访问全局的color变量，如果有一个操作数是对象，而另一个不是，就会在对象上调用valueOf（）方法以取得基本类型的值，以便根据前面的规则进行比较
+     * 变量查询也不是没有代价的，很明显，访问局部变量比访问全局变量更快，因为不用向上搜索作用域链，JavaScript引擎在优化表师傅查询方面做的不错，因此这个差别在将来恐怕就可以忽略不计了*/
+</script>
+<img src="jsimg2/查询标识符.png">
+
+<script>
+    /*4.3 垃圾收集
+     * JavaScript具有自动垃圾收集机制，
+     * 4.3.1 标记清除，进入环境、离开环境
+     * 4.3.2 引用计数
+     * 当声明一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是一，如果这个值又被赋给另一个变量，则该值的引用次数加1，相反，如果包含这个值引用的变量又取得了另外一个值，则这个值的引用次数减1，当这个值的引用次数变成了0，则说明没有办法在访问这个值了，因此就可以将其占用的内存空间回收回来
+     * 但是如果循环引用的话，比如对象a中包含一个指向对象b的指针，对象b也包含一个指向对象a的引用，
+     * var Oa = new Object();
+     * var Ob = new Object();
+     * Oa.test1 = Ob;
+     * Ob.test2 = Oa;
+     * 由于Oa和Ob通过各自的属性相互引用，所以这两个对象的引用次数都是2，在引用计数策略的实现中，它们的引用次数永远不会是0，假如这个函数被重复多次调用，就会导致大量内存得不到回收。
+     * 4.3.3 性能问题
+     * 不建议手动触发垃圾收集
+     * 4.3.4 管理内存
+     * function createPerson(name){
+     *       var localPerson = new Object();
+     *       localPerson.name = name;
+     *       return localPerson;
+     * }
+     * var globalperson = createPerson('jack sprrow');
+     * globalPerson = null;      //手工解除globalPerson的引用
+     * 在这个例子中，变量globalPerson取得了createPerson（）函数返回的值，在createPerson（）函数内部，我们创建了一个对象并将其赋给局部变量localPerson（），然后又为该对象添加了一个名为name的属性，最后，当调用这个函数时，localPerson以函数值的形式返回并赋给全局变量globalPerson，由于localPerson在createPerson（）函数执行完毕后就离开了其执行环境，因此无需我们显式的去为它接触引用，但是对于全局变量globalPerson而言，则需要我们在不使用它的时候手工为它接触引用，这也正是上面例子中最后一行代码的目的。
+     * 不过，解除一个值的引用并不意味着自动回收该值所占用的内存，解除引用的真正作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。
+     * 4.4 小结
+     * JavaScript变量可以用来保存两种类型的值：基本类型和医用类型，基本类型的值源自以下5种基本数据类型：undefined、null、boolean、number和string，基本类型和引用类型值具有以下特点：
+     * 基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中，
+     * 从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本，
+     * 引用类型的值是对象，保存在堆内存中，
+     * 包含医用类型之的变量实际上包含的并不是对象本身，而是一个指向该对象的指针，
+     * 从一个变量向另一个变量赋值医用类型的值，赋值的其实是指针，因此两个变量最终都指向同一个对象，
+     * 确定一个值是哪种基本类型可以使用typeof操作符，而确定一个值是哪种引用类型可以使用instanceof操作符
+     *
+     * 所有变量（包含基本类型和引用类型）都存在于同一个执行环境（也称为作用域）当中，这个执行环境决定了变量的生命周期，以及哪一部分代码可以访问其中的变量，以下是关于执行环境的几点总结：
+     * 执行环境有全局执行环境（也称为全局环境）和函数执行环境之分
+     * 每次进入一个新执行环境，都会创建一个用于搜索变量和函数的作用域链
+     * 函数的局部环境不仅有权访问函数作用域的变量，而且有权访问其包含（父）环境，乃至于全局环境，
+     * 全局环境只能访问在全局环境中定义的变量和函数，而不能直接访问局部环境中的任何数据
+     * 变量的执行环境有助于确定应该何时释放内存。
+     *
+     * JavaScript是一门具有自动垃圾收集机制的编程语言，开发人员不必关心内存分配和回收问题，可以对JavaScript的垃圾收集例程作如下总结
+     * 离开作用域的值将被自动标记为可以回收，因此在垃圾收集器件被删除
+     * 标记清除是目前主流的垃圾收集算法，这种算法的思想是给当前不使用的值加上标记，然后再回收其内存
+     * 另一种垃圾收集算法是引用计数，这种算法的思想是跟踪记录所有值被引用的次数，JavaScript引擎目前都不再使用这种算法，但在IE中访问非原生的JavaScript对象（如DOM元素）时，这种算法仍然可能会导致问题
+     * 当代码中存在循环引用现象时，引用计数的算法就会导致问题
+     * 解除变量的引用不仅有助于消除循环引用现象，而且对垃圾收集也有好处，为了确保有效的回收内存，应该及时解除不再使用的全局对象，全局对象属性以及循环引用的变量的引用。*/
+</script>
+
+
+<script>
+    /*第5章
+     * 引用类型
+     * 本章内容
+     * 使用对象
+     * 创建并操作数组
+     * 理解基本的JavaScript类型
+     * 使用基本类型和基本包装类型
+     * 引用类型的值（对象）是引用类型的一个实例，在ECMAScript中，引用类型是一种数据结构，用于将数据和功能组织在一起，它也常被称为类，但这种称呼并不妥当，尽管ECMAScript从技术上讲是一门面向对象的语言，但它不具备传统的面向对象语言所支持的类和接口等基本及饿哦股，引用类型有时候也被称为对象定义，因为它们描述的是一类对象所具有的的属性和方法
+     * 虽然引用类型与类看起来相似，但它们并不是相同的概念，为避免混淆，本书将不再使用类这个概念
+     * 如前所述，对象是某个特定引用类型值的实例，新对象是使用new操作符后跟一个构造函数来创建的，构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的，请看下面这行代码
+     * var person = new Object();
+     * 这行代码创建了Object引用类型的一个新实例，然后把该实例保存在了变量person中，使用的构造函数是Object，它值是为新对象定义了默认的属性和方法，ECMAScript提供了很多的原生引用类型（例如Object），一边开发人员用以实现常见的计算任务。*/
+</script>
+
+<script>
+    /*5.1 Object类型
+     * 到目前为止，我们看到的大多数引用类型值都是Object类型的实例，而且，Object也是ECMAScript中使用最多的一个类型，虽然Object的实例并不具备多少功能，但对于在应用程序中存储和传输数据而言，它们确实是非常理想的选择。
+     * 创建Object实例的方法有两种，第一种是使用new操作符后跟Object构造函数，如下所示
+     * var person = new Object();
+     * person.name = 'jack sprrot';
+     * person.age = 29;
+     * 另一种是使用对象字面量表示法，对象字面量是对象定义的一种简写形式，目的在于简化创建包含大量属性的对象的过程，下面这个例子就使用了对象字面量语法定义了前面那个例子中相同的person对象
+     * var person = {
+     *   name : 'jack sprrow',
+     *   age : 29
+     * }
+     * 在对象字面量中，使用逗号来分隔不同的属性，但是最后一个属性后面不能添加逗号
+     * 在使用对象字面量语法时，属性名也可以使用字符串，如下面这个例子所示
+     * var person = {
+     *   'name' : 'jack sprrow',
+     *   'age' : 29,
+     *   5 : true
+     * }
+     * 这个例子会创建一个对象，包含三个属性：name、age和5，但这里的数值属性名会自动转换为字符串
+     * 另外，使用对象字面量语法时，如果留空其花括号，则可以定义只包含默认属性和方法的对象，如下所示
+     * var person = {};      //与new Object（）相同
+     * person.name = 'jack sprrow';
+     * person.age = 29;
+     * 这个例子与本届前面的例子是等价的，只不过看起来似乎有点奇怪。关于对象字面量语法，我们推荐只在考虑对象属性名的可读性时使用。
+     * ！！！在通过对象字面量定义对象时，实际上不会调用Object构造函数
+     * 虽然可以使用前面介绍的任何一种方法来定义对象，但开发人员更青睐对象字面量语法，因为这种语法要求的代码量少，而且能够给人封装数据的感觉，实际上，对象字面量也是向构造函数传递大量可选参数的首选方式，例如
+     * function displayInfo(args){
+     *   var output = '';
+     *   if (typeof args.name == 'string'){
+     *       output += 'name:' + args.name + '\n';
+     *   }
+     *   if (typeof args.age == 'number'){
+     *       output += 'age:' + args.age + '\n';
+     *   }
+     *   alert(output);
+     * }
+     * displayInfo({
+     *   name : 'jack sprrow',
+     *   age : 29
+     * });
+     * displayInfo({
+     *   name : 'greg'
+     * });
+     * 在这个例子中，函数displayInfo（）接受一个名为args的参数，这个参数可能带有一个名为name或age的属性，也可能这两个属性都有或都没有，在这个函数内部，我们通过typeof操作符来检测每个属性是否存在，然后再基于相应的属性来构建一条要显示的消息，然后我们调用了两次这个函数，每次都适用一个对象字面量来指定不同的数据，这两调用传递的参数虽然不同，但函数都能正常执行
+     * 这种传递参数的模式最适合需要向函数传入大量可选参数的情形，一般来讲，命名参数虽然容易理解，但在有多个可选参数的情况下就会显示不够灵活，最好的做法是对那些必须值使用命名参数，而使用对象字面量来封装多个可选参数
+     * 一般来说访问对象属性时使用的都是点表示法，这也是很多面向对象语言中通用的语法，不过，在JavaScript也可以使用方括号来表示访问对象的属性，在使用方括号语法时，应该讲要访问的属性以字符串的形式放在方括号中，如下面的例子所示
+     * var person2 = {
+     name : 'jack',
+     age:29
+     };     //下面俩例子要加上这个对象
+     * alert(person['name']);        //'jack sprrow'
+     * alert(person.name);       //'jack sprrow'
+     * 从功能上看，这两种访问对象属性的方法没有任何区别，但方括号语法的主要优点是可以通过变量来访问属性，例如
+     * var propertyName = 'name';
+     * alert(person[propertyName]);      //'jack sprrow'
+     * 如果属性名中包含会导致语法错误的字符串，或者属性名使用的是关键字或保留字，也可以使用方括号语法来表示，例如
+     * person['first name'] = 'jack sprrow';
+     * 由于'first name'中包含一个空格，所以不能使用点表示法来访问它，然而，属性名中是可以包含非字母非数字的，这时候我们就可以使用方括号表示法来访问他们，
+     * 通常，除非必须使用变量来访问属性，否则我们建议使用点表示法*/
+</script>
+
+<script>
+    /*5.2 Array类型
+     * 除了Object之外Array类型恐怕是ECMAScript中最常用的类型了，而且ECMAScript中的数组与其他语言中的数组有相当大的区别，虽然ECMAScript数组与其他语言的数组都是数据的有序列表，但与其他语言不同的是，ECMAScript属猪的每一项都可以保存任何类型的数据，也就是说，可以用数组的第一个位置保存字符串，第二个位置保存数值，第三个位置保存对象，以此类推，而且，ECMAScript数组的大小是可以动态调整的，即可以随着数据的添加自动增长以容纳新增数据
+     * 创建数组的基本方试有两种，第一种是使用Array（）构造函数，如下面的代码所示
+     * var colors = new Array();
+     * 如果预先知道数组要保存的项目数量，也可以给构造函数传递该数量，而该数量会自动变成length属性的值，例如，下面的代码将创建length值为20的数组。
+     * var colors = new Array(20)；
+     * 也可以向Array构造函数传递数组中应该包含的项，以下代码创建了一个包含3个字符串值的数组
+     * var colors = new Array('red', 'blue', 'green');
+     * 当然给构造函数传递一个值也可以创建数组，但这时候问题就复杂一点了，因为如果传递的值是数值，则会按照该数值创建包含给定项数的数组，而如果传递的是其他类型的参数，则会按照该数值创建包含给定项数的数组，而如果传递的是其他类型的参数，则会创建包含那个值的只有一项的数组，下面就两个例子
+     * var colors = new Array(3);        //创建一个包含3项的数组
+     * var names = new Array('Greg');        //创建一个包含一项，即字符串‘Greg’的数组
+     * var colors = Array(3);        //创建一个包含3项的数组
+     * var names = Array('Greg');         //创建一个包含一项，即字符串‘Greg’的数组
+     * 创建数组的第二种基本方试是使用数组字面量表示法，数组字面量由一对包含数组项的方括号表示，多个数组项之间以逗号隔开，如下所示：
+     * var colors = ['red', 'blue', 'green'];        //创建一个包含3个字符串的数组
+     * var names = [];       //创建一个空数组
+     * var values = [1,2,];      //不要这样，这样会创建一个包含2或3项的数组
+     * var options = [,,,,,];        //不要这样，这样会创建一个包含5或6项的数组
+     * 以上代码的第一行创建了一个包含3个字符串的数组，第二行使用一对空方括号创建了一个空数组，第三行展示了在数组字面量的最后一行添加逗号的结果，在IE中，values会成为一个包含3个项目每个项的值分别为1、2和undefined的数组，在其他浏览器中，values会成为一个包含2项且值分别为1和2的数组，原因是IE8级之前版本的ECMAScript实现在数组字面量方面存在bug，由于这个bug导致的另一种情况如最后一行代码所示，该行代码可能会创建包含5项的数组（在IE9+、Firefox、Opera、Safari和Chrome中），也可能会创建包含6项的数组（在IE8级更早版本中），在像这种省略值的情况下，每一项都将获得undefined值，这个结果与调用Array构造函数时传递项数在了逻辑上是相同的，但是由于IE的实现与其他浏览器不一致，因此我们强烈不建议使用这种语法
+     * 与对象一样，在使用数组字面量表示法时，也不会调用Array构造函数。
+     * 在读取和设置数值的值时，要使用方括号并提供相应值的基于0的数字索引，如下所示
+     * var colors = ['red', 'blue', 'green'];        //定义一个字符串数组
+     * alert(colors[0]);     //显示第一项
+     * colors[2] = 'black';      //修改第三项
+     * colors[3] = 'brown';      //新增第四项
+     * 方括号中的索引表示要访问的值，如果索引小于数组中的项数，则返回对应项的值，就像这个例子中的colors[0]会显示‘red’一样，设置数组的值也使用相同的语法，但会替换指定位置的值，如果设置某个值的索引超过了数组现有项数，如这个例子中colors[3]所示，数组就会自动增加到该索引值加1的长度（就这个例子而言，索引是3，因此数组的长度就是4）。
+     * 数组的项数保存在其length属性中，这个属性始终会返回0或更大的值，如下面的这个例子所示
+     * var colors = ['ref', 'blue', 'green'];        //创建一个包含3个字符串的数组
+     * var names = [];       //创建一个空数组
+     * alert(colors.length);     //3
+     * alert(names.length);      //0
+     * 数组的length属性很有特点??它不是只读的，因此，通过设置这个属性，可以从数组的末尾移除项或者像数组中添加新项，请看下面的例子：
+     * var colors = ['red', 'blue', 'green'];        //创建一个包含3个字符串的数组
+     * var names = [];       //创建一个空数组
+     * colors.length = 2;
+     * alert(colors[2]);     //undefined
+     * 这个例子中的数组colors一开始有3个值，将其length属性设置为2会移除最后一项（位置为2的那一项），结果再访问colors[2]就会显示undefined了，如果将其length属性设置为大与数组项数的值，则新增的每一项都会取得undefined的值，如下所示：
+     * var colors = ['red'; 'blue', 'green'];        //创建一个包含3个字符串的数组
+     * colors.length = 4;
+     * alert(colors[3]);     //undefined
+     * 在此，虽然colors数组包含3个项，但它把length属性设置成了4.这个数组不存在位置3，所以访问这个位置的值就得到了特殊值undefined。
+     * 利用length属性也可以方便的在数组末尾添加新项，如下所示：
+     * var colors = ['red', 'blue', 'green'];        //创建一个包含3个字符串的数组
+     * colors[colors.length] = 'black';      //（在位置3）添加一种颜色
+     * colors[colors.length] = 'brown';      //（在位置4）再添加一种颜色
+     * 由于数组最后一行的索引始终是length-1，因此下一个新项的位置留是length，每当在数组末尾添加一项后，其length属性都会自动更新以反应这一变化，换句话说，上面例子第二行中的colors[colors.length]为位置3添加了一个值，最后一行的colors[colors.length]则为位置4添加了一个值，当把一个值放在超出当前数组大小的位置上时，数组就会重新计算其长度值，即长度值等于最后一项的索引加1，如下面的例子所示
+     * var colors = ['red', 'blue', 'green'];        //创建一个包含3个字符串的数组
+     * colors[99] = 'black';         //在位置99添加一种颜色
+     * alert(colors.length);     //100
+     * 在这个例子中，我们向colors数组的位置99插入了一个值，结果数组新长度（length）就是100（99+1），而位置3到位置98实际上都是不存在的，所以我们访问它们都将返回undefined
+     * ！！！数组最多可以包含4 294 967 295个项，这几乎已经能够满足任何编程需求了，如果想添加的项数超过这个上限值，就会发生异常，而创建一个初始大小与这个上限值接近的数组，则可能会导致运行时间超长的错误脚本。
+     *
+     *
+     * 另外，使用Array构造函数也可以省略new操作符，如下面的例子所示，省略new操作符的结果相同
+     * ！！！new 操作符详解---用new和不用new
+     String()，不加new将参数格式化为字符串，加new则返回的是String对象。
+     Date()，不加new返回当前时间，是一个字符串。加new的话，返回当前时间或者把参数格式化得到的时间，是一个Date对象。
+     String()，不加new将参数格式化为字符串，加new则返回的是String对象。
+     Number和String类似。
+     Array，Object加不加new貌似是一样的？      Array加不加一样
+     Image，XMLHttprequest等不能作为函数使用
+     在创建数组时，new Array()和Array()是一样的，new可以省略。（《Javascript高级程序设计（第三版）》中文版86页）
+     当以非构造函数形式被调用时，Object 等同于 new Object()。（我还没特别理解这个表达，出处是MDN：Object - JavaScript）
+     对于Number，String和Boolean这三种基本包装类型，使用new+构造函数是创建类型包装类型的实例，而没有new直接调用三个函数则这三个函数是强制类型转换函数。二者返回值的类型不同，前者为Object，后者则分别是三种基本类型。（《Javascript高级程序设计（第三版）》中文版119页）*/
+    var s1 = new String(2);
+    //如果把s1 log到控制台中，输出 String{0:"2"}
+    var s2 = String(2);
+    //如果把s2 log到控制台中，输出 '2'
+    console.log(typeof s1);
+    //"object"
+    console.log(typeof s2);
+    //"string"
+
+</script>
+
+<script>
+    /*5.2.1 检测数组
+     * 自从ECMAScript3做出规定以后，就出现了确定某个对象是不是数组的经典问题，对于一个网页，或者一个全局作用域而言，使用instanceof操作符就能得到满意的结果：
+     * if(value instanceof Array){
+     *       //对数组执行某些操作
+     * }
+     * instanceof操作符的问题在于，它假定单一的全局执行环境，如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array构造函数，如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。
+     * ！！！为了解决这个问题，ECMAScript5新增了Array.isArray()方法，这个方法的目的是最终确定某个值到底是不是数组，而不管它是在哪个全局执行环境中创建的，这个方法的用法如下
+     * if(Array.isArray(value)){
+     *       //对数组执行某些操作
+     * }
+     * var ar = ['bc'];      //可以看这个例子
+     var at = ar[0];
+     if(Array.isArray(at)){
+     alert(1)
+     }else (alert(2))
+     支持Array.isArray()方法的浏览器有IE9+、Firefox 4+、Safari 5+、Opera 10.5+和Chrome，要在尚未实现这个方法中的浏览器中准确检测数组，请参考22.1.1节*/
+</script>
+
+<script>
+    /*5.2.2 转换方法
+     * 如前所述，所有对象都具有toLocaleString()、toString()和valueOf()方法，其中，调用数组的toString()方法会返回由数组中的每个值的字符串形式拼接而成的一个以逗号分隔的字符串，而调用valueOf（）返回的还是数组，实际上，为了创建这个字符串会调用数组每一项的toString（）方法，来看下面这个例子
+     * var colors = ['red', 'blue', 'green'];       //创建一个包含3个字符串的数组
+     * alert(colors.toString());        //red,blue,green
+     * alert(colors.valueOf());         //red,blue,green
+     * alert(colors);       //red,blue,green
+     * 在这里，我们首先显式的调用了toString（）和valueOf（）方法，以便返回数组的字符串表示，每个值的字符串表示拼接成了一个字符串，中间以逗号分隔，最后一行代码直接将数组传递给了alert（），由于alert（）要接收字符串参数，所以它会在后台调用toString（）方法，由此会得到与直接调用toString（）方法相同的结果
+     * 另外，toLocaleString（）方法经常也会返回与toString（）和valueOf（）方法相同的值，但也不总是如此，当调用数组的toLocaleString（）方法时，它也会创建一个数组值的以逗号分隔的字符串，而与前两个方法唯一的不同之处在于，这一次为了取得每一项的值，调用的是每一项的toLocaleString（）方法，而不是toString（）方法，请看下面这个例子
+     * var person1 = {
+     *      toLocaleString : function(){
+     *          return 'Jack Sparrow';
+     *      },
+     *      toString : function(){
+     *          return 'Jack Sparrow';
+     *      }
+     * };
+     * var person2 = {
+     *      toLocaleString : function(){
+     *          return 'Jack Sparrow2';
+     *      },
+     *      toString : function(){
+     *          return 'Jack Sparrow3';
+     *      }
+     * };
+     * var people = [person1, person2];
+     * alert(people);       //Jack Sparrow,Jack Sparrow3
+     * alert(people.toString());        //Jack Sparrow,Jack Sparrow3
+     * alert(people.toLocaleString());      //Jack Sparrow,Jack Sparrow2
+     * 我们在这里定义了两个对象：person1和person2，而且还分别为每个对象定义了一个toString（）方法和toLocaleString（）方法，这两个方法返回不同的值，然后，创建一个包含前面定义的两个对象的数组，在将数组传递给alert（）时，输出的结果是‘Jack Sparrow,Jack Sparrow3’，因为调用了数组每一项的toString（）方法（同样，这与下一行显示的调用toString（）方法得到的结果相同），而调用数组的toLocaleString（）方法时，输出的是‘Jack Sparrow,Jack Sparrow2’，原因是调用了数组每一项的toLocaleString（）方法
+     * 数组继承的toLocaleString（）、toString（）和valueOf（）方法，在默认情况下都会以逗号分隔的字符串的形式返回数组项，而如果使用join（）方法，则可以使用不同的分隔符来构建这个字符串，join（）方法只接收一个参数，即作用分隔符的字符串，然后返回包含所有数组项的字符串，请看下面的例子
+     * var colors = ['red', 'green', 'blue'];
+     * alert(colors.join(','));     //red,green,blue
+     * alert(colors.join('||'));    //red||green||blue
+     * 在这里，我们使用了join（）方法重现了toString（）方法的输出，在传递逗号的情况下，得到了以逗号分隔的数组值，而在最后一行代码中，我们传递了双竖线符号，结果就得到了字符串‘red||green||blue’，如果不给join（）方法传入任何值，或者给他传入undefined，则使用逗号作为分隔符，IE7以及更早版本会错误的使用undefined作为分隔符
+     * 如果数组中的某一项的值是null或者undefined，name该值在join（）、toLocaleString（）、toString（）和valueOf（）（）方法返回的结果中以空字符串表示，*/
+</script>
+
+<script>
+    /*5.2.3 栈方法
+     * ECMAScript数组也提供了一种让数组的行为类似于其他数据结构的方法，具体来说，数组可以表现的就像栈一样，后者是一种可以限制插入和删除项的数据结构，栈是一种LIFO（Last-In-First-Out，后进先出）的数据结构，也就是最新现价的项最早被移除，而栈中项的插入（叫做推入）和移除（叫做弹出），只发生在一个位置??栈的顶部，ECMAScript为数组专门提供了push（）和pop（）方法，以便实现类似栈的行为
+     * push（）方法可以接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后的长度，而pop（）方法则从数组末尾移除最后一项，减少数组的length值，然后返回移除的项，请看下面的例子
+     * var colors = new Array();     //创建一个数组
+     * var count = colors.push("red", "green");     //推入两项
+     * alert(count);        //2
+     * count = colors.push("black");        //推入另一项
+     * alert(count);        //3
+     * var item = colors.pop();     //取得最后一项
+     * alert(item);     //"black"
+     * alert(colors.length);        //2
+     * 以上代码中的数组可以看成是栈（代码本身没有任何区别，而push（）和pop（）都是数组默认的方法），首先，我们使用push（）将两个字符串推入数组的末尾，并将返回的结果保存在变量count中（值为2），然后，再推入一个值，而结果仍然保存在count中，因为此时数组中包含3项，所以push（）返回3，而调用pop（）时，它会返回数组的最后一项，即字符串“black”，因此数组中仅剩两项，可以将栈方法与其他数组方法联用，像下面这个例子一样，
+     * var colors = ["red", "blue"];
+     * colors.push("brown");        //添加另一项
+     * colors[3] = "black";     //添加一项
+     * alert(colors.length);        //4
+     * var item = colors.pop();     //取得最后一项
+     * alert(item);     //“black”
+     * 在此，我们首先用两个值来初始化一个数组，然后，使用push（）添加第三个值，再通过直接在位置3上赋值来添加第四个值，而在调用pop（）时，该方法返回了字符串“black”，即最后一个添加到数组的值。*/
+</script>
+
+<script>
+    /*5.2.4 队列方法
+     * 栈数据结构的访问规则是LIFO（后进先出），而队里数据结构的访问规则是FIFO（First-In-First-Out，先进先出）。队列队里在列表末端添加项，从列表前端移除项，由于push（）是向数组末端添加项的方法，因此要模拟队列只需一个从数组前端取得项的方法，实现这一操作的数组方法就是shift（），它能够移除数组中的第一个项并返回该项，同时将数组长度减1，结果使用shift（）和push（）方法，可以像使用队列一样使用数组。
+     * */
+
+    /*var colors = new Array();     //创建一个数组
+     var count = colors.push("red", "green");        //推入两项
+     alert(count);       //2
+     count = colors.push("black");       //推入另一项
+     alert(count);       //3
+     var item = colors.shift();      //取得另一项
+     alert(item);        //"red"
+     alert(colors.length);       //2*/
+
+    /*这个例子首先使用了push()方法创建了一个包含3种颜色名称的数组，代码中加粗的那一行使用shift（）方法从数组中取得了第一项，即“red”，在移除第一项之后，“green”就变成了第一项，而“black”则变成了第二项，数组也只包含两项了
+     * Ecmascript还为数组提供了一个unshift（）方法，顾名思义，unshift（）与shift（）的用途相反：它能在数组前端添加人一个项并返回新数组的长度，因此，同时使用unshift（）和pop方法，可以从相反的方向来模拟队列，即在数组的前端添加项，从数组末端移除项，如下面的例子所示。*/
+    /*var colors = new Array();       //创建一个数组
+     var count = colors.unshift("red", "black");     //推入两项
+     alert(count);       //2
+     count = colors.unshift("black");        //推入另一项
+     alert(item);        //"green"
+     alert(colors.length);       //2*/
+    /*这个例子创建了一个数组并使用unshift（）方法先后推入3个值，首先是“red”和“green”，然后是“black”，数组中各项的顺序为“black”、“red”、 “green”，在调用pop（）方法时。移除并返回的是最后一项，即“green”
+     * IE7及更早版本对JavaScript的视线中存在一个偏差，其unshift（）方法总是返回undefined而不是数组的新长度，IE8在非兼容模式下会返回正确的长度值*/
+</script>
+
+<script type="text/javascript">
+    /*5.2.5 重排序方法
+     * 数组中已经存在两个可以直接用来重排序的方法：reverse（）和sort（），有读者可能猜到了，reverse（）方法会对反转数组项的顺序，请看下面的例子*/
+    /*var values = [1, 2, 3, 4, 5];
+    values.reverse();
+    alert(values);      //5,4,3,2,1*/
+    //这里数组的初始值及顺序是1、2、3、4、5.而调用数组的reverse（）方法以后，其值的顺序变成了5、4、3、2、1.这个方法的作用相当直观明了，但不够灵活，因此才有了sort（）方法，在默认情况下，sort按照升序排列数组项--即最小的值位于最前面，最大的值排在最后面，为了实现排序，sort（）方法会调用每个数组的toString（）转型方法，然后比较得到的字符串，以确定如何排序，即使数组中的每一项都是数值，sort（）方法比较的也是字符串，如下所示。
+    /*var values = [0, 1, 5, 10, 15];
+    values.sort();
+    alert(values);      //0,1,10,15,5*/
+    //可见，即是例子中值的顺序没有问题，但sort（）方法也会根据测试字符串的结果改变原来的顺序，因为数值5虽然小于10，单在进行字符串比较时，“10”则位于“5”的前面（比较的是ASCII码），于是数组的顺序就被修改了，不用说，这种排序方式在很多情况下都不是最佳方案，因此sort（）方法可以接收一个比较函数作为参数，以便我们制定哪个值位于哪个值的前面，比较函数接收两个参数，如果第一个参数应该位于第二个之前则返回一个负数，如果两个参数相等则返回0，如果第一个参数应该位于第二个之后则返回一个正数，以下就是一个简单的比较函数，
+    function compare(value1, value2) {
+        if (value1 < value2) {
+            return -1;
+        }else if (value1 > value2){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    //这个比较函数可以适用于大多数数据类型，只要将其作为参数传递给sort（）方法即可，如下面这个例子所示，
+    /*var values = [0, 1, 5, 10, 15];
+    values.sort(compare);
+    alert(values);      //0,1,5,10,15*/
+    //在将比较函数传递到sort（）方法之后，数值仍然保持了正确是升序，当然，也可以通过比较函数产生姜旭排序的结果，只要交换比较函数返回的值即可。
+    function compare(value1, value2) {
+        if (value1 < value2) {
+            return 1;
+        }else if (value1 > value2){
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    var values = [0, 1, 5, 10, 15];
+    values.sort(compare);
+    //alert(values);      //15,10,5,1,0
+    //在这个修改后的例子中，比较函数在第一个值应该位于第二个值之后的情况下返回1，而在第一个值应该在第二个之前的情况下返回-1，交换返回值的意思是让更大的值排位更靠前，也就是对数组按照降序排序，当然，如果只想反转数组原来的顺序，使用reverse（）方法要更快一些
+    //reverse()和sort（）方法的返回值是经过排序之后的数组
+    //对于数值类型或者其valueOf（）方法会返回数值类型的对象类型，可以使用一个更简单的比较函数，这个函数只要用第二个值减第一个值即可
+    function compare(value1, value2){
+        return value2 - value1;
+    }
+    //如果想要按照升级排序，则compare（）函数中的return语句应该返回value2- value1
+    //由于比较函数通过返回一个小于零、等于零或大于零的值来影响排序结果，因此减法操作就可以适当的处理所有这些情况
+</script>
+
+<script>
+    /*5.2.6操作方法
+    * ECMAScript为操作已经包含在数组中的项提供了很多方法，其中concat（）方法可以基于当前数组中的所有项创建一个新数组，具体来说，这个方法会先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组，在没有给concat（）方法传递参数的情况下，它只是赋值当前数组并返回副本，如果传递给concat（）方法的是一或多个数组，则该方法会将这些数组中的每一项都添加到结果数组中，如果传递的值不是数组，这些值就会被简单地添加到结果数组的末尾，下面来看一个例子。*/
+    /*var colors = ["red", "green", "blue"];
+    var colors2 = colors.concat("yellow", ["black", "brown"]);
+    alert(colors);      //red,green,blue
+    alert(colors2); */    //red,green,blue,yellow,black,brown
+    //以上代码创建了一个包含3个值的数组colors，然后基于colors调用了concat（）方法，并传入字符串‘yellow’和一个包含‘black’和‘brown’的数组，最终，结果数组colors2中包含了‘red’、‘green’、‘yellow’、‘brown'。至于原来的数组colors，其值仍然保持不变
+
+    //下一个方法是slice（），它能够基于当前数组中的一或多个项创建一个新数组，slice（）方法可以接收一或两个参数，即要返回项的起始和结束位置，在只有一个参数的情况下，slice（）方法返回从该参数指定位置开始到当前数组末尾的所有项，如果有两个参数，该方法返回起始位置和结束位置之间的项??但不包括结束位置的项，注意，slice（）不会影响原始数组，请看下面的例子，
+    /*var colors = ["red", "green", "blue", "yellow", "purple"];
+    var colors2 = colors.slice(1);
+    var colors3 = colors.slice(1,4);
+    alert(colors2);     //green,blue,yellow,purple
+    alert(colors3);     //green,blue,yellow*/
+    //在这个例子中，开始定义的数组colors包含5项，调用slice（）并传入1会得到一个包含4项的新数组，因为是从位置1开始复制，所以会包含green而不会包含red，这个新数组colors2中包含的是’green'、‘blue’、‘yellow’和‘purple'，接着，我们再次调用slice（）并传入了1和4，表示从位置1开始复制，到位置3结束，结果数组colors3中包含了“green”、“blue”和“yellow”。
+    //如果slice（）方法的参数中有一个负数，则用数组长度加上该数来确定相应的位置，例如，在一个包含5项的数组上调用slice（-2，-1）与调用slice（3,4）得到的结果相同，如果结束位置小于起始位置，则返回空数组。
+
+    /*下面我们来介绍splice（）方法，这个方法恐怕腰酸是最强大的数组方法了，它有很多种用法，splice（）的主要用途是向数组的中部插入项，但使用这种方法的方式则有如下3种。
+    * 删除：可以删除任意数量的项，只需指定2个参数：要删除的第一项的位置和要删除的项数。例如，splice（0,2）会删除数组中的前两项。
+    * 插入：可以向指定位置插入任意数量的项，只需要提供3个参数：起始位置、0（要删除的项数）和要插入的项，如果要插入多个项，可以再传入第四、第五，以至任意多个项，例如，splice（2,0，“reg”，“green”）会从当前数组的位置3开始插入字符串“red”和“green”。
+    * 替换：可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定3个参数：起始位置、要删除的项数和要插入的任意数量的项，插入的项数不必与删除的项数相等，例如，splice（2,1，“red”，“green”）会删除当前数组位置2的项，然后再从位置2开始插入字符串“red”和“green”。
+    * splice（）方法始终都会返回一个数组，该数组中包含从原始数组中删除的项（如果没有要删除的任何项，则返回一个空数组），下面的代码展示了上述3种使用splice（）方法的方式*/
+    /*var colors = ["red", "green", "blue"];
+    var removed = colors.splice(0,1);       //删除第一项
+    alert(colors);      //green，blue
+    alert(removed);     //red,返回的数组中只包含一项
+
+    removed = colors.splice(1, 0, "yellow", "orange");      //从位置1开始插入两项
+    alert(colors);      //green,yellow,orange,blue
+    alert(removed);     //返回的是一个空数组
+
+    removed = colors.splice(1, 1, "red", "purple");     //插入两项，删除一项
+    alert(colors);      //green,red,purple,orange,blue
+    alert(removed);     //yellow，返回的数组中只包含一项*/
+    //上面的例子首先定义了一个包含3项的数组colors，第一次调用splice（）方法只是删除了这个数组的第一项，之后colors还包含了“green”和“blue”两项，第二次调用了splice（）方法时在位置1插入了两项，结果colors中包含了“green”、“yellow”、“orange”和“blue”，这一次操作没有删除项，因此返回了一个空数组，最后一次调用splice（）方法删除了位置1出的一项，然后又插入了“red”和“purple”，在完成以上操作之后，数组colors中包含“green”、“red”、“purple”、“orange”和“blue”。
+</script>
+
+<script>
+    /*5.2.7 位置方法
+    * ECMAScript5为数组实例添加了两个位置方法：indexOf（）和lastIndexOf（），这两个方法都接收两个参数：要查找的项和（可选的）表示查找起点位置的索引，其中，indexOf（）方法从数组的开头（位置0）开始向后查找，lastIndexOf（）方法则从数组的末尾开始向前查找
+    * 这两个方法都返回要查找的项在数组中的位置，或者在没找到的情况下返回-1，在比较第一个参数与数组中的每一项时，会使用全等操作符，也就是说，要求查找的项必须严格相等（就像===一样）以下是几个例子，*/
+    /*var numbers = [1,2,3,4,5,4,3,2,1];
+    alert(numbers.indexOf(4));      //3
+    alert(numbers.lastIndexOf(4));      //5
+
+    alert(numbers.indexOf(4, 4));       //5
+    alert(numbers.lastIndexOf(4, 4));       //3
+
+    var person = { name : "jack sparrow" };
+    var people = [{name: "jack sparrow"}];
+
+    var morePeople = [person];
+
+    alert(people.indexOf(person));      //-1
+    alert(morePeople.indexOf(person));      //0*/
+    //使用indexOf（）和lastIndexOf（）方法查找特定项在数组中的位置非常简单，支持他们的浏览器包括IE9+、Firefox2+、Safari3+、Opera9.5+和Chrome。
+</script>
+
+<script>
+    /*5.2.8 迭代方法
+    * ECMAScript5为数组提供了5个迭代方法，每个方法都接收两个参数：要在每一项上运行的函数和（可选的）运行该函数的作用域对象??影响this的值，传入这些方法中的函数会接收三个参数：数组项的值、该项在数组中的位置和数组对象本身，根据使用的方法不同，这个函数执行后的返回值可能会也可能不会影响访问的返回值，以下是这5个迭代方法的作用
+    * every（）：对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true
+    * filter（）：对数组中的每一项运行给定的函数，返回该函数会返回true的项组成的数组，
+    * forEach（）:对数组中的每一项运行给定函数，这个方法没有返回值。
+    * map（）：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+    * some（）：对数组中的每一项运行给定函数，如果该函数对任一项返回true，则返回true
+    * 以上方法都不会修改数组中的包含的值
+    * 在这些方法中，醉相思的是every（）和some（），他们都用于查询数组中的项是否满足某个条件，对every（）来说，传入的函数必须每一项都返回true，这个方法才会返回true，否则，他就返回false，而some（）方法则是只要传入的函数对数组中的某一项返回true，就返回true，请看以下例子*/
+    /*var numbers = [1,2,3,4,5,4,3,2,1];
+    var everyResult = numbers.every(function(item, every, array){
+        return(item > 2);
+    });
+    alert(everyResult);     //false
+
+    var someResult = numbers.some(function(item, every, array){
+        return(item > 2);
+    });
+    alert(someResult);      //true*/
+    //以上代码调用了every（）和some（），传入的函数只要给定项大于2就会返回true，对于every（），它返回的是false，因为只有部分数组项符合条件，对于some（），结果就是true，因为至少有一项是大于2的，
+    //下面再看一看filter（）函数，它利用指定的函数确定是否在返回的数组中包含的某一项，例如要返回一个所有数值都大于2的数组，可以用以下代码
+    /*var numbers = [1,2,3,4,5,4,3,2,1];
+    var filterResult = numbers.filter(function(item, every, array){
+        return(item > 2);
+    });
+    alert(filterResult);        //[3,4,5,4,3]*/
+    //这里，通过调用filter（）方法创建并返回了包含3、4、5、4、3的数组，因为传入的函数对它们每一项都返回true，这个方法对查询符合某些条件的所有数组项非常有用
+    //map（）也返回一个数组，而这个数组的每一项都是在原始数组中的对应项上运行传入函数的结果，例如，可以给数组中的每一项乘以2，然后返回这些乘积组成的数组，如下所示
+    /*var numbers = [1,2,3,4,5,4,3,2,1];
+    var mapResult = numbers.map(function(item, every, array){
+        return item * 2;
+    });
+    alert(mapResult);       //[2,4,6,8,10,8,6,4,2]*/
+    //以上代码返回的数组中包含每个数乘以2之后的结果，这个方法适合创建包含的项与另一个数组一一对应的数组。
+    //最后一个方法forEace（），它只是对数组中的每一项运行传入的函数，这个方法没有返回值，本质上与使用for循环迭代数组一样，来看一个例子。
+    /*var numbers = [1,2,3,4,5,4,3,2,1];
+    numbers.forEach(function(item, every, array){
+        //执行某些操作
+    });*/
+    //这些数组方法难过过执行不同的操作，可以大大方便处理数组的任务，支持这些迭代方法的浏览器有IE9+、Firefox2+、Safari3+、Opera9.5+和Chrome
+</script>
+
+<script>
+    /*5.2.9 缩小方法
+    * ECMAScript5还新增了两个缩小数组的方法：reduce（）和reduceRight（）。这两个方法都会迭代数组的所有项，然后构建一个最终返回的值，其中，reduce（）方法从数组的第一项开始，逐个遍历到最后，而reduceRight（）则从数组的最后一项开始，向前遍历到第一项。
+    * 这两个方法都接收两个参数，一个在每一项上调用的函数和（可选的）作为缩小基础的初始值，传给reduce（）和reduceRight（）的函数接收4个参数：前一个值、当前值、项的索引和数组对象，这个函数返回的任何值都作为第一个参数自动传给下一项，第一个迭代发生在数组的第二项上，因此第二项的第一个参数就是数组的第一项，第二个参数就是数组的第二项，
+    * 使用reduce（）方法可以执行求数组中所有值之和的操作，比如：*/
+    /*var values = [1,2,3,4,5];
+    var sum = values.reduce(function(prev, cur, index, array){
+        return prev + cur;
+    });
+    alert(sum);     //15*/
+    //第一次执行回调函数，prev是1，cur是2，第二次，prev是3（1+2的结果），cur是3（数组的第三项），这个过程会持续到把数组中的每一项都方文一边，最后返回结果。
+    //reduceRight（）的作用类似，只不过方向相反而已，来看下面这个例子
+    /*var values = [1,2,3,4,5];
+    var sum = values.reduceRight(function(prev, cur, index, array){
+        return prev + cur;
+    });
+    alert(sum);     //15*/
+    /*在这个例子中，第一次执行毁掉函数，prev是5，cur是4，当然，最终结果相同，因为执行的都是简单相加的操作
+    * 使用reduce（）还是reduceRight（），主要取决于从那头开始遍历数组，除此之外，他们完全相同
+    * 支持这两个缩小函数的浏览器有IE9+、Firefox3+、Safari4+、Opera10.5和Chrome*/
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="div1" style="width: 300px;background-color: green; height: 300px;"></div>
+
+<script>
+    var st = new Date();
+</script>
+<IMG alt="测试图片" src="http://sp2.yokacdn.com/photos/f3/4f/702018/photo_322092_500.jpg" onload="showspeed();">
+<div id='showtxt'></div>
+<script>
+    var arr = ["网速低于50KB", "网速在50-100KB之间", "网速在100-200KB之间", "网速在200-300KB之间", "视频通讯"];
+    function showspeed() {
+        var filesize = 35.4;    //measured in KB     图片大小
+        var et = new Date();
+        var speed = Math.round(filesize * 1000) / (et - st);
+        document.title = speed;
+        var scope = (speed > 0 && speed <= 50) ? 0 : (speed > 50 && speed <= 100) ? 1 : (speed >= 100 && speed < 200) ? 2 : (speed >= 200 && speed < 300) ? 3 : 4;
+        //alert(scope);
+        document.getElementById("showtxt").innerHTML = ("您的下载速度为：" + arr[scope] + " (K/秒)");
+    }
+</script>
+
+<script>
+    var t1 = new Date().getTime();      //这个放head里，首先执行
+</script>
+<div id="TimeShow"></div>
+<script LANGUAGE="JavaScript">      //测试加载时间
+window.onload = function () {
+    document.getElementById("TimeShow").innerHTML = "加载本页耗时 " + (new Date().getTime() - t1) + " 毫秒";
+}
+</script>
+<img src="http://chuguoliuxue.zhongyuedu.com/tgpc/putong/images/lxz_pc_2.png">
+
+<script>
+    /*强制转换字符串，强制转换数组，强制转换布尔值，看下面
+     var yu = "54";
+     var yi = Number(yu);
+     alert(yi);*/
+</script>
+
+<a>1. 转换函数：
+    js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。
+    一些示例如下：
+    parseInt("1234blue"); //returns 1234
+    parseInt("0xA"); //returns 10
+    parseInt("22.5"); //returns 22
+    parseInt("blue"); //returns NaN
+    parseInt()方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。基是由parseInt()方法的第二个参数指定的，示例如下：
+    parseInt("AF", 16); //returns 175
+    parseInt("10", 2); //returns 2
+    parseInt("10", 8); //returns 8
+    parseInt("10", 10); //returns 10
+    如果十进制数包含前导0，那么最好采用基数10，这样才不会意外地得到八进制的值。例如：
+    parseInt("010"); //returns 8
+    parseInt("010", 8); //returns 8
+    parseInt("010", 10); //returns 10
+    parseFloat()方法与parseInt()方法的处理方式相似。
+    使用parseFloat()方法的另一不同之处在于，字符串必须以十进制形式表示浮点数，parseFloat()没有基模式。
+    下面是使用parseFloat()方法的示例：
+    parseFloat("1234blue"); //returns 1234.0
+    parseFloat("0xA"); //returns NaN
+    parseFloat("22.5"); //returns 22.5
+    parseFloat("22.34.5"); //returns 22.34
+    parseFloat("0908"); //returns 908
+    parseFloat("blue"); //returns NaN
+    2. 强制类型转换
+    还可使用强制类型转换（type casting）处理转换值的类型。使用强制类型转换可以访问特定的值，即使它是另一种类型的。
+    ECMAScript中可用的3种强制类型转换如下：
+    Boolean(value)??把给定的值转换成Boolean型；
+    Number(value)??把给定的值转换成数字（可以是整数或浮点数）；
+    String(value)??把给定的值转换成字符串。
+    用这三个函数之一转换值，将创建一个新值，存放由原始值直接转换成的值。这会造成意想不到的后果。
+    当要转换的值是至少有一个字符的字符串、非0数字或对象（下一节将讨论这一点）时，Boolean()函数将返回true。如果该值是空字符串、数字0、undefined或null，它将返回false。
+    可以用下面的代码段测试Boolean型的强制类型转换。
+    Boolean(""); //false ? empty string
+    Boolean("hi"); //true ? non-empty string
+    Boolean(100); //true ? non-zero number
+    Boolean(null); //false - null
+    Boolean(0); //false - zero
+    Boolean(new Object()); //true ? object
+    Number()的强制类型转换与parseInt()和parseFloat()方法的处理方式相似，只是它转换的是整个值，而不是部分值。示例如下：
+    用　　法 结　　果
+    Number(false) 0
+    Number(true) 1
+    Number(undefined) NaN
+    Number(null) 0
+    Number( "5.5 ") 5.5
+    Number( "56 ") 56
+    Number( "5.6.7 ") NaN
+    Number(new Object()) NaN
+    Number(100) 100
+    最后一种强制类型转换方法String()是最简单的，示例如下：
+    var s1 = String(null); //"null"
+    var oNull = null;
+    var s2 = oNull.toString(); //won’t work, causes an error
+    3. 利用js变量弱类型转换
+    举个小例子，一看，就会明白了。
+</a>
+<script>
+    //看上面的3
+    var str = '012.345 ';
+    var x = str - 0;
+    x = x * 1;
+</script>
+
+<script>
+    /*转换成JSON格式
+    JSON.stringify();
+     语法：
+     JSON.stringify(value [, replacer] [, space])
+     value：是必须要的字段。就是你输入的对象，比如数组啊，类啊等等。
+     replacer：这个是可选的。它又分为2种方式，一种是方法，第二种是数组。
+     情况一：我们先说数据，通过我们后面的实验可以知道，它是和第一个有关系的。一般来说，我们系列化后的结果是通过键值对来进行表示的。
+     比如说：
+     name:"lan",age:25
+     这种形式。
+     所以，如果这种形式的话，如果第二个的值在第一个存在，那么的话就以第二个的值做key，第一个值为value进行表示，如果不存在，sorry，忽略。【是不是有点抽象，我也这么觉得，不过你等一下看实验 就OK了。。。】
+     情况二：如果是方法，那很简单，就是说把系列化后的每一个对象（记住 是每一个）传进方法里面进行处理。
+     space：很好理解，用什么来做分隔符的。
+     1.如果省略的话，那么显示出来的值 就没有分隔符。直接输出来
+     2.如果是一个数字的话，那么它就定义缩进几个字符，当然 如果大于10 ，则最大值为10.
+     3.如果是一些转义字符，比如“\t”，表示回车，那么它每行一个回车。
+     4.如果仅仅是字符串，OK，就在每行输出值的时候把这些字符串附加上去就OK。当然，最大长度也是10个字符。
+     开始用实例说明；
+     1.只有一个参数的情况下：
+     var obj={
+     webName:"脚本之家",
+     url:"jb51.net",
+     age:"2"
+     }
+     var str=JSON.stringify(obj)
+     console.log(str);
+     上面的代码实现了转换功能，这里采用的是JSON.stringify()，这是ECMAScript5新增的方法。
+     存在一定的浏览器兼容性问题，具体如下:
+     （1）.IE8和IE8以上浏览器支持此方法。
+     （2）.谷歌浏览器支持此方法。
+     （3）.火狐浏览器支持此方法。
+     （4）.opera浏览器支持此方法。
+     （5）.Safria浏览器支持此方法。
+     或
+     var student = new Object();
+     student.name = "Lanny";
+     student.age = "25";
+     student.location = "China";
+     var json = JSON.stringify(student);
+     alert(student);     //{"name":"Lanny","age":"25","location":"China"}
+     有些人可能会怀疑JSON.stringify的作用，OK。那假如，我们不要这个函数。代码下面的样子：
+     var student = new Object();
+     student.name = "Lanny";
+     student.age = "25";
+     student.location = "China";
+
+     // var json = JSON.stringify(student);
+     alert(student);     //[object object]
+     2.第二个参数存在，并且第二个参数还是function的时候
+     var students = new Array() ;
+     students[0] = "Lanny";
+     students[1] = "dong";
+     students[2] = "I love you";
+     var json = JSON.stringify(students,switchUpper);
+     function switchUpper(key, value) {
+     return value.toString().toUpperCase();
+     }
+     alert(json);    //"LANNY,DONG,I LOVE YOU"
+     //var json = JSON.stringify(students, function (key,value) {
+     //return value.toString().toUpperCase();
+     //});
+     上面的方法也可以换成下面的，2个都是一样，只是写法有那么一点点的不一样而已。
+     得到结果如下：LANNY,DONG,I LOVE YOU"
+
+     3.第二个参数存在，并且第二个参数不是function，而是数组的时候。
+     3.1 【误区】如果第一个参数是数组，第二个参数也是数组的话，只显示第一个参数的值。
+     比如：
+     var students = new Array() ;
+     students[0] = "Lanny";
+     students[1] = "dong";
+     students[2] = "I love you";
+     var stu = new Array();
+     stu[0] = "1";
+     stu[1] = "2";
+     var json = JSON.stringify(students,stu);
+     alert(json);        //["Lanny","dong","I love you"]
+     第二个被忽略了，只是第一个被系列化了。
+     3.2 如果第一个是对象（这里说的对象就像在C#里面可以进行new的），第二个是数组的。
+
+     那么如果第二个的value在第一个存在，那么的话就以第二个的值做key，第一个值为value进行表示
+
+     var student = new Object();
+     student.qq = "5485891512";
+     student.name = "Lanny";
+     student.age = 25;
+
+     var stu = new Array();
+     stu[0] = "qq";
+     stu[1] = "age";
+     stu[2] = "Hi";//这个student对象里不存在。
+
+     var json = JSON.stringify(student,stu);
+     alert(json);        //["qq":"5485891512","age":25]
+     因为stu[2] = "Hi";这个Hi 在第一个找不到，所以就不进行显示了。
+
+     4.第三个参数
+
+     4.1.如果省略的话，那么显示出来的值 就没有分隔符。直接输出来
+
+     比如：
+     var student = new Object();
+     student.qq = "5485891512";
+     student.name = "Lanny";
+     student.age = 25;
+
+     var stu = new Array();
+     stu[0] = "qq";
+     stu[1] = "age";
+     stu[2] = "Hi";
+
+     var json = JSON.stringify(student,stu);
+     alert(json);        //["qq":"5485891512","age":25]
+     4.2.如果是一个数字的话，那么它就定义缩进几个字符，当然 如果大于10 ，则最大值为10.
+
+     var student = new Object();
+     student.qq = "5485891512";
+     student.name = "Lanny";
+     student.age = 25;
+
+     var stu = new Array();
+     stu[0] = "qq";
+     stu[1] = "age";
+     stu[2] = "Hi";
+
+     var json = JSON.stringify(student,stu,100);//注意这里的100
+     alert(json);        //{"qq":"5485891512","age":25}，空开来了10个字符。
+     4.3.如果是一些转义字符，比如“\t”，表示回车，那么它每行一个回车。
+     也是一样。
+     4.4.如果仅仅是字符串，OK，就在每行输出值的时候把这些字符串附加上去就OK。当然，最大长度也是10个字符。
+     如果是var json = JSON.stringify(student,stu,“HaiKou”);     //{HaiKou"qq":"5485891512",HaiKou"age":25}
+     原文链接：http://www.cnblogs.com/damonlan/*/
+</script>
+
+<script>
+    //字符串拼接
+    /*var str="";
+     var d1,d2;
+     var c=5000;//连接字符串的个数
+
+
+     //------------------------测试第三种方法耗费时间-------
+     d1=new Date();
+     function stringConnect(){
+     this._str_=new Array();
+     }
+     stringConnect.prototype.append=function(a){
+     this._str_.push(a);
+     }
+     stringConnect.prototype.toString=function(){
+     return this._str_.join("");
+     }
+     var mystr=new stringConnect;
+
+     for(var i=0;i<c;i++){
+     mystr.append("a");
+     }
+     str=mystr.toString();
+     d2=new Date();
+     console.log(d2.getTime()-d1.getTime());
+     //-----------------------------------------------------
+
+     //------------------------测试第二种方法耗费时间-------
+     d1=new Date();
+     var arr=new Array();
+     for(var i=0;i<c;i++){
+     arr.push("a");
+     }
+     str=arr.join("");
+     d2=new Date();
+     console.log(d2.getTime()-d1.getTime());
+     //-------------------------------------------------------
+     //------------------------测试第一种方法耗费时间-------
+     d1=new Date();for(var i=0;i<c;i++){
+     str+="a";
+     }
+     d2=new Date();
+     console.log(d2.getTime()-d1.getTime());
+     //-------------------------------------------------------*/
+</script>
+
+<script>
+    /*var arr = [1,2,3,4,'巴德','merge'];
+     var str = arr.join(',');
+     console.log(str); // 1,2,3,4,巴德,merge
+     //字符串转数组
+     var str = '1,2,3,4,巴德,merge';
+     var arr = str.split(',');
+     console.log(arr);     // ["1", "2", "3", "4", "巴德", "merge"]   数组
+     console.log(arr[4]);  // 巴德
+     //字符串转数组，数组转数组格式化，数组格式化转数组
+     var str = '1,2,3,4,巴德,merge';
+     var arr = str.split(',');
+     var strify = JSON.stringify(arr);       //
+     console.log(arr);       // ["1", "2", "3", "4", "巴德", "merge"]   数组
+     console.log(arr[4]);    // 巴德
+     console.log(strify);    // ["1", "2", "3", "4", "巴德", "merge"]   字符串
+
+     var arrParse = JSON.parse(strify);
+     console.log(arrParse);  // ["1", "2", "3", "4", "巴德", "merge"]   数组*/
+</script>
+
+<a>name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;
+    属性名 取值 描述
+    width 正整数 或 device-width 定义视口的宽度，单位为像素
+    height 正整数 或 device-height 定义视口的高度，单位为像素，一般不用
+    initial-scale [0.0-10.0] 定义初始缩放值
+    minimum-scale [0.0-10.0] 定义缩小最小比例，它必须小于或等于maximum-scale设置
+    maximum-scale [0.0-10.0] 定义放大最大比例，它必须大于或等于minimum-scale设置
+    user-scalable yes/no 定义是否允许用户手动缩放页面，默认值yes</a>
+
+<input style='' type='radio' name='kemu' value='执业医师代报名' id="kemu1"><label for="kemu1">用for连接id&nbsp;</label>
+<script>
+    var obj2 = {};//这只是JS对象
+    var obj3 = {width: 100, height: 200};
+    /*这跟JSON就更不沾边了,只是JS的 对象 */
+    var obj4 = {'width': 100, 'height': 200};
+    /*这跟JSON就更不沾边了,只是JS的对象 */
+    var obj5 = {"width": 100, "height": 200, "name": "rose"};
+    /*我们可以把这个称做：JSON格式的JavaScript对象 */
+    var str1 = '{"width":100,"height":200,"name":"rose"}';
+    /*我们可以把这个称做：JSON格式的字符串 */
+    var a = [
+        {"width": 100, "height": 200, "name": "rose"},
+        {"width": 100, "height": 200, "name": "rose"},
+        {"width": 100, "height": 200, "name": "rose"}
+    ];
+    strj2 = JSON.parse(str1);
+    console.log(strj2.width);
+    /*这个叫JSON格式的数组，是JSON的稍复杂一点的形式 */
+    var str2 = '[' +
+            '{"width":100,"height":200,"name":"rose"},' +
+            '{"width":100,"height":200,"name":"rose"},' +
+            '{"width":100,"height":200,"name":"rose"},' +
+            ']';
+    var sty1 = str2.split(',');
+    console.log(sty1[1]);
+    var str3 = JSON.stringify(str2);
+    var str4 = str3.split(',');
+    var str5 = JSON.stringify(str4);
+    var str8 = JSON.parse(str5);
+    console.log(str8[1]);
+    /*JSON和JS对象区别对比表
+     区别          Json                                        Javascript对象
+     含义         仅仅是一种数据格式                           表示类的实例
+     传输         可以跨平台数据传输，速度快                   不能传输
+     表现         1,键值对方式，键必须加双引号                 1,键值对方式，键不加引号
+     2,值不能是方法函数,不能是undefined/NaN       2,值可以是函数、对象、字符串、数字、boolean 等
+     相互转换     Json转化为js对象：                           Js对象转换为Json：
+     1,JSON.parse(jsonstring);                    JSON.stringify(jsobj);(不兼容ie7)
+     (不兼容ie7)
+     2,Jsobj=eval("("+jsonstring+")")；
+     (兼容所有浏览器，但不安全，会执行json里面的表达式?)
+     其他
+     调用json官网的js，实现parse 和 stringify 在各个浏览器的兼容：
+     https://github.com/douglascrockford/JSON-js/blob/master/json2.js
+     总而言之你可以理解为JSON是JS下的一种数据格式，他从属于JS，并且在处理JSON数据时可直接使用JS内置API*/
+</script>
+
+<script>
+    //冒泡排序
+
+    var as = [3, 4, 2, 1, 5, 6, 7, 8, 9];
+    var times = 0;
+    function bubbleSort(arr) {
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {//如果前面的数据比后面的大就交换
+                    var temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;        //因为i被修改了所以=temp
+                }
+                console.log("第" + (++times) + "次排序后：" + arr);
+            }
+        }
+        return arr;
+    }
+    console.log("The result is:" + bubbleSort(arr));
+</script>
+<script>
+    (function () {
+        var arr = [5, 39, 8, 1, 2, 13, 55];
+        arr = arr.sort(function (a, b) {
+            return a - b
+        });
+        console.log(arr);//1,2,5,8,13,39,55
+    })();
+</script>
+<script>
+
+    (function () {
+        var arr1 = ['110金刚3号', '200金刚1号', '50金刚2号', '30金刚6号', '30金刚5号', '30金刚4号'];
+        arr1.sort(function (a, b) {
+            return parseInt(a.match(/(\d+)(?=号)/)[1]) - parseInt(b.match(/(\d+)(?=号)/)[1])
+        });
+        console.log(arr1);//1,2,5,8,13,39,55
+    })();
+</script>
+<script>
+    //快速排序
+    var arr4 = [3, 1, 4, 2, 5, 21, 6, 15, 63];
+    function sortA(arr) {
+        // 如果只有一位，就没有必要比较
+        if (arr.length <= 1) {
+            return arr;
+        }
+        // 获取中间值的索引
+        var len = Math.floor(arr.length / 2);
+        // 截取中间值
+        var cur = arr.splice(len, 1);
+        // 小于中间值放这里面
+        var left = [];
+        // 大于的放着里面
+        var right = [];
+        for (var i = 0; i < arr.length; i++) {
+            // 判断是否大于
+            if (cur > arr[i]) {
+                left.push(arr[i]);
+            } else {
+                right.push(arr[i]);
+            }
+        }
+        // 通过递归，上一轮比较好的数组合并，并且再次进行比较。
+        return sortA(left).concat(cur, sortA(right));
+    }
+    function quickSort2() {
+        console.log(sortA(arr4));
+    }
+</script>
+<button onclick="quickSort2()">快速排序</button>
+<button onclick="bubbleSort(as)">普通排序</button>
+
+<script>
+    var arr = new Array(3);
+    arr[0] = "George";
+    arr[1] = "John";
+    arr[2] = "Thomas";
+
+    var arr2 = new Array(3);
+    arr2[0] = "James";
+    arr2[1] = "Adrew";
+    arr2[2] = "Martin";
+
+    document.write(arr.concat(arr2));       //拼接数组
+</script>
+
+<script type="text/javascript">
+    //5.2.5重排序方法
+
+    //数组中已经存在两个可以直接用来重排序的方法：reverse（）和sort（）。有读者可能猜到了reverse（）方法会对反转数组项的排序。请看下面的例子
+    var values = [1, 2, 3, 4, 5];
+    values.reverse();
+    //alert(values);      //5,4,3,2,1
+    //这里数组的初始值及顺序是1、2、3、4、5.而调用数组的reverse（）方法后，其值的顺序变成了5、4、3、2、1.这个方法的作用相当直观明了，但不够灵活，因此才有了sort（）方法
+    //在默认情况下，sort（）方法按升序排列数组项??即最小的值位于最前面，最大的值位于最后面。为了实现排序，sort（）方法会调用每个数组项的toString（）转型方法，然后比较得到的字符串，以后确定如何排序，即使数组中的每一项都是数值，sort（）方法比较的也是字符串，如下所示
+    var values = [0, 1, 5, 10, 15];
+    values.sort();
+    //alert(values);      //0,1,10,15,5
+    //可见，即使例子中值的顺序没有问题，但sort（）方法也会根据测试字符串的结果改变原来的顺序，因为数值5虽然小于10，但在进行字符串比较时，‘10’则位于5的前面，于是数组的顺序就被修改了，不用说，这种排序方式在很多情况下都不是最佳方案，因此sort（）方法可以接收一个比较函数作为参数，以便我们指定哪个值位于哪个值的前面，
+    //比较函数接收两个参数，如果第一个参数应该位于第二个之前则返回一个负数，如果两个参数相等则返回0，如果第一个参数应该位于第二个参数之后则返回一个整数，以下就是一个简单的比较函数：
+    function compare(value1, value2) {
+        if (value1 < value2) {
+            return -1;
+        } else if (value1 > value2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    //这个比较函数可以适用于大多数数据类型，只要将其作为参数传递给sort（）方法即可，如下面这个例子所示。
+    var values = [0, 1, 5, 10, 15];
+    values.sort(compare);
+    //alert(values);      //0,1,5,10,15
+    //在将比较函数传递到sort（）方法之后，数值仍然保持了正常的升序，当然也可以通过比较函数产生降序排序的结果，只需要交换比较函数返回的值即可
+    function compare2(value1, value2) {
+        if (value1 < value2) {
+            return 1;
+        } else if (value1 > value2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    var values2 = [0, 1, 5, 10, 15];
+    values.sort(compare2);
+    //alert(values2);      //15,10,5,1,0
+    //在这个修改后的例子中，比较函数在第一个值应该位于第二个之后的情况下返回1，而在第一个值应该在第二个值之前的情况下返回-1，交换返回值的意思是让更大的值排位更靠前，也就是对数组按照将序排序，当然，如果只想翻转数组原来的顺序，使用reverse（）方法要更快一些。reverse（）和sort（）方法的返回值是经过排序之后的数组
+    //对于数值类型或者其valueOf（）方法会返回数值类型的对象类型。可以使用一个更简单的比较函数，这个函数只要用第二个值减第一个值即可。
+    function compare3(value1, value2) {
+        return value2 - value1;
+    }
+    //如果想要按照升升级排序，则compare（）函数中的return语句应该返回value-value1。
+    //由于比较函数通过返回一个小于零等于零或大于零的值来影响排序结果，因此减法操作就可以适当的处理所有这些情况。
+</script>
+
+<script>
+    //数组操作
+    var ae = new Array('red', 'red1', 'red2');
+    ae.push('red3');
+    ae.pop();
+    //alert(ae);
+    var ad = ae.shift();
+    //alert(ad);
+    /*shift:从集合中把第一个元素删除，并返回这个元素的值。
+     unshift: 在集合开头添加一个或更多元素，并返回新的长度
+     push:在集合中添加元素，并返回新的长度
+     pop:从集合中把最后一个元素删除，并返回这个元素的值。*/
+</script>
+
+<script>
+    //创建数组
+    var a = [];
+    var a = Array();
+    var a = Array;
+    var a = "000".split("0");
+    var a = eval("u,{5,1}");
+    var a = "fssaffsdss".match(/s/g);
+    //数组声明大全
+</script>
+
+<script>
+    /*function sum(num1, num2){
+     return num1 + num2;
+     }
+     function callSum1(num1, num2){
+     return sum.apply(this,arguments);       //传入arguments对象,this代表作用域，可以用方法名，比如callSum1，但不能带括号
+     }
+     function callSum2(num1, num2){
+     return sum.apply(this,[num1, num2]);        //传入数组
+     }
+     alert(callSum1(10,10));     //20(因为是相同类型所以运算了以后是10+10=20)
+     alert(callSum2(10,10));*/
+</script>
+
+<script>
+    /*var colors1 = ['red', 'blue', 'green'];
+     var colors2 = colors1.valueOf();    //数组
+     var colors3 = colors1.toString();   //字符串
+     alert(colors2[1]);
+     alert(colors3[1]);*/
+</script>
+
+<script>
+    var re = new RegExp("^\\d+" + v + "$", "gim");        //正则中添加变量
+
+    /*function handleResponse(response){
+     alert("You're at IP address " + response.ip + ", which is in " + response.city + ", " + response.region_name);
+     }
+     var script = document.createElement("script");
+     script.src = "http://freegeoip.net/json/?callback=handleResponse";
+     document.body.insertBefore(script, document.body.firstChild);       //两个参数，第一个是要插入的节点，第二个是位置*/
+</script>
+<!--<?php       //php跳转新链接
+echo("<script>");
+echo("window.location.href = 'http://wpa.qq.com/msgrd?v=3&uin=489554956&site=qq&menu=yes'");
+echo("</script>");
+//("location: http://wpa.qq.com/msgrd?v=3&uin=489554956&site=qq&menu=yes");
+?>-->
+
+<script type="text/javascript">
+    //AJAX请求超时
+    function createXHR() {
+        if (typeof XMLHttpRequest != "undefined") {
+            return new XMLHttpRequest();
+        } else if (typeof ActiveXObject != "undefined") {
+            if (typeof arguments.callee.activeXString != "string") {
+                var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0",
+                    "MSXML2.XMLHttp"];
+
+                for (var i = 0, len = versions.length; i < len; i++) {
+                    try {
+                        var xhr = new ActiveXObject(versions[i]);
+                        arguments.callee.activeXString = versions[i];
+                        return xhr;
+                    } catch (ex) {
+                        //skip
+                    }
+                }
+            }
+
+            return new ActiveXObject(arguments.callee.activeXString);
+        } else {
+            throw new Error("No XHR object available.");
+        }
+    }
+
+    var xhr = createXHR();
+    xhr.onreadystatechange = function (event) {
+        try {
+            if (xhr.readyState == 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    alert(xhr.responseText);
+                } else {
+                    alert("Request was unsuccessful: " + xhr.status);
+                }
+            }
+        } catch (ex) {
+            //assume handled by ontimeout
+        }
+    };
+
+    xhr.open("get", "timeout.php", true);
+    xhr.timeout = 1000;
+    xhr.ontimeout = function () {
+        alert("Request did not return in a second.");
+    };
+    /*常见的MIME类型
+     超文本标记语言文本 .html,.html text/html
+     普通文本 .txt text/plain
+     RTF文本 .rtf application/rtf
+     GIF图形 .gif image/gif
+     JPEG图形 .ipeg,.jpg image/jpeg
+     au声音文件 .au audio/basic
+     MIDI音乐文件 mid,.midi audio/midi,audio/x-midi
+     RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio
+     MPEG文件 .mpg,.mpeg video/mpeg
+     AVI文件 .avi video/x-msvideo
+     GZIP文件 .gz application/x-gzip
+     TAR文件 .tar application/x-tar*/
+    //xhr.overrideMimeType("text/xml");     //数据类型
+    xhr.send(null);
+    /*<?php
+     header("Content-Type: text/plain");
+     sleep(2000);        请求超时的php
+     ?>*/
+</script>
+
+<form id="form_t">
+    <input type="text" name="postdb[my_7412]" placeholder="请输入手机号">
+    <input type="button" onclick="validate()">
+</form>
+<script>
+    function validate() {
+        var v741 = document.getElementById("atc_my_7411").value;
+        var v7412 = document.getElementById("atc_my_7412").value;
+        var v7414 = document.getElementById("atc_my_7414").value;
+        var mid = document.getElementById("mid").value;
+        var reg = /^(1\d{10})$/;
+        if (!(reg.test(v741))) {
+            alert("请输入手机号");
+        } else {
+            //1、创建XMLHttpRequest对象
+            //2、需要针对IE和其它浏览器建立这个对象的不同方式写不同的代码
+            if (window.XMLHttpRequest) {
+                //针对FF,Mozilar,Opera,Safari,IE7,IE8
+                xmlhttp = new XMLHttpRequest();
+                //修正某些浏览器bug
+                if (xmlhttp.overrideMimeType) {
+                    xmlhttp.overrideMimeType("text/xml");
+                }
+            } else if (window.ActiveXObject) {
+                //针对IE6以下的浏览器
+                var activexName = ["MSXML2.XMLHTTP", "Microsoft.XMLHTTP", ""];
+                for (var i = 0; i < activexName.length; i++) {
+                    try {
+                        //取出一个控件名称创建,如果创建成功则停止,反之抛出异常
+                        xmlhttp = new ActiveXObject(activexName[i]);
+                        break;
+                    } catch (e) {
+                    }
+                }
+            }
+
+            //需要确认xmlhttp创建是否成功
+            if (!xmlhttp) {
+                alert("XMLHTTPRequest创建失败!");
+                return;
+            } else {
+                //alert(xmlhttp);
+            }
+
+            //注册回调函数。注意注册回调函数是不能加括号,加了会把函数的值返回给onreadystatechange
+            xmlhttp.onreadystatechange = callback;
+            //设置连接信息
+            //第一个参数表示http请求方式,支持所有http的请求方式,主要使用get和post
+            //第二个参数表示请求的url地址,get方式请求的参数也在urlKh
+            //第三介参数表示采用异步还是同步方式交互,true表示异步
+            xmlhttp.open("POST", "http://zhiyeyishi.zhongyuedu.com/tgpc/form/formym_pc_new_lz.php", true);
+            //发送数据表示和服务器端交互
+            //同步方式下,send这名话会在服务器端数据回来后才执行完
+            xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            var form_t = document.getElementById("form_t");
+            xmlhttp.send(new FormData(form_t));
+            //xmlhttp.send("postdb[my_741]=" + v741 + "&postdb[my_7412]" + v7412 + "&postdb[my_7413]" + v7413 + "&postdb[my_7414]" + v7414 + "&mid" + mid);
+
+            //异步方式下,send这句话立即完成执行
+            //POST方式请求的代码
+            //xmlhttp.open("POST","servlet/CheckUserName",true);
+            //POST方式需要自己设置http的请求头
+            //xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            //POST方式发送数据
+            //xmlhttp.send("userName="+userName);
+        }
+    }
+
+    //回调函数
+    function callback() {
+        //判断对象的状态是交互完成
+        if (xmlhttp.readyState == 4) {
+            //判断http的交互是否成功
+            if (xmlhttp.status == 200) {
+                //获取服务器端返回的数据
+                //获取服务器端输出的纯文本数据
+                var resultS = xmlhttp.responseText;
+                //console.log(resultS);
+                if (resultS.length == 2) {
+                    alert("无搜索匹配结果");
+                }
+                //var resultS1 = JSON.parse(resultS);
+                var resultSS = JSON.parse(xmlhttp.responseText);
+                var l = resultSS.length;
+                //var resultSS =eval('(' + resultS + ')');      //单引号双引号一样
+                //var resultSS =eval("("+resultS + ")");
+                //将数据显示在页面上
+                //console.log(resultSS[0].title);
+                //console.log(resultSS.length);
+                //var showResult = document.getElementById("result");
+                //设置元素节点的html内容
+                //showResult.innerHTML = resultSS[0].title;
+                window.location.href = "http://wpa.qq.com/msgrd?v=3&uin=489554956&site=qq&menu=yes";
+            }
+        }
+    }
+</script>
+
+<div id="form_pc" style="width: 180px;height: 75px; font: 14px '微软雅黑';background: none;margin-left: 120px;padding-left: 5px">
+    <input id="1" onclick="change_onfcous(this.id)" type="button" style="float: left; width: 43px; height: 33px; border: solid 1px #7cb6f6;margin: 20px 0 0 0" value="高中">
+    <input id="2" onclick="change_onfcous(this.id)" type="button" style="float: left; width: 43px; height: 33px; border: solid 1px #7cb6f6;margin: 20px 0 0 18px" value="大专">
+    <input id="3" onclick="change_onfcous(this.id)" type="button" style="float: left; width: 43px; height: 33px; border: solid 1px #7cb6f6;margin: 20px 0 0 18px" value="本科">
+</div>
+
+<script type="text/javascript">
+    //"use strict";     //严格模式会报错
+    var v7413;
+    function change_onfcous(id) {
+        v7413 = document.getElementById(id).value;      //修改全局变量
+        for (i = 1; i < 6; i++) {
+            if (i == id) {
+                document.getElementById(i).className = "cc";
+            }
+            else {
+                document.getElementById(i).className = "";
+            }
+        }
+    }
+</script>
+
+<script language="JavaScript">
+    /*function test(){
+     window.location.href = "/images/";     //浏览器打开本地索引，这里写的是文件夹路径
+     }
+     test();*/
+</script>
+
+<input type="text" style="width: 100px;height: 100px;" onfocus="javascript:if(this.value=='请输入你的手机号')this.value='';" value="请输入你的手机号">
+
+<script>
+    //检测ios版本号
+    /*function ios_v(){
+     if(navigator.userAgent.match(/OS 7_[1-9] /i)   || navigator.userAgent.match(/OS 7_[1-9]_[0-9] /i) || navigator.userAgent.match(/OS [8-9]_[0-9] /i)  || navigator.userAgent.match(/OS [8-9]_[0-9]_[0-9] /i)){
+     alert("7.1+");
+
+     }else{
+
+     alert("7.1-");
+     }
+     }
+     ios_v();
+     alert(navigator.userAgent.toLowerCase());
+     alert(window.navigator.appVersion);*/
+</script>
+<input type="button" class="scroll_top" value="点击scroll" style="width: 150px;height: 150px;">
+<script>
+    jQuery(document).ready(function ($) {
+        $('.scroll_top').click(function () {
+            $('html,body').animate({scrollTop: '1500px'}, 800);
+            //$('html,body').scrollTop(7500);       滚动到指定像素
+        });
+        $('.scroll_a').click(function () {
+            $('html,body').animate({scrollTop: $('.a').offset().top}, 800);
+        });
+        $('.scroll_bottom').click(function () {
+            $('html,body').animate({scrollTop: $('.bottom').offset().top}, 800);
+        });
+    });
+</script>
+
+<input style="-webkit-appearance:none;width:calc(20% - 6px);height: 30px;line-height: 30px;border: solid 1px #fc9502;outline:none;float: left;background-color: #fc9502;color: #fff;"
+       value="safari移动端input样式问题，写上-webkit-appearance:none;select也是，都可以这样取消默认">
+<script>
+    //基于jQueryajax请求
+    //ajax 方式
+    $.ajax({
+        url: "http://bang.cdn.sojson.com/testJSON.json",
+        dataType: "json",
+        type: "get",
+        success: function (result) {
+            console.log("status:%s", result.status);
+            $.each(result.data, function () {
+                console.log("name:%s,age:%s", this.name, this.age)
+            });
+        }
+    });
+    //post 方式
+    $.post("http://bang.cdn.sojson.com/testJSON.json", {}, function (result) {
+        console.log("status:%s", result.status);
+        $.each(result.data, function () {
+            console.log("name:%s,age:%s", this.name, this.age)
+        });
+    }, "json");
+    //get 方式
+    $.get("http://bang.cdn.sojson.com/testJSON.json", {}, function (result) {
+        console.log("status:%s", result.status);
+        $.each(result.data, function () {
+            console.log("name:%s,age:%s", this.name, this.age)
+        });
+    }, "json");
+    //get JSON 方式
+    $.getJSON("http://bang.cdn.sojson.com/testJSON.json", {}, function (result) {
+        console.log("status:%s", result.status);
+        $.each(result.data, function () {
+            console.log("name:%s,age:%s", this.name, this.age)
+        });
+    });
+</script>
+
+<script>
+    // 此函数等价于document.getElementById /document.all
+    function $(s) {
+        if (document.getElementById) {
+            return eval('document.getElementById("' + s + '")');
+        } else {
+            return eval('document.all.' + s);
+        }
+    }
+    // 创建 XMLHttpRequest对象，以发送ajax请求
+    function createXMLHTTP() {
+        var xmlHttp = false;
+        var arrSignatures = ["MSXML2.XMLHTTP.5.0", "MSXML2.XMLHTTP.4.0",
+            "MSXML2.XMLHTTP.3.0", "MSXML2.XMLHTTP",
+            "Microsoft.XMLHTTP"];
+        for (var i = 0; i < arrSignatures.length; i++) {
+            try {
+                xmlHttp = new ActiveXObject(arrSignatures[i]);
+                return xmlHttp;
+            }
+            catch (oError) {
+                xmlHttp = false; //ignore
+            }
+        }
+        // throw new Error("MSXML is not installed on your system.");
+        if (!xmlHttp && typeof XMLHttpRequest != 'undefined') {
+            xmlHttp = new XMLHttpRequest();
+        }
+        return xmlHttp;
+    }
+    function addAjaxSearch() {
+        inputField = $("txtSearch");
+        completeTable = $("suggestTb");
+        completeDiv = $("popup");
+        completeBody = $("suggestBody");
+        var tempStr = inputField.value;
+        // alert(tempStr);
+        var keyWord = encodeURI(tempStr);
+        if (tempStr == "")
+            return;
+        var xmlReq = createXMLHTTP();
+        xmlReq.open("post", "AjaxOperations.aspx?searchKeyword=" + keyWord, true);
+        xmlReq.onreadystatechange = function () {
+            if (xmlReq.readyState == 4) {
+                if (xmlReq.status == 200) {
+                    //xmlReq.responseText为输出的那段字符串
+                    setNames(xmlReq.responseText);
+                }
+                else {
+                    alert("Connect the server failed!");
+                }
+            }
+        }
+        xmlReq.send(null);
+    }
+    // 设置div中的表格数据
+    function setNames(names) {
+        if (names == "") {
+            clearNames();
+            return;
+        }
+        clearNames(); // 清空div中已有的的表格数据
+        setOffsets(); // 设置div到合适的位置
+        var row, cell, txtNode;
+        var s = names.split("#");
+        for (var i = 0; i < s.length; i++) { // 显示类似search下拉选择项
+            var nextNode = s[i];
+            row = document.createElement("tr");
+            cell = document.createElement("td");
+            cell.onmouseout = function () {
+                this.style.backgroundColor = '';
+            };
+            cell.onmouseover = function () {
+                this.style.backgroundColor = '#E8F2FE';
+            };
+            cell.onclick = function () {
+                completeField(this);
+            }; // 搜索框设置为选择的数据
+            cell.pop = "T";
+            txtNode = document.createTextNode(nextNode);
+            cell.appendChild(txtNode);
+            row.appendChild(cell);
+            $("suggestBody").appendChild(row);
+        }
+    }
+    // 清空div中已有的的表格数据
+    function clearNames() {
+        completeBody = $("suggestBody");
+        var ind = completeBody.childNodes.length;
+        for (var i = ind - 1; i >= 0; i--) {
+            completeBody.removeChild(completeBody.childNodes[i]);
+        }
+        completeDiv = $("popup");
+        completeDiv.style.border = "none";
+    }
+    // 设置div到合适的位置
+    function setOffsets() {
+        completeTable.style.width = inputField.offsetWidth;
+        +"px";
+        var left = calculateOffset(inputField, "offsetLeft");
+        var top = calculateOffset(inputField, "offsetTop") + inputField.offsetHeight;
+        completeDiv.style.border = "black 1px solid";
+        completeDiv.style.left = left + "px";
+        completeDiv.style.top = top + "px";
+    }
+    function calculateOffset(field, attr) {
+        var offset = 0;
+        while (field) {
+            offset += field[attr];
+            field = field.offsetParent;
+        }
+        return offset;
+    }
+    // 搜索框设置为选择的数据
+    function completeField(cell) {
+        inputField.value = cell.firstChild.nodeValue; // 搜索框设置为选择的数据
+        clearNames(); //清空div中已有的的表格数据
+    }
+    //用来设置当鼠标失去焦点后文本框的隐藏
+    document.onmousedown = function () {
+        if (!event.srcElement.pop)
+            clearNames();
+    } //填写输入框
+
+</script>
+
+<script>
+    /*js 一共 7+ 个全局函数：escape( )、eval( )、isFinite( )、isNaN( )、parseFloat( )、parseInt( )、unescape( )*/
+</script>
+
+<!--<div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+</div>
+<script>window._bd_share_config = {"common": {"bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "24"}, "share": {}};
+with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>-->
+
+<!--<div class="bdsharebuttonbox" data-tag="share_1">百度分享
+    <a class="bds_mshare" data-cmd="mshare"></a>
+    <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+    <a class="bds_tsina" data-cmd="tsina"></a>
+    <a class="bds_baidu" data-cmd="baidu"></a>
+    <a class="bds_renren" data-cmd="renren"></a>
+    <a class="bds_tqq" data-cmd="tqq"></a>
+    <a class="bds_more" data-cmd="more">更多</a>
+</div>
+<script>
+    window._bd_share_config = {
+        common : {
+            bdText : '自定义分享内容',
+            bdDesc : '自定义分享摘要',
+            bdUrl : '自定义分享url地址',
+            bdPic : '自定义分享图片'
+        },
+        share : [{
+            "bdSize" : 16
+        }],
+        slide : [{
+            bdImg : 0,
+            bdPos : "right",
+            bdTop : 100
+        }],
+        image : [{
+            viewType : 'list',
+            viewPos : 'top',
+            viewColor : 'black',
+            viewSize : '16',
+            viewList : ['qzone','tsina','huaban','tqq','renren']
+        }],
+        selectShare : [{
+            "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+        }]
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>-->
+
+<a style="word-wrap : break-word ;width: 50px;height: 50px;line-height: 25px;word-wrap : break-word ;display: block;">英文强制换行wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww可以设置对象的CSS属性：word-wrap：break-word，或者设置　word-break：break-all；</a>
+
+<script>
+    "use strict";
+    /*function foo ( ) {
+     console . log ( x ) ;
+     console . log ( y ) ;
+     var x = 1 ;
+     if ( x === 1 ) {
+     let y = 2 ;
+     }
+     console . log ( y ) ;
+     }
+     foo ( ) ;
+     console . log ( x ) ;*/
+    //这个代码示例一看上去似乎比较有戏剧性，但是对我们思考 let 和 var 的差异来说，显得不会太多。 var 在离它最近的父函数内创建了一个变量的作用域 let 在它最近的块级中创建作用于，这些块包括 for 循环， if 语句以及其他块。
+    //在这个例子中，我们创建了一个 foo 的函数（以及变量作用域），并且稍后我们调用它。最后一个 console.log() 语句预期会产生一个 ReferenceError ，因为 x 只在 foo() 中定义（作用域）。因为变量提升，第一个console预计将被正常执行。在这个示例中， x 是 undefined 。第二个console预计更加有趣。事实上，两个 log(y) 都将出错，因为 let 比 var 的作用于更加严格。 y 变量 只存在于 if 块里面，不在任何其他地方。Dave Methvin称 let 之前的区域叫做“ 临时死亡区 。”
+</script>
+
+<script>
+    /*// 变量式声明
+    function hello(msg){
+        alert(msg);
+        var msg = function(){};
+        alert(msg);
+    }
+    //函数式声明
+    function hello(msg){
+        alert(msg);
+        function msg (){};
+        alert(msg);
+    }
+    对于变量式声明，首先弹出word,然后弹出function,而函数式声明，则两次都是弹出function.这是为什么呢？
+
+    一: 函数式声明
+    function hello(msg){
+        alert(msg); //放在最前面的位置打印msg，是function
+        function msg(){
+            //这个msg是函数式声明，它会贯穿于整个fun函数的作用域
+            //也就是说，只要fun一旦调用，甚至只要是进入语法分析阶段
+            //那么msg函数就会首先解析，你可以把它想象成它是在fun函数
+            //内的第一个变量。有的书上称这种现象为声明被提前或提升。
+        }
+        alert(msg);//放在最末尾的位置打印msg，也是function
+        // 说明函数式声明在hello作用域内部是贯穿的
+    }
+    二：变量式声明
+    function hello(msg){
+        alert(abc); // 此时为undefined
+        var abc = function(){
+            //这种是变量式声明，它在fun函数内的位置是固定的，也就是说
+            // var abc之前，abc的值在fun内是undefined
+            // var abc之后，abc才是它声明的值
+            // 这种方式你可以理解成在fun函数的第一行写了一个var abc;
+            // 也正因为如此，fun内声明的变量，会切断外部变量的引用；
+            // 不论在hello作用域之外，abc的值是多少，在hello内部，在var abc之前，始终是undefined
+            // 这是面试官最喜欢光顾的地方之一
+        }
+        alert(abc); // 此时才是function
+        // 这里把abc换成msg，道理也是一样的。对于hello内部来说，它的形参，就相当于是hello内部的局部变量。
+        // 这里有意用abc来替换msg，其实是为了简化问题，减少干扰项。既然是都hello内的局域变量，那么在声明之前
+        // 它的值为undefined也就是理所当然的事了。这里唯一有个要注意的地方就是，形参的声明，出现在所有局部变量之前。
+        // 后面对局部变量进行重复声明，系统会直接无视重复的声明过程，但是声明同时有赋值的话除外。
+    }
+    总结一点：函数式声明会上升到所属作用域的最前面， 变量式声明则不会.
+            最后补充一点：
+    var abc = function(){};
+    实际上是abc保存了一个无名函数的引用；本质上abc还是一个变量.
+            而 function abc(){} 是一个有名函数；本质上abc是函数;
+    如果你喜欢，你可以用多个变量保存同一个函数的引用：
+    var xxx = abc; var bbb = abc;
+    引用可以无数，但是真身始终唯一。
+    // xxx = null,bbb=null之后，abc该干嘛干嘛，而 var abc = function(){}; abc = null之后你就彻底的失去了有关abc的一切。
+    abc从此石沉大海，从江湖上隐姓埋名，销声匿迹.......
+            虽然两者在功能上是等价的，但是呢，我个人还是蛮倾向于把子函数， 人为的写在前面，这是为了避免压缩合并时，造成各种意外的结果。
+    如果不是通用方法，我习惯用变量式声明，当然，这只是个人习惯。
+    对于函数式声明，它在整个作用域内可见，有的书上说是声明提升，有的说是声明提前。其实叫什么不重要，理解这种现象发生了什么，会产生什么影响才是根本。
+    最后还要强调一点：命名函数表达式的名字只在该函数的作用域内部有效。也就是说，在hello函数内，无论用哪种方式声明msg这个函数，那么出了hello函数，都是不存在的。*/
+</script>
+
+<script>
+    /*1）简要说明
+     with 语句可以方便地用来引用某个特定对象中已有的属性，但是不能用来给对象添加属性。要给对象创建新的属性，必须明确地引用该对象。
+     2）语法格式
+     with(object instance)
+     {
+     //代码块
+     }
+     有时候，我在一个程序代码中，多次需要使用某对象的属性或方法，照以前的写法，都是通过:对象.属性或者对象.方法这样的方式来分别获得该对象的属性和方法，着实有点麻烦，学习了with语句后，可以通过类似如下的方式来实现：
+     with(objInstance)
+     {
+     var str = 属性1;
+     .....
+     } 去除了多次写对象名的麻烦。
+     3）举例
+     function Lakers() {
+     this.name = "kobe bryant";
+     this.age = "28";
+     this.gender = "boy";
+     }
+     var people=new Lakers();
+     with(people)
+     {
+     var str = "姓名: " + name + "<br>";
+     str += "年龄：" + age + "<br>";
+     str += "性别：" + gender;
+     document.write(str);
+     }
+     代码执行效果如下:
+     姓名: kobe bryant
+     年龄：28
+     性别：boy
+     可以理解为跟继承差不多*/
+</script>
+
+<script type='text/javascript'>
+    document.write(navigator.appName + '浏览器名' + '<br /><br />');//浏览器名
+    document.write(navigator.appVersion + '浏览器版本' + '<br /><br />');//浏览器版本
+    document.write(navigator.appCodeName + '发型代号' + '<br /><br />');//发行代号
+</script>
+
+<script type="text/javascript">
+    //判断访问终端
+    var browser = {
+        versions: function () {
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+                qq: u.match(/\sQQ/i) == " qq" //是否QQ
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    };
+    if (browser.versions.trident) {
+        alert("is IE");
+    }
+    if (browser.versions.webKit) {
+        alert("is webKit");
+    }
+    if (browser.versions.mobile || browser.versions.android || browser.versions.ios) {
+        alert("移动端");
+    }
+    /*使用方法
+
+     //判断是否IE内核
+     if(browser.versions.trident){ alert("is IE"); }
+     //判断是否webKit内核
+     if(browser.versions.webKit){ alert("is webKit"); }
+     //判断是否移动端
+     if(browser.versions.mobile||browser.versions.android||browser.versions.ios){ alert("移动端"); }
+     */
+</script>
+
+<script>
+    if (!browser.ie && !browser.mac) {
+        var UA = navigator.userAgent.toLowerCase().toString();
+        //判断是不是IE内核下的非IE版本
+        if ((UA.indexOf('360ee') > -1) || (UA.indexOf('360se') > -1) || (UA.indexOf('se') > -1) || (UA.indexOf('aoyou') > -1)
+                || (UA.indexOf('theworld') > -1) || (UA.indexOf('worldchrome') > -1) || (UA.indexOf('greenbrowser') > -1)
+                || (UA.indexOf('baidu') > -1) || (UA.indexOf('qqbrowser') > -1)) {
+            //是的话切换兼容模式
+            window.open("publicPage/point-se.aspx");
+        }
+        else {
+            //不是的话，建议更换浏览器
+            alert('建议换成IE内核的浏览器');
+        }
+    }
+    else {
+        //判断IE的版本型号
+        if ((browser.version == 10 && browser.ie10Compat) || (browser.version == 11 && browser.ie11Compat)) {
+            window.open("publicPage/point.aspx");
+        }
+        /*
+         * @desc   判断浏览器的版本以及浏览器内核
+         * @author wangyanling
+         * @date   2014年7月4日
+         */
+        var browser = function () {
+            var agent = navigator.userAgent.toLowerCase(),
+                    opera = window.opera,
+                    browser = {
+                        //检测当前浏览器是否为IE
+                        ie: /(msie\s|trident.*rv:)([\w.]+)/.test(agent),
+
+                        //检测当前浏览器是否为Opera
+                        opera: (!!opera && opera.version),
+
+                        //检测当前浏览器是否是webkit内核的浏览器
+                        webkit: (agent.indexOf(' applewebkit/') > -1),
+
+                        //检测当前浏览器是否是运行在mac平台下
+                        mac: (agent.indexOf('macintosh') > -1),
+
+                        //检测当前浏览器是否处于“怪异模式”下
+                        quirks: (document.compatMode == 'BackCompat')
+                    };
+
+            //检测当前浏览器内核是否是gecko内核
+            browser.gecko = (navigator.product == 'Gecko' && !browser.webkit && !browser.opera && !browser.ie);
+
+            var version = 0;
+
+            // Internet Explorer 6.0+
+            if (browser.ie) {
+                var v1 = agent.match(/(?:msie\s([\w.]+))/);
+                var v2 = agent.match(/(?:trident.*rv:([\w.]+))/);
+                if (v1 && v2 && v1[1] && v2[1]) {
+                    version = Math.max(v1[1] * 1, v2[1] * 1);
+                } else if (v1 && v1[1]) {
+                    version = v1[1] * 1;
+                } else if (v2 && v2[1]) {
+                    version = v2[1] * 1;
+                } else {
+                    version = 0;
+                }
+
+                //检测浏览器模式是否为 IE11 兼容模式
+                browser.ie11Compat = document.documentMode == 11;
+
+                //检测浏览器模式是否为 IE9 兼容模式
+                browser.ie9Compat = document.documentMode == 9;
+
+                //检测浏览器模式是否为 IE10 兼容模式
+                browser.ie10Compat = document.documentMode == 10;
+
+                //检测浏览器是否是IE8浏览器
+                browser.ie8 = !!document.documentMode;
+
+                //检测浏览器模式是否为 IE8 兼容模式
+                browser.ie8Compat = document.documentMode == 8;
+
+                //检测浏览器模式是否为 IE7 兼容模式
+                browser.ie7Compat = ((version == 7 && !document.documentMode) || document.documentMode == 7);
+
+                //检测浏览器模式是否为 IE6 模式 或者怪异模式
+                browser.ie6Compat = (version < 7 || browser.quirks);
+
+                browser.ie9above = version > 8;
+
+                browser.ie9below = version < 9;
+            }
+
+            // Gecko.
+            if (browser.gecko) {
+                var geckoRelease = agent.match(/rv:([\d\.]+)/);
+                if (geckoRelease) {
+                    geckoRelease = geckoRelease[1].split('.');
+                    version = geckoRelease[0] * 10000 + (geckoRelease[1] || 0) * 100 + (geckoRelease[2] || 0) * 1;
+                }
+            }
+
+            //检测当前浏览器是否为Chrome, 如果是，则返回Chrome的大版本号
+            if (/chrome\/(\d+\.\d)/i.test(agent)) {
+                browser.chrome = +RegExp['\x241'];
+            }
+
+            //检测当前浏览器是否为Safari, 如果是，则返回Safari的大版本号
+            if (/(\d+\.\d)?(?:\.\d)?\s+safari\/?(\d+\.\d+)?/i.test(agent) && !/chrome/i.test(agent)) {
+                browser.safari = +(RegExp['\x241'] || RegExp['\x242']);
+            }
+
+            // Opera 9.50+
+            if (browser.opera)
+                version = parseFloat(opera.version());
+
+            // WebKit 522+ (Safari 3+)
+            if (browser.webkit)
+                version = parseFloat(agent.match(/ applewebkit\/(\d+)/)[1]);
+
+            //检测当前浏览器版本号
+            browser.version = version;
+
+            return browser;
+        }()
+
+</script>
+
+<script>
+    function userBrowser() {
+        var browserName = navigator.userAgent.toLowerCase();
+        if (/msie/i.test(browserName) && !/opera/.test(browserName)) {
+            alert("IE");
+            return;
+        } else if (/firefox/i.test(browserName)) {
+            alert("Firefox");
+            return;
+        } else if (/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName)) {
+            alert("Chrome");
+            return;
+        } else if (/opera/i.test(browserName)) {
+            alert("Opera");
+            return;
+        } else if (/webkit/i.test(browserName) && !(/chrome/i.test(browserName) && /webkit/i.test(browserName) && /mozilla/i.test(browserName))) {
+            alert("Safari");
+            return;
+        } else {
+            alert("unKnow");
+        }
+    }
+    //userBrowser();//不太好用，检测chrome是Safari，模仿移动端的时候会提示Safari
+</script>
+
+<script>
+    /*function getOs()
+     {
+     var OsObject = "";
+     if(navigator.userAgent.indexOf("MSIE")>0) {
+     return "MSIE";
+     }
+     else if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
+     return "Firefox";
+     }
+     else if(isMozilla=navigator.userAgent.indexOf("Opera")>0){ //这个也被判断为chrome
+     return "Opera";
+     }
+     else if(isFirefox=navigator.userAgent.indexOf("Chrome")>0){
+     return "Chrome";
+     }
+     else if(isSafari=navigator.userAgent.indexOf("Safari")>0) {
+     return "Safari";
+     }
+     else if(isCamino=navigator.userAgent.indexOf("Camino")>0){
+     return "Camino";
+     }
+     else if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){
+     return "Gecko";
+     }
+
+     }
+     alert("您的浏览器类型为:"+getOs());*///模仿移动端的时候会提示Safari
+
+
+    /*上午的时候，本来是想做一个position:fixed在各个浏览器下兼容的方案的，但是发现ie7/8下面的position:fixed只支持一个屏幕，如果内容高度超过一个屏幕就不能很好的使用position:fixed了（如果哪个同学有position:fixed的完美方案麻烦给我一下），于是我想用js来兼容，其实就是通过scroll监听来实现，于是需要判断ie7/8这俩版本，但是发现jquery的$.browser.version并不支持ie8，于是我就百度，百度倒是给出很多答案，但是发现ie8还是没能检测出来，后来我自己查看了navigator.userAgent这个东西，在各个浏览器下面打出来是这个样子的：*/
+
+    //ie9 : Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+    //ie8 : Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+    //ie7 : Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; Tablet PC 2.0; .NET4.0E; .NET4.0C)
+    //Mozi: Mozilla/5.0 (Windows NT 6.1; rv:20.0) Gecko/20100101 Firefox/20.0
+    //goog: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22
+    //oper: Opera/9.80  (Windows NT 6.1; Edition IBIS) Presto/2.12.388 Version/12.14
+    //appl: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2
+    /*你就发现，ie8和ie9是一样的，这下子蒙了，看来光靠这个navigator.userAgent是不够了，但是我相信你也很快就知道怎么做了，因为i9还是一个比较先进的浏览器，拥有一些ie8没有的属性，我不一一罗列了，其中一个就是window.innerWidth，这个属性值是浏览器的内高度（不包括工具栏和滚动条，还是一个比较有用的属性）。ie8下面这个属性值是undefined,9下面就ok了，显示的是一个数字。于是判断浏览器版本就很自然了，看下面这个方案：*/
+    /*if(navigator.userAgent.indexOf("MSIE")>0){
+     if(navigator.userAgent.indexOf("MSIE 6.0")>0){
+     alert("ie6");
+     }
+     if(navigator.userAgent.indexOf("MSIE 7.0")>0){
+     alert("ie7");
+     }
+     if(navigator.userAgent.indexOf("MSIE 9.0")>0 && !window.innerWidth){//这里是重点，你懂的
+     alert("ie8");
+     }
+     if(navigator.userAgent.indexOf("MSIE 9.0")>0){
+     alert("ie9");
+     }
+     }*/
+</script>
+
+<script>
+    /*var str = '{"name":"hello"}';  //安全性高，必须是严格的JSON
+     var json = JSON.parse(str);
+     alert(json.name)
+     (function strToJson(str){
+     alert(JSON.parse(str))
+     })();*/
+</script>
+
+<script>
+    /*JavaScript 获取当前时间戳：
+     第一种方法：
+     var timestamp = Date.parse(new Date());
+     结果：1280977330000
+     第二种方法：
+     var timestamp = (new Date()).valueOf();
+     结果：1280977330748
+     第三种方法：
+     var timestamp=new Date().getTime()；
+     结果：1280977330748
+     第一种：获取的时间戳是把毫秒改成000显示，
+     第二种和第三种是获取了当前毫秒的时间戳。*/
+</script>
+<input type="button"
+       style="height: 100px;width: 100px;line-height: 25px;word-break:break-all;word-wrap:break-word"
+       value="我我&#13;&#10;我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我&#13;是空格&#10;是回车">
+<script>
+    function fun1() {
+        var curObj = document.getElementById("button");
+        curObj.onclick = fun2;
+        alert("fun1");
+    }
+    function fun2() {
+        var curObj = document.getElementById("button");
+        curObj.onclick = fun1;
+        alert("fun2");
+    }
+</script>
+<input id="button" type="button" value="动态改变onclick响应事件" onclick="fun1();"/>
+
+<script>
+    var leixing1 = null;
+    //alert(typeof(leixing1));
+    //alert(leixing1 instanceof Object);
+</script>
+<script>
+    /*网页可见区域宽： document.body.clientWidth
+     网页可见区域高： document.body.clientHeight
+     网页可见区域宽： document.body.offsetWidth (包括边线的宽)
+     网页可见区域高： document.body.offsetHeight (包括边线的高)
+     网页正文全文宽： document.body.scrollWidth
+     网页正文全文高： document.body.scrollHeight
+     网页被卷去的高： document.body.scrollTop
+     网页被卷去的左： document.body.scrollLeft
+     网页正文部分上： window.screenTop
+     网页正文部分左： window.screenLeft
+     屏幕分辨率的高： window.screen.height
+     屏幕分辨率的宽： window.screen.width
+     屏幕可用工作区高度： window.screen.availHeight
+     屏幕可用工作区宽度： window.screen.availWidth */
+</script>
+
+<form action="/example/html5/demo_form.asp" method="get" enctype="multipart/form-data">
+    选择图片：<input type="file" name="img" multiple="multiple"/><!--multiple="multiple"(允许多个值)-->
+    <input type="submit"/>
+</form>
+
+<input onfocus="javascript:if(this.value=='请输入你的手机号')this.value='';" value="请输入你的手机号">
+<script>
+    function test() {
+        alert(1);
+        setTimeout('test()', 1000);      //每隔一秒调用自己一次，无限回调，相当于setInterval
+    }
+    //test();
+    /*var func1=function(callback){
+     //do something.
+     (callback && typeof(callback) === "function") && callback();        //保证回调存在且必须是函数引用或者函数表达式
+     }
+     func1(func2);
+     var func2=function(){       //回调函数
+     }*/
+</script>
+
+<script>
+    var x = 0;
+    function countSecond() {
+        x = x + 1;
+        document.haorooms.haoroomsinput.value = x;
+        setTimeout("countSecond()", 1000)
+    }
+</script>
+<form name="haorooms">
+    <input type="text" name="haoroomsinput" value="0" size=4>
+</form>
+<script>
+    countSecond();
+</script>
+
+<script>
+    /*function keyDown(e) {
+     var keycode = e.which;
+     var realkey = String.fromCharCode(e.which);
+     alert('按键码: ' + keycode +  "字符:"  + realkey);
+     }
+     document.onkeydown = keyDown;*/
+    //监听键盘
+</script>
+<h3 style="color:red">当浏览器第一次加载资源的时候，返回一般为200，意思是成功获取资源，并会在浏览器的缓存中记录下max-age，第二次访问的时候：
+    如果只是用浏览器打开，那么浏览器会去判断这个资源在缓存里有没有，如果有的话，会去判断max-age，看看过期没有，如果没有过期，则直接读缓存，根本不会和服务器进行交互，换句话说，断网都能打开，就和本地跑一样！如果已经过期了，那就去服务器请求，等待服务器响应，这是很费时间的，服务器如果发现资源没有改变过，那么就会返回304，告诉浏览器，我没变过，你去读缓存吧，于是浏览器也不用从服务器拉数据了，然而，等待服务器响应也是一个很要命的问题，在网速发达的今天，等一个响应，有时比下载还慢。
+    如果是用浏览器刷新的，那么浏览器不会去判断max-age了，直接去服务器拿，如果服务器判断资源没变过，则还是会返回304，和上面是一样的，所以刷新一下，其实很可怕，等于把所有的资源都要去服务器请求一边，问问服务器我过期了没有。
+    综上，尽量减少网页的资源数量！尽量合并JS CSS 图片！响应速度将会猛增！
+    当今，响应速度比网速重要！！</h3>
+<div id="aa">11111</div>
+<input type="button" value="用document会出错" onclick="alert(document.aa.innerText)">
+<input type="button" value="用document.all就不会出错" onclick="alert(document.all.aa.innerText)">
+<h4>
+    如果与a,form对象，image对象，applet对象相对应的html标记中设定了name属性，那么它的值将被用作document对象的属性名，用来引用相应的对象，其他的对象则不可以。另外,input等如果作为form的子元素，则直接用inputName或者document.inputName来引用此对象就是错误的，必须使用formName.inputName引用,否则要用inputName来引用。还应该注意到很多时候我们都没有为元素设置name.
+    如果想引用一个有id的元素,只能用Id或者document.getElementByIdx_x,document.all.id来引用
+    但是象这样的元素,所以象a href="......" name="linkname" id="linkid"......a这样的，可以用下面的：
+    linkid.href;
+    linkname.href;
+    document.all.linkid.href;
+    document.all.linkname.href;
+    document.getElementByIdx_x("linkid").href;
+    document.getElementsByName("linkname")[0].href来引用
+</h4>
+
+<script>
+    /*(function(){
+     window.location.href="http://www.zhongyuedu.com/";
+     })();
+     (function(){
+     document.location.href='https://www.baidu.com/'
+     })();*/
+</script>
+
+<script type="text/javascript">
+    /*用new和不用new的区别
+     js的new可以看成是一个代理模式的代理类。包裹了new 后面的函数
+     处理顺序为
+     1.创建一个function对象，并将prototype设置为传入函数
+     2.执行传入函数
+     3.判断传入函数返回值，如果为null，则返回第一步的function对象。
+
+     以new的方式运行的话，函数会被当成一个构造函数，从而得到一个对象。也可以说，new是一个运算符，这个运算符的执行结果是一个对象。
+     如果不以new的方式执行函数的话，那就是一个普通函数。普通函数的返回值，就由函数决定了。*/
+    //下面模拟了一个new操作符所做的事
+    function Animal(name) {
+        this.name = name;
+    }
+    Animal.prototype.sayName = function () {
+        alert("My name is " + this.name);
+    };
+    function newInstance(fn) {
+        var Class = function () {
+        };
+        Class.prototype = fn.prototype;
+        var slice = Array.prototype.slice;
+        var args = slice.call(arguments);
+        args.splice(0, 1);
+        var instance = new Class();
+        var result = fn.apply(instance, args);
+        return result ? result : instance;
+    }
+    var cat = newInstance(Animal, "Jack");
+    //cat.sayName();
+    //alert(cat instanceof Animal);
+</script>
+
+<script>
+    document.write(document.URL);
+    document.write('<br>' + window.location.href + '<br>');
+</script>
+
+<script>
+    /*document.location="url";//(只读)
+     document.location.reload("url");
+     window.location="url";
+     location="url";
+     document.href="url";
+     document.location.href="url";
+     document.location.replace="url";
+     document.action="url"; document.submit();*/
+    /*
+     document.location.href和document.location.replace都可以实现从A页面切换到B页面，但他们的区别是：
+     用document.location.href切换后，可以退回到原页面。而用document.location.replace切换后，不可以通过“后退”退回到原页面。
+     关于document.location.href或其他可回退的切换方式
+     document.location 相当于 document.URL 声明了装载文档的URL,
+     除非发生了服务器重定向, 否则该属性的值与Window.location.href的值是一样的.
+     */
+    /*document.location和window.location有什么区别就是
+     document你可以理解为文档，就是你的网页
+     window理解为窗口，就是你的ie浏览器包含的
+
+     无框架：简单的说，没有框架的情况下，是等同的
+     有框架：在有框架的情况下，最外层是相同的，在iframe里面的document.location和window.location不同的。
+     iframe里面的document.location 你看不ie地址变化，只改变iframe部分，
+     此时的window.location和top.location效果一致*/
+    //history.go(-1);//返回上一页
+    //document.IFRAME名称.location.href='url';//改变框架内容
+</script>
+
+<script type="text/javascript">
+    /*(function (root) {
+     root._tt_config = true;
+     var tt_version = '1.2.6';
+     var ta = document.createElement('script');
+     ta.type = 'text/javascript';
+     ta.async = true;//createElement新建节点
+     ta.src = document.location.protocol + '//' + 's3.pstatp.com/adstatic/resource/landing_log/dist/' + tt_version + '/static/js/toutiao-tetris-analytics.js';
+     ta.onerror = function () {
+     var request = new XMLHttpRequest();
+     var web_url = window.encodeURIComponent(window.location.href);
+     var js_url = ta.src;
+     var url = '//ad.toutiao.com/link_monitor/cdn_failed?web_url=' + web_url + '&js_url=' + js_url;
+     request.open('GET', url, true);
+     request.send(null);
+     };
+     var s = document.getElementsByTagName('script')[0];
+     s.parentNode.insertBefore(ta, s);
+     })(window);*/
+</script>
+
+<a>&copy;(商标版权号)</a>
+<script>
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);//在控制台里可以直接写js方法，写在log里面
+</script>
+<a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a>
+<a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a>
+<script type="text/javascript" language="javascript">
+    //加入收藏
+    function AddFavorite(sURL, sTitle) {
+        sURL = encodeURI(sURL);
+        try {
+            window.external.addFavorite(sURL, sTitle);
+        } catch (e) {
+            try {
+                window.sidebar.addPanel(sTitle, sURL, "");
+            } catch (e) {
+                alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+            }
+        }
+    }
+    //设为首页
+    function SetHome(url) {
+        if (document.all) {
+            document.body.style.behavior = 'url(#default#homepage)';
+            document.body.setHomePage(url);
+        } else {
+            alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    //用于微信打开链接
+    var ua = navigator.userAgent.toLowerCase();
+    var isWeixin = ua.indexOf('micromessenger') != -1;
+    if (isWeixin) {
+        document.body.innerHTML = '<img style="width:100%" src="jsimg/IMG_11620.jpg">';
+    }
+</script>
+
+<script>
+    "use strict";
+    (function compare() {
+        var h = window.document.body.offsetHeight;  //返回当前网页宽度
+        //alert(h);
+        var h1 = window.screen.availHeight; // 返回当前屏幕高度(空白空间)
+        document.write('当前窗口高度' + h1 + 'px');
+        var h2 = window.screen.height;  // 返回当前屏幕高度(分辨率值)
+        document.write('<br>' + '当前屏幕分辨率高度' + h2 + 'px');
+        var arrs = document.getElementsByTagName('div');
+        //alert(arrs.length)
+        var dat = new Date();
+        document.write('<br>' + dat);   //返回当前日期和时间
+        var h3 = new Date();
+        document.write('<br>' + h3.toLocaleDateString() + h3.toLocaleTimeString());     //toLocaleTimeString()	根据本地时间格式，把 Date 对象的时间部分转换为字符串。toLocaleDateString()是日期
+    })();
+</script>
+
+<script>
+    //<![CDATA[       //CData片段能保证在XML里代码不会出错，因为这个区域不需要解析
+    function compare(a, b) {
+        if (a < b) {
+            alert('a is less than b');
+        } else if (a > b) {
+            alert('a is greater than b');
+        } else {
+            alert('a is equal to b');
+        }
+    }
+    /*compare(5,4);*/
+    //Array = ['1','2','3'];        //不建议这么写，不符合规范，会报错，虽然也可以用
+    var arr1 = ['1', '2', '3'];
+    var arr2 = new Array("1", "2", "3")
+    //]]>
+</script>
+
+<script>
+    var str = ("\u65b0\u6d6a\u8ba4\u8bc1");
+    str = unescape(str.replace(/\\u/g, "%u"));
+    str1 = eval("'" + str + "'");
+    //alert(str);
+    //alert(str1);//这俩都是Unicode转UTF8
+</script>
+
+<script>
+    /*function UnicodeToUTF8(strInUni){
+     if(null==strInUni)
+     returnnull;
+     var strUni=String(strInUni);
+     var strUTF8=String();
+     for(var i=0;i<strUni.length;i++){
+     var wchr=strUni.charCodeAt(i);
+     if(wchr<0x80){
+     strUTF8+=strUni.charAt(i);
+     }
+     else if(wchr<0x800){
+     var chr1=wchr&0xff;
+     var chr2=(wchr>>8)&0xff;
+     strUTF8+=String.fromCharCode(0xC0|(chr2<<2)|((chr1>>6)&0x3));
+     strUTF8+=String.fromCharCode(0x80|(chr1&0x3F));
+     }
+     else{
+     var chr1=wchr&0xff;
+     var chr2=(wchr>>8)&0xff;
+     strUTF8+=String.fromCharCode(0xE0|(chr2>>4));
+     strUTF8+=String.fromCharCode(0x80|((chr2<<2)&0x3C)|((chr1>>6)&0x3));
+     strUTF8+=String.fromCharCode(0x80|(chr1&0x3F));
+     }
+     }
+     return strUTF8;
+     }
+     alert(UnicodeToUTF8("\u65b0\u6d6a\u8ba4\u8bc1"));*/
+    //Unicode转UTF8
+    /*string()
+     <0x80
+     &0xff*/
+</script>
+
+<script>
+    /*var unicodeToUTF8 = function (unicode) {
+     if (unicode >= 0x00000000 && unicode <= 0x0000007F) {
+     return unicode;
+     }
+     else if (unicode >= 0x00000080 && unicode <= 0x000007FF) {
+     var r1 = (((unicode & 0x7C0) >> 6) | 0xC0) << 8;
+     var r2 = (unicode & 0x03F) | 0x80;
+     return r1 | r2;
+     }
+     else if (unicode >= 0x00000800 && unicode <= 0x0000FFFF) {
+     var r1 = (((unicode & 0xF000) >> 12) | 0xE0) << 16;
+     var r2 = (((unicode & 0x0FC0) >> 6) | 0x80) << 8;
+     var r3 = ((unicode & 0x003F) | 0x80);
+     return r1 | r2 | r3;
+     }
+     else if (unicode >= 0x00010000 && unicode <= 0x0010FFFF) {
+     var r1 = (((unicode & 0x1C0000) >> 18) | 0xE0) << 24;
+     var r2 = (((unicode & 0x03F000) >> 12) | 0x80) << 16;
+     var r3 = (((unicode & 0x000FC0) >> 6) | 0x80) << 8;
+     var r4 = ((unicode & 0x00003F) | 0x80);
+     return r1 | r2 | r3 | r4;
+     }
+     else {
+     return false;
+     }
+     };
+     alert(unicodeToUTF8("\u65b0\u6d6a\u8ba4\u8bc1"));*/
+    //Unicode转UTF8
+</script>
+
+</body>
+</html>
