@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>JS学习 - 21点 (black jack)</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=gb2312"/>
+	</head>
+	<style type="text/css">
+			table th
+			{
+					text-align: center;
+					text-decoration: none;
+					font-weight: normal;
+					padding: 3px 6px 3px 6px;
+					width:200px;
+			}
+			table td
+			{
+					vertical-align: center;
+					text-align: center;
+					padding: 3px 6px 3px 6px;
+					margin: 0px;
+			}
+	</style> 
+	<body>
+    <table width="100%">
+      <tr> 
+        <td>
+          <div align="left">
+            21点游戏 (Black Jack)
+          </div>
+        </td>
+        <td>
+          <div align="right">
+            <audio width="300" height="10" controls autoplay="true" loop="true">
+  　　        <source src="bgm.ogg" type="video/ogg"/>
+  　　      </audio>
+          </div> 
+        </td>
+      </tr>
+    </table>
+	  <hr>
+		<table id="tableboard">
+      <tr>
+				<td id="player1"><img src="resource\computer.png" /></td>
+        <td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/>
+			</tr>
+      <tr>
+				<td id="player2"><img src="resource\player.jpg" /></td>
+        <td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/>
+			</tr>
+    </table>
+    <hr>
+    <table>
+      <tr> 
+        <td>
+          <div id="score"></div>
+        </td>
+        <td>
+          <div id="bulletin">请做出选择 (Please make a choice.)</div>
+        </td>
+      </tr>
+    </table>
+    <hr>
+    <input type="button" id="hit" value="加一张牌 (HIT)" onclick="hit();" />
+    <input type="button" id="stand" value="我不要了 (STAND)" onclick="stand();" />
+    <!--<input type="button" id="restart" value="再玩一局 (FIGHT AGAIN)" onclick="location.reload();" />-->
+    <input type="button" id="restart" value="再玩一局 (FIGHT AGAIN)" onclick="restart();" />
+    <script src="black_jack.js"></script>
+	</body>
+</html>
